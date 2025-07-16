@@ -1,93 +1,108 @@
 <template>
-  <nav id="sidebar" :class="{ 'open-sidebar': isOpen }">
-    <div id="sidebar_content">
-      <div id="user">
-        <img
-          src="../../public/imagens/logo-user.png"
-          id="logo_user"
-          alt="Logo do Usuário"
-        />
+    <nav id="sidebar" :class="{'open-sidebar': isOpen}">
+        <div id="sidebar_content">
+            <div id="user">
+                <img src="../../public/imagens/logo-user.png" id="logo_user" alt="Logo do Usuário" />
+                
+                <p id="user_infos">
+                    <span class="item-description">
+                        Fulano da Silva
+                    </span>
+                    <span class="item-description">
+                        Matricula
+                    </span>
+                </p>
+            </div>
 
-        <p id="user_infos">
-          <span class="item-description"> Fulano da Silva </span>
-          <span class="item-description"> Matricula </span>
-        </p>
-      </div>
 
-      <ul id="side_items">
-        <li class="side-item">
-          <a href="#">
-            <i class="fa-solid fa-swatchbook"></i>
-            <span class="item-description"> Biblioteca </span>
-          </a>
-        </li>
+            <ul id="side_items">
+                <li class="side-item">
+                    <router-link to="/biblioteca">
+                        <i class="fa-solid fa-swatchbook"></i>
+                        <span class="item-description">
+                            Biblioteca
+                        </span>
+                    </router-link>
+                </li>
 
-        <li class="side-item">
-          <a href="#">
-            <i class="fa-solid fa-calendar-days"></i>
-            <span class="item-description"> Calendário Acadêmico </span>
-          </a>
-        </li>
+                <li class="side-item">
+                    <router-link to="/calendario-academico">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span class="item-description">
+                            Calendário Acadêmico
+                        </span>
+                    </router-link>
+                </li>
 
-        <li class="side-item">
-          <a href="#">
-            <i class="fa-solid fa-book"></i>
-            <span class="item-description"> Disciplinas </span>
-          </a>
-        </li>
+                <li class="side-item">
+                    <router-link to="/disciplinas">
+                        <i class="fa-solid fa-book"></i>
+                        <span class="item-description">
+                            Disciplinas
+                        </span>
+                    </router-link>
+                </li>
 
-        <li class="side-item">
-          <a href="#">
-            <i class="fa-solid fa-link"></i>
-            <span class="item-description"> Links Externos </span>
-          </a>
-        </li>
+                <li class="side-item">
+                    <router-link to="/links-externos">
+                        <i class="fa-solid fa-link"></i>
+                        <span class="item-description">
+                            Links Externos
+                        </span>
+                    </router-link>
+                </li>
 
-        <li class="side-item">
-          <a href="#">
-            <i class="fa-solid fa-calendar-plus"></i>
-            <span class="item-description"> Oferta de Disciplinas </span>
-          </a>
-        </li>
+                <li class="side-item">
+                    <router-link to="/oferta-disciplinas">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <span class="item-description">
+                            Oferta de Disciplinas
+                        </span>
+                    </router-link>
+                </li>
 
-        <li class="side-item">
-          <a href="#">
-            <i class="fa-solid fa-folder-open"></i>
-            <span class="item-description"> Documentos </span>
-          </a>
-        </li>
+                <li class="side-item">
+                    <router-link to="/documentos">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <span class="item-description">
+                            Documentos
+                        </span>
+                    </router-link>
+                </li>
 
-        <li class="side-item">
-          <a href="#">
-            <i class="fa-solid fa-pen-to-square"></i>
-            <span class="item-description"> Solicitações </span>
-          </a>
-        </li>
+                <li class="side-item">
+                    <router-link to="/solicitacao">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="item-description">
+                            Solicitações
+                        </span>
+                    </router-link>
+                </li>
 
-        <li class="side-item">
-          <router-link to="/configuracoes/alterar-dados">
-            <i class="fa-solid fa-gear"></i>
-            <span class="item-description"> Configurações </span>
-          </router-link>
-        </li>
-      </ul>
+                <li class="side-item">
+                    <router-link to="/configuracoes">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="item-description">
+                            Configurações
+                        </span>
+                    </router-link>
+                </li>
+            </ul>
 
-      <button @click="toggleSideBar" id="open_btn">
-        <i
-          id="open_btn_icon"
-          class="fa-solid"
-          :class="isOpen ? 'fa-chevron-left' : 'fa-chevron-right'"
-        ></i>
-      </button>
-    </div>
+            <button @click="toggleSideBar" id="open_btn">
+                <i id="open_btn_icon" class="fa-solid" :class="isOpen ? 'fa-chevron-left' : 'fa-chevron-right'"></i>
+            </button>
+        </div>
 
-    <div id="logout">
-      <button id="logout_btn">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        <span class="item-description"> Logout </span>
-      </button>
-    </div>
-  </nav>
+        <div id="logout">
+            <button id="logout_btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="item-description">
+                    Logout
+                </span>
+            </button>
+        </div>
+    </nav>
 </template>
 
 <script setup>
