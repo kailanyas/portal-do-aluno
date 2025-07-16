@@ -1,7 +1,6 @@
 <template>
   <header class="header">
     <div class="header-content">
-      <h1 class="title">Bem-vindo(a) ao Portal do Aluno!</h1>
       <img src="../../public/imagens/logo-ufes.png" alt="Logo da UFES" class="logo-ufes" />
     </div>
   </header>

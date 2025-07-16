@@ -80,12 +80,12 @@
                 </li>
 
                 <li class="side-item">
-                    <a href="#">
+                    <router-link to="/configuracoes/alterar-dados">
                         <i class="fa-solid fa-gear"></i>
                         <span class="item-description">
                             Configurações
                         </span>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
 
