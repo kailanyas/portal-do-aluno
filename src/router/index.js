@@ -9,6 +9,11 @@ const router = createRouter({
       name: 'Home',
       component: HomeView,
     },
+    {
+    path: '/configuracoes/alterar-dados',
+    name: 'AlterarDados',
+    component: () => import('@/views/AlterarDados.vue'),
+  },
   ],
 })
 
