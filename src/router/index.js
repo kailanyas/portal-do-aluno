@@ -11,10 +11,16 @@ const router = createRouter({
       component: HomeView,
     },
     {
+
       path: '/solicitacao', 
       name: 'Solicitacao',
       component: SolicitacaoView,
     },
+
+    path: '/configuracoes/alterar-dados',
+    name: 'AlterarDados',
+    component: () => import('@/views/AlterarDados.vue'),
+  },
   ],
 })
 
