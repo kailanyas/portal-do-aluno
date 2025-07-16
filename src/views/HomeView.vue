@@ -1,50 +1,53 @@
-import Cards from '../components/Cards.vue'
-
-<template>
-	<div class="layout-container">
-		<SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar"/>
-		<img src="../../public/imagens/logo-ufes.png" alt="Logo da UFES" class="logo-ufes"/>
-
-		<main class="main-content">
-			<h1>Conteúdo Principal</h1>
-			<p>Texto ou conteúdo da página.</p>
-		</main>
-
-  </div>
-</template>
-
 <script setup>
-	import {ref} from 'vue'
-	import SideBar from '../components/SideBar.vue'
-
+	import { ref } from 'vue'
+	import SideBar from '@/components/SideBar.vue'
+	import HeaderC from '@/components/Header.vue'
+	import FooterR from '@/components/Footer.vue'
+	import Cards from '@/components/EventsCard.vue'
+	
 	const isSidebarOpen = ref(false)
-
 	function toggleSidebar() {
 		isSidebarOpen.value = !isSidebarOpen.value
 	}
 </script>
 
-<style>
-.layout-container{
+<template>
+	<div class="layout-container">
+    	<SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
+
+    	<div class="content-area">
+      		<HeaderC />
+
+      		<main class="main-content">
+        		<Cards />
+      		</main>
+
+      		<FooterR />
+    	</div>
+  	</div>
+</template>
+
+<style scoped>
+	.layout-container {
 	display: flex;
 	height: 100vh;
-	width: 100%;
+	width: 100vw;
+	
+	}
+
+	.content-area {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	height: 100vh;
 	overflow: hidden;
-}
+	}
 
-.main-content{
-	flex: 1 1 auto;           
+	.main-content {
+	flex: 1;
+	overflow-y: auto;
 	padding: 1.5rem;
-	overflow-y: auto;        
-	max-width: 100%;         
 	box-sizing: border-box;
-}
-
-.logo-ufes{
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  height: 70px;
-  z-index: 1000;
-}
+	}
 </style>
+
