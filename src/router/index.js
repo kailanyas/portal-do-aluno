@@ -1,57 +1,72 @@
-import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
+import { createRouter, createWebHistory } from 'vue-router'
+
+import HomeView from '../views/HomeView.vue'
+import SolicitacaoView from '../views/SolicitacaoView.vue'
+import Biblioteca from '../views/Biblioteca.vue'
+import CalendarioAcademico from '../views/CalendarioAcademico.vue'
+import Disciplinas from '../views/Disciplinas.vue'
+import LinksExternos from '../views/LinksExternos.vue'
+import OfertaDisciplinas from '../views/OfertaDisciplinas.vue'
+import Documentos from '../views/Documentos.vue'
+import Solicitacoes from '../views/Solicitacoes.vue'
+import AlterarDados from '../views/AlterarDados.vue'
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'Home',
     component: HomeView,
   },
   {
-    path: "/biblioteca",
-    name: "Biblioteca",
-    component: () => import("@/views/Biblioteca.vue"),
+    path: '/solicitacao',
+    name: 'Solicitacao',
+    component: SolicitacaoView,
   },
   {
-    path: "/calendario-academico",
-    name: "CalendarioAcademico",
-    component: () => import("@/views/CalendarioAcademico.vue"),
+    path: '/biblioteca',
+    name: 'Biblioteca',
+    component: Biblioteca,
   },
   {
-    path: "/disciplinas",
-    name: "Disciplinas",
-    component: () => import("@/views/Disciplinas.vue"),
+    path: '/calendario-academico',
+    name: 'CalendarioAcademico',
+    component: CalendarioAcademico,
   },
   {
-    path: "/links-externos",
-    name: "LinksExternos",
-    component: () => import("@/views/LinksExternos.vue"),
+    path: '/disciplinas',
+    name: 'Disciplinas',
+    component: Disciplinas,
   },
   {
-    path: "/oferta-disciplinas",
-    name: "OfertaDisciplinas",
-    component: () => import("@/views/OfertaDisciplinas.vue"),
+    path: '/links-externos',
+    name: 'LinksExternos',
+    component: LinksExternos,
   },
   {
-    path: "/documentos",
-    name: "Documentos",
-    component: () => import("@/views/Documentos.vue"),
+    path: '/oferta-disciplinas',
+    name: 'OfertaDisciplinas',
+    component: OfertaDisciplinas,
   },
   {
-    path: "/solicitacoes",
-    name: "Solicitacoes",
-    component: () => import("@/views/Solicitacoes.vue"),
+    path: '/documentos',
+    name: 'Documentos',
+    component: Documentos,
   },
   {
-    path: "/configuracoes",
-    name: "AlterarDados",
-    component: () => import("@/views/AlterarDados.vue"),
+    path: '/solicitacao',
+    name: 'Solicitacao',
+    component: Solicitacoes,
   },
-];
+  {
+    path: '/configuracoes',
+    name: 'AlterarDados',
+    component: AlterarDados,
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-});
+})
 
 export default router;
