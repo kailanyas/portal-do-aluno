@@ -1,66 +1,60 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
-import SolicitacaoView from '../views/SolicitacaoView.vue'
-import Biblioteca from '../views/Biblioteca.vue'
-import CalendarioAcademico from '../views/CalendarioAcademico.vue'
-import Disciplinas from '../views/Disciplinas.vue'
-import LinksExternos from '../views/LinksExternos.vue'
-import OfertaDisciplinas from '../views/OfertaDisciplinas.vue'
-import Documentos from '../views/Documentos.vue'
-import Solicitacoes from '../views/Solicitacoes.vue'
-import AlterarDados from '../views/AlterarDados.vue'
+import BibliotecaView from '../views/BibliotecaView.vue'
+import CalendarioAcademicoView from '../views/CalendarioAcademicoView.vue'
+import DisciplinasView from '../views/DisciplinasView.vue'
+import LinksExternosView from '../views/LinksExternosView.vue'
+import OfertaDisciplinasView from '../views/OfertaDisciplinasView.vue'
+import DocumentosView from '../views/DocumentosView.vue'
+import SolicitacoesView from '../views/SolicitacoesView.vue'
+import AlterarDadosView from '../views/AlterarDadosView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: HomeView,
   },
   {
-    path: '/solicitacao',
-    name: 'Solicitacao',
-    component: SolicitacaoView,
+    path: '/solicitacoes',
+    name: 'Solicitacoes',
+    component: SolicitacoesView,
   },
   {
     path: '/biblioteca',
     name: 'Biblioteca',
-    component: Biblioteca,
+    component: BibliotecaView,
   },
   {
     path: '/calendario-academico',
     name: 'CalendarioAcademico',
-    component: CalendarioAcademico,
+    component: CalendarioAcademicoView,
   },
   {
     path: '/disciplinas',
     name: 'Disciplinas',
-    component: Disciplinas,
+    component: DisciplinasView,
   },
   {
     path: '/links-externos',
     name: 'LinksExternos',
-    component: LinksExternos,
+    component: LinksExternosView,
   },
   {
     path: '/oferta-disciplinas',
     name: 'OfertaDisciplinas',
-    component: OfertaDisciplinas,
+    component: OfertaDisciplinasView,
   },
   {
     path: '/documentos',
     name: 'Documentos',
-    component: Documentos,
-  },
-  {
-    path: '/solicitacao',
-    name: 'Solicitacao',
-    component: Solicitacoes,
+    component: DocumentosView,
   },
   {
     path: '/configuracoes',
     name: 'AlterarDados',
-    component: AlterarDados,
+    component: AlterarDadosView,
   },
 ]
 
