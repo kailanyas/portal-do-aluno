@@ -27,6 +27,15 @@
 
                 <li class="side-item">
                     <a href="#">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span class="item-description">
+                            Calendário Acadêmico
+                        </span>
+                    </a>
+                </li>
+
+                <li class="side-item">
+                    <a href="#">
                         <i class="fa-solid fa-book"></i>
                         <span class="item-description">
                             Disciplinas
