@@ -17,70 +17,70 @@
 
             <ul id="side_items">
                 <li class="side-item">
-                    <a href="#">
+                    <router-link to="/biblioteca">
                         <i class="fa-solid fa-swatchbook"></i>
                         <span class="item-description">
                             Biblioteca
                         </span>
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="side-item">
-                    <a href="#">
+                    <router-link to="/calendario-academico">
                         <i class="fa-solid fa-calendar-days"></i>
                         <span class="item-description">
                             Calendário Acadêmico
                         </span>
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="side-item">
-                    <a href="#">
+                    <router-link to="/disciplinas">
                         <i class="fa-solid fa-book"></i>
                         <span class="item-description">
                             Disciplinas
                         </span>
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="side-item">
-                    <a href="#">
+                    <router-link to="/links-externos">
                         <i class="fa-solid fa-link"></i>
                         <span class="item-description">
                             Links Externos
                         </span>
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="side-item">
-                    <a href="#">
+                    <router-link to="/oferta-disciplinas">
                         <i class="fa-solid fa-calendar-plus"></i>
                         <span class="item-description">
                             Oferta de Disciplinas
                         </span>
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="side-item">
-                    <a href="#">
+                    <router-link to="/documentos">
                         <i class="fa-solid fa-folder-open"></i>
                         <span class="item-description">
                             Documentos
                         </span>
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="side-item">
-                    <a href="#">
+                    <router-link to="/solicitacoes">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span class="item-description">
                             Solicitações
                         </span>
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="side-item">
-                    <router-link to="/configuracoes/alterar-dados">
+                    <router-link to="/configuracoes">
                         <i class="fa-solid fa-gear"></i>
                         <span class="item-description">
                             Configurações
