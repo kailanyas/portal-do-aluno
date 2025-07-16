@@ -1,21 +1,78 @@
+
 <template>
     <div class="cards-container">
         <div class="card">
             <div class="card-header">
-                <h3>Próximos Eventos</h3>
+                <h3></h3>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Avisos Gerais</h3>
             </div>
             <ul class="event-items">
                 <li class="event-item">
-                    
+                    <i class="fa-solid fa-greater-than"></i>
+                    <div class="event-text">   
+                        <span class="event-name">
+                            Inscrições para o PAEPE estão abertas
+                        </span>
+                    </div>
+                </li>
+
+                <li class="event-item">
+                    <i class="fa-solid fa-calendar-day" id="calendar_icon"></i>
+                    <div class="event-text">   
+                        <span class="event-name">
+                            Prova de Desenvolvimento Web
+                        </span>
+                        <span class="event-date">
+                            2 de agosto
+                        </span>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Datas Importantes</h3>
+            </div>
+            <ul class="event-items">
+                <li class="event-item">
+                    <i class="fa-solid fa-calendar-day" id="calendar_icon"></i>
+                    <div class="event-text">   
+                        <span class="event-name">
+                            Trabalho de Interface Humano-Computador
+                        </span>
+                        <span class="event-date">
+                            29 de julho
+                        </span>
+                    </div>
+                </li>
+
+                <li class="event-item">
+                    <i class="fa-solid fa-calendar-day" id="calendar_icon"></i>
+                    <div class="event-text">   
+                        <span class="event-name">
+                            Prova de Desenvolvimento Web
+                        </span>
+                        <span class="event-date">
+                            2 de agosto
+                        </span>
+                    </div>
                 </li>
             </ul>
         </div>
         
-        <div class="card">Card 2</div>
-        
-        <div class="card">Card 3</div>
-        
-        <div class="card">Card 4</div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Avisos das Disciplinas</h3>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -49,31 +106,50 @@
 
 .card-header h3 {
   margin-bottom: 1rem;
-  color: #144575;
+  color: black;
+  font-size: 1.2rem;
 }
 
 .event-items {
   list-style: none;
   padding: 0;
   margin: 0;
-  overflow-y: auto; /* caso muitos eventos */
+  overflow-y: auto;
   max-height: 260px;
 }
 
 .event-item {
   display: flex;
-  justify-content: space-between;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid #ddd;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.event-item i {
+  font-size: 1.5rem;
+  color: #102a54;
+  flex-shrink: 0;
+}
+
+.event-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .event-name {
   font-weight: 600;
   color: #102a54;
+  line-height: 1.2;
 }
 
 .event-date {
-  color: #2563eb;
-  font-style: normal;
+  color: #565758;
+  font-size: 0.9rem;
+  margin-top: 0.1rem;
+}
+
+#calendar_icon {
+    font-size: 2.3rem;
 }
 </style>
