@@ -2,7 +2,7 @@
     <nav id="sidebar" :class="{'open-sidebar': isOpen}">
         <div id="sidebar_content">
             <div id="user">
-                <img src="../../public/imagens/logo-user.png" id="logo_user" alt="Logo do Usuário"/>
+                <img src="../../public/imagens/logo-user.png" id="logo_user" alt="Logo do Usuário" />
                 
                 <p id="user_infos">
                     <span class="item-description">
@@ -122,6 +122,7 @@
     position: relative;
     transition: all .5s;
     min-width: 82px;
+    z-index: 10;
 }
 
 #sidebar_content{
@@ -225,8 +226,8 @@
     background-color: black;
     color:#e3e9f7;
     border-radius: 100%;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border: none;
     cursor: pointer; 
 }
