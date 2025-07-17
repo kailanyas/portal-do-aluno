@@ -71,7 +71,7 @@
                 </li>
 
                 <li class="side-item">
-                    <router-link to="/solicitacao">
+                    <router-link to="/solicitacoes">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span class="item-description">
                             Solicitações
@@ -79,7 +79,7 @@
                     </router-link>
                 </li>
 
-                <li class="side-item">
+                <li class="side-item"> 
                     <router-link to="/configuracoes">
                         <i class="fa-solid fa-gear"></i>
                         <span class="item-description">

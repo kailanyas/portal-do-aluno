@@ -7,8 +7,16 @@ import DisciplinasView from '../views/Disciplinas/DisciplinasView.vue'
 import LinksExternosView from '../views/Links/LinksExternosView.vue'
 import OfertaDisciplinasView from '../views/OfertaDisciplinasView.vue'
 import DocumentosView from '../views/DocumentosView.vue'
-import SolicitacoesView from '../views/Solicitações/SolicitacoesView.vue'
+import SolicitacoesView from '../views/Solicitacoes/SolicitacoesView.vue'
 import AlterarDadosView from '../views/Configurações/AlterarDadosView.vue'
+
+//imports Solicitações:
+import AtividadesComplementaresView from '../views/Solicitacoes/AtividadesComplementaresView.vue'
+import ColacaoView from '../views/Solicitacoes/ColacaoView.vue'
+import ComprovanteVacinacaoView from '../views/Solicitacoes/ComprovanteVacinacaoView.vue'
+import EstagioObrigatorioView from '../views/Solicitacoes/EstagioObrigatorioView.vue'
+import TrancamentoMatriculaView from '../views/Solicitacoes/TrancamentoMatriculaView.vue'
+import DesistenciaCursoView from '../views/Solicitacoes/DesistenciaCursoView.vue'
 
 const routes = [
   {
@@ -55,6 +63,36 @@ const routes = [
     path: '/configuracoes',
     name: 'AlterarDados',
     component: AlterarDadosView,
+  },
+  {
+    path: '/solicitacoes/AtividadesComplementares',
+    name: 'AtividadesComplementares',
+    component: AtividadesComplementaresView,
+  },
+  {
+    path: '/solicitacoes/Colacao',
+    name: 'Colacao',
+    component: ColacaoView,
+  },
+  {
+    path: '/solicitacoes/ComprovanteVacinacao',
+    name: 'ComprovanteVacinacao',
+    component: ComprovanteVacinacaoView,
+  },
+  {
+    path: '/solicitacoes/EstagioObrigatorio',
+    name: 'EstagioObrigatorio',
+    component: EstagioObrigatorioView,
+  },
+  {
+    path: '/solicitacoes/TrancamentoMatricula',
+    name: 'TrancamentoMatricula',
+    component: TrancamentoMatriculaView,
+  },
+  {
+    path: '/solicitacoes/DesistenciaCurso',
+    name: 'DesistenciaCurso',
+    component: DesistenciaCursoView,
   },
 ]
 
