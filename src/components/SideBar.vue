@@ -6,7 +6,7 @@
                 
                 <p id="user_infos">
                     <span class="item-description">
-                        Fulano da Silva
+                        Nome do Usuário
                     </span>
                     <span class="item-description">
                         Matricula
@@ -104,7 +104,7 @@
         </div>
 
         <div id="logout">
-            <button id="logout_btn">
+            <button id="logout_btn" @click="deslogar">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 <span class="item-description">
                     Logout
@@ -116,15 +116,42 @@
 
 <script setup>
 import { defineProps, defineEmits } from "vue";
+import {useRouter} from 'vue-router'
+import Swal from 'sweetalert2'
 
+const router = useRouter()
 const props = defineProps({
   isOpen: Boolean,
 });
-
 const emit = defineEmits(["toggle"]);
 
 function toggleSideBar() {
-  emit("toggle"); // avisa o pai que o botão foi clicado
+  emit("toggle");
+}
+
+function deslogar() {
+	Swal.fire({
+		title: 'Você realmente deseja sair?',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#d33',
+		cancelButtonColor: '#144575',
+		confirmButtonText: 'Sim',
+		cancelButtonText: 'Cancelar',
+		width: '350px',
+
+		customClass: {
+		icon: 'icone-menor',
+		title: 'titulo-menor',
+		htmlContainer: 'texto-menor',
+		confirmButton: 'botao-menor',
+		cancelButton: 'botao-menor'
+    	}
+	}).then((result) => {
+		if (result.isConfirmed) {
+			router.push('/')
+		}
+	})
 }
 </script>
 
@@ -273,4 +300,18 @@ function toggleSideBar() {
   justify-content: flex-start;
   gap: 14px;
 }
+
+.icone-menor {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.titulo-menor {
+  font-size: 1.2rem !important;
+}
+
+.botao-menor {
+  font-size: 1rem !important;
+}
+
 </style>
