@@ -157,7 +157,6 @@ function fazerLogin() {
 
 #footer-login a {
   color: #0e3f73;
-  text-decoration: none;
   text-decoration: underline;
   font-weight: 500;
 }
