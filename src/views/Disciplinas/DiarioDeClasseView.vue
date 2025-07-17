@@ -17,7 +17,7 @@
 
         <div class="content-area">
             
-            <HeaderC titulo="Disciplinas"/>
+            <HeaderC />
 
             <main class="main-content">
                  <Cards/>
