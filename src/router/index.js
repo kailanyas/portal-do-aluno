@@ -12,7 +12,7 @@ import AlterarDadosView from '../views/Configurações/AlterarDadosView.vue'
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     component: HomeView,
   },
