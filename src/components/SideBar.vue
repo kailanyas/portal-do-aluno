@@ -16,6 +16,15 @@
 
 
             <ul id="side_items">
+              <li class="side-item">
+                    <router-link to="/">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="item-description">
+                            Início
+                        </span>
+                    </router-link>
+                </li>
+
                 <li class="side-item">
                     <router-link to="/biblioteca">
                         <i class="fa-solid fa-swatchbook"></i>
