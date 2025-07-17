@@ -51,4 +51,14 @@ h1 {
   justify-self: end;
   height: 60px;
 }
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .logo-ufes {
+    height: 40px;
+  }
+}
 </style>
