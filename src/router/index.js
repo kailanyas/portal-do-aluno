@@ -20,12 +20,7 @@ import TrancamentoMatriculaView from "../views/Solicitacoes/TrancamentoMatricula
 import DesistenciaCursoView from "../views/Solicitacoes/DesistenciaCursoView.vue";
 
 //Import Configurações:
-import DadosCadastraisView from "../views/Configuracoes/DadosCadastraisView.vue";
-import ConfiguracoesDocumentosView from "../views/Configuracoes/DocumentosView.vue";
-import EmailEnderecoView from "../views/Configuracoes/EmailEnderecoView.vue";
-import NomeSocialView from "../views/Configuracoes/NomeSocialView.vue";
-import DadosBancariosView from "../views/Configuracoes/DadosBancariosView.vue";
-import AlterarSenhaView from "../views/Configuracoes/AlterarSenhaView.vue";
+
 import Login from "../views/Login.vue";
 
 const routes = [
@@ -72,42 +67,37 @@ const routes = [
   {
     path: "/documentos",
     name: "Documentos",
-    component: ConfiguracoesDocumentosView,
-  },
-  {
-    path: "/configuracoes",
-    name: "Configuracoes",
-    component: ConfiguracoesView,
-  },
-  {
-    path: "/configuracoes/dados-cadastrais",
-    name: "DadosCadastrais",
-    component: DadosCadastraisView,
-  },
-  {
-    path: "/configuracoes/documentos",
-    name: "DocumentosConfiguracoes",
     component: DocumentosView,
   },
   {
-    path: "/configuracoes/email-endereco",
-    name: "EmailEndereco",
-    component: EmailEnderecoView,
-  },
-  {
-    path: "/configuracoes/nome-social",
-    name: "NomeSocial",
-    component: NomeSocialView,
-  },
-  {
-    path: "/configuracoes/dados-bancarios",
-    name: "DadosBancarios",
-    component: DadosBancariosView,
-  },
-  {
-    path: "/configuracoes/alterar-senha",
-    name: "AlterarSenha",
-    component: AlterarSenhaView,
+    path: "/configuracoes",
+    component: ConfiguracoesView,
+    children: [
+      {
+        path: "dados-cadastrais",
+        component: () => import("@/views/configuracoes/DadosCadastraisView.vue"),
+      },
+      {
+        path: "config-documentos",
+        component: () => import("@/views/configuracoes/DocumentosView.vue"),
+      },
+      {
+        path: "email-endereco",
+        component: () => import("@/views/configuracoes/EmailEnderecoView.vue"),
+      },
+      {
+        path: "nome-social",
+        component: () => import("@/views/configuracoes/NomeSocialView.vue"),
+      },
+      {
+        path: "dados-bancarios",
+        component: () => import("@/views/configuracoes/DadosBancariosView.vue"),
+      },
+      {
+        path: "alterar-senha",
+        component: () => import("@/views/configuracoes/AlterarSenhaView.vue"),
+      },
+    ],
   },
   {
     path: "/solicitacoes/AtividadesComplementares",

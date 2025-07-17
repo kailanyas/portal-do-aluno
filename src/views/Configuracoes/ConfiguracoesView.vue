@@ -22,7 +22,7 @@ function goTo(path) {
     <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     <div class="content-area">
-      <HeaderC titulo="Configure!!" />
+      <HeaderC titulo="Configurações" />
 
       <main class="main-content">
         <h1>Configurações</h1>
@@ -30,36 +30,18 @@ function goTo(path) {
         <div class="config-layout">
           <aside class="sidebar-filho">
             <ul>
-              <li @click="goTo('/configuracoes/dados-cadastrais')">
-                Alterar Dados Pessoais
-              </li>
-              <li @click="goTo('/configuracoes/documentos')">
-                Alterar Documentos
-              </li>
-              <li @click="goTo('/configuracoes/email-endereco')">
-                Alterar E-mail/Endereço
-              </li>
-              <li @click="goTo('/configuracoes/nome-social')">
-                Incluir Nome Social
-              </li>
-              <li @click="goTo('/configuracoes/dados-bancarios')">
-                Incluir Dados Bancários
-              </li>
-              <li @click="goTo('/configuracoes/alterar-senha')">
-                Alterar Senha
-              </li>
+              <li @click="goTo('/configuracoes/dados-cadastrais')">Alterar Dados Pessoais</li>
+              <li @click="goTo('/configuracoes/documentos')">Alterar Documentos</li>
+              <li @click="goTo('/configuracoes/email-endereco')">Alterar E-mail/Endereço</li>
+              <li @click="goTo('/configuracoes/nome-social')">Incluir Nome Social</li>
+              <li @click="goTo('/configuracoes/dados-bancarios')">Incluir Dados Bancários</li>
+              <li @click="goTo('/configuracoes/alterar-senha')">Alterar Senha</li>
             </ul>
           </aside>
 
           <section class="descricao">
-            <p>
-              Selecione uma das opções ao lado para alterar seus dados
-              cadastrais.
-            </p>
-            <p>
-              Você poderá visualizar, editar ou adicionar informações conforme
-              necessário.
-            </p>
+            <!-- Aqui entram as views filhas -->
+            <router-view />
           </section>
         </div>
       </main>
@@ -100,13 +82,11 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-/* Layout com sidebar filha */
 .config-layout {
   display: flex;
   gap: 2rem;
 }
 
-/* Sidebar filha */
 .sidebar-filho {
   width: 250px;
   background-color: white;
@@ -137,7 +117,6 @@ h1 {
   background-color: #0059b3;
 }
 
-/* Área descritiva */
 .descricao {
   flex: 1;
   padding: 1rem;
