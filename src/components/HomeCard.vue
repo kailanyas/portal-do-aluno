@@ -3,7 +3,7 @@
     <div class="cards-container">
         <div class="card">
             <div class="card-header">
-                <h3></h3>
+                <h3>Card 1</h3>
             </div>
         </div>
         
@@ -11,30 +11,23 @@
             <div class="card-header">
                 <h3>Avisos Gerais</h3>
             </div>
-            <ul class="event-items">
-                <li class="event-item">
-                    <i class="fa-solid fa-greater-than"></i>
-                    <div class="event-text">   
-                        <span class="event-name">
-                            Inscrições para o PAEPE estão abertas
+            <ul class="alert-items">
+                <li class="alert-item">
+                    <div class="alert-text">   
+                        <span>
+                            As inscrições para o PAEPE estão abertas
                         </span>
                     </div>
                 </li>
 
-                <li class="event-item">
-                    <i class="fa-solid fa-calendar-day" id="calendar_icon"></i>
-                    <div class="event-text">   
-                        <span class="event-name">
-                            Prova de Desenvolvimento Web
-                        </span>
-                        <span class="event-date">
-                            2 de agosto
+                 <li class="alert-item">
+                    <div class="alert-text">   
+                        <span>
+                            As inscrições para VI Semana de Ciências Farmacêuticas estão abertas
                         </span>
                     </div>
                 </li>
             </ul>
-
-
         </div>
         
         <div class="card">
@@ -72,6 +65,15 @@
             <div class="card-header">
                 <h3>Avisos das Disciplinas</h3>
             </div>
+            <ul class="alert-items">
+                <li class="alert-item">
+                    <div class="alert-text">   
+                        <span>
+                            As notas da prova de Projeto de Sistemas de Software estão disponíveis
+                        </span>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -82,7 +84,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
   width: 100%;
-  max-width: 1400px; /* container maior para telas largas */
+  max-width: 1400px;
   margin: 0 auto;
   box-sizing: border-box;
   height: 100%;
@@ -96,7 +98,7 @@
   font-weight: normal;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   height: 350px;
-  max-width: 700px; /* cards mais largos */
+  max-width: 700px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -107,7 +109,7 @@
 .card-header h3 {
   margin-bottom: 1rem;
   color: black;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .event-items {
@@ -149,7 +151,36 @@
   margin-top: 0.1rem;
 }
 
-#calendar_icon {
-    font-size: 2.3rem;
+.alert-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+.alert-item {
+  display: flex;
+  align-items: center; 
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.alert-item::before {
+  content: "•";
+  color: #102a54;
+  font-size: 1.1rem;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); 
+}
+
+
+.alert-text span {
+  color: #102a54;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+
 </style>

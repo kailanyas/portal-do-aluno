@@ -3,7 +3,7 @@
 	import SideBar from '@/components/SideBar.vue'
 	import HeaderC from '@/components/Header.vue'
 	import FooterR from '@/components/Footer.vue'
-	import Cards from '@/components/EventsCard.vue'
+	import Cards from '@/components/HomeCard.vue'
 	
 	const isSidebarOpen = ref(false)
 	function toggleSidebar() {
@@ -16,7 +16,7 @@
     	<SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     	<div class="content-area">
-      		<HeaderC titulo="Bem Vindo!"/>
+      		<HeaderC titulo="Bem-vindo(a) ao Portal do Aluno!"/>
 
       		<main class="main-content">
         		<Cards />
