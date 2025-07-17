@@ -3,8 +3,16 @@
     <div class="cards-container">
         <div class="card">
             <div class="card-header">
-                <h3>Card 1</h3>
+                <h3>Atalhos</h3>
             </div>
+            <div class="shortcut-container">
+				<router-link to="/calendario-academico" class="shortcut-link">
+					<div class="shortcut-card">
+						<i class="fa-solid fa-calendar-days icons"></i>
+						<span>Calendário Acadêmico</span>
+					</div>
+				</router-link>
+            </div>  
         </div>
         
         <div class="card">
@@ -90,6 +98,12 @@
   height: 100%;
 }
 
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 .card {
   background-color: #f5f5f5;
   border-radius: 12px;
@@ -159,22 +173,18 @@
 
 .alert-item {
   display: flex;
-  align-items: center; 
-  position: relative;
-  padding-left: 1.2rem;
+  align-items: flex-start;
+  gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
 .alert-item::before {
   content: "•";
   color: #102a54;
-  font-size: 1.1rem;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%); 
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-top: 0.3rem;
 }
-
 
 .alert-text span {
   color: #102a54;
@@ -182,5 +192,58 @@
   line-height: 1.2;
 }
 
+.shortcut-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
+.shortcut-link {
+  text-decoration: none;
+  color: inherit; 
+  display: block;
+}
+
+.shortcut-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  color: #102a54;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shortcut-card span {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  transform: translateY(1px);
+}
+
+.shortcut-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.icons {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .shortcut-card {
+    font-size: 0.95rem;
+    padding: 0.65rem 0.9rem;
+    gap: 0.5rem;
+  }
+
+  .shortcut-card i {
+    font-size: 1rem;
+  }
+}
 </style>
