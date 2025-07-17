@@ -11,7 +11,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button" @click="navigateTo('AtividadesComplementares')">Acessar</button>
     </div>
 
     <div class="card">
@@ -25,7 +25,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button" @click="navigateTo('Colacao')">Acessar</button>
     </div>
 
     <div class="card">
@@ -39,7 +39,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button" @click="navigateTo('ComprovanteVacinacao')">Acessar</button>
     </div>
 
     <div class="card">
@@ -53,7 +53,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button" @click="navigateTo('EstagioObrigatorio')">Acessar</button>
     </div>
 
     <div class="card">
@@ -67,7 +67,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button" @click="navigateTo('DesistenciaCurso')">Acessar</button>
     </div>
 
     <div class="card">
@@ -81,10 +81,21 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button" @click="navigateTo('TrancamentoMatricula')">Acessar</button>
     </div>
   </div>
 </template>
+
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const navigateTo = (routeName) => {
+  router.push({ name: routeName }); // Isso está correto e espera o NOME
+};
+</script>
+
 
 <style scoped>
 .cards-container {
