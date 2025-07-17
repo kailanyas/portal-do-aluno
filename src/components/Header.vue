@@ -2,7 +2,7 @@
 <template>
   <header class="header">
     <div class="header-content">
-      <h1 align="center">{{ titulo }}</h1>
+      <h1 class="title">{{ titulo }}</h1>
       <img src="../../public/imagens/logo-ufes.png" alt="Logo da UFES" class="logo-ufes" />
     </div>
   </header>
@@ -38,7 +38,7 @@ h1 {
 }
 
 .title {
-  grid-column: 2; /* centraliza o título na coluna do meio */
+  grid-column: 2; 
   text-align: center;
   font-size: 1.8rem;
   font-weight: 600;
