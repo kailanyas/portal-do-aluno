@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import LoginView from "../views/Login.vue";
 import HomeView from "../views/HomeView.vue";
 import BibliotecaView from "../views/BibliotecaView.vue";
 import CalendarioAcademicoView from "../views/CalendarioAcademicoView.vue";
@@ -18,17 +19,23 @@ import EstagioObrigatorioView from "../views/Solicitacoes/EstagioObrigatorioView
 import TrancamentoMatriculaView from "../views/Solicitacoes/TrancamentoMatriculaView.vue";
 import DesistenciaCursoView from "../views/Solicitacoes/DesistenciaCursoView.vue";
 
-//Import CONFIGURAÇÕES:
+//Import Configurações:
 import DadosCadastraisView from "../views/Configuracoes/DadosCadastraisView.vue";
 import ConfiguracoesDocumentosView from "../views/Configuracoes/DocumentosView.vue";
 import EmailEnderecoView from "../views/Configuracoes/EmailEnderecoView.vue";
 import NomeSocialView from "../views/Configuracoes/NomeSocialView.vue";
 import DadosBancariosView from "../views/Configuracoes/DadosBancariosView.vue";
 import AlterarSenhaView from "../views/Configuracoes/AlterarSenhaView.vue";
+import Login from "../views/Login.vue";
 
 const routes = [
   {
     path: "/",
+    name: "Login",
+    component: LoginView,
+  },
+  {
+    path: "/home",
     name: "Home",
     component: HomeView,
   },
