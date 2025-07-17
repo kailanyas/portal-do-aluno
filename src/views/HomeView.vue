@@ -16,7 +16,7 @@
     	<SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     	<div class="content-area">
-      		<HeaderC />
+      		<HeaderC titulo="Bem Vindo!"/>
 
       		<main class="main-content">
         		<Cards />
