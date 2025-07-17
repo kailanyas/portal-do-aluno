@@ -1,9 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import SideBar from '@/components/SideBar.vue'
-import HeaderC from '@/components/Header.vue'
-import FooterR from '@/components/Footer.vue'
-
 const isSidebarOpen = ref(false)
 function toggleSidebar() {
   isSidebarOpen.value = !isSidebarOpen.value
@@ -24,10 +20,8 @@ function adicionarEndereco() {
 
 <template>
   <div class="layout-container">
-    <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     <div class="content-area">
-      <HeaderC />
 
       <main class="main-content">
         <h1>Alteração de Dados Cadastrais</h1>
@@ -62,8 +56,6 @@ function adicionarEndereco() {
           Para excluir ou definir um endereço como principal, entre em alterar
         </p>
       </main>
-
-      <FooterR />
     </div>
   </div>
 </template>
@@ -71,24 +63,25 @@ function adicionarEndereco() {
 <style scoped>
 .layout-container {
   display: flex;
-  height: 100vh;
-  width: 100vw;
+  justify-content: flex-start;
+  padding: 0.2rem;
+  width: 100%;
 }
 
 .content-area {
+  width: 100%;
+  max-width: 1000px; /* limite máximo de largura mais realista */
+  margin: 0 auto;     /* centraliza horizontalmente */
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: 100vh;
-  overflow: hidden;
 }
 
 .main-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1.5rem;
-  box-sizing: border-box;
   background-color: #f4f4f4;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Cabeçalho azul com texto branco */
@@ -97,6 +90,7 @@ h1 {
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
+  font-size: 1.5rem;
 }
 
 /* Tabela branca com letras azul-ufes */
@@ -144,6 +138,61 @@ button:hover {
   margin-top: 20px;
   font-style: italic;
   color: #004080;
+}
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    padding: 8px 16px;
+    text-align: center;
+  }
+
+  .dados-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    font-size: 0.9rem;
+  }
+
+  .dados-table thead {
+    display: none; /* Esconde cabeçalho em telas pequenas (opcional) */
+  }
+
+  .dados-table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background-color: white;
+    padding: 10px;
+  }
+
+  .dados-table td {
+    display: block;
+    text-align: left;
+    border: none;
+    padding: 6px 0;
+    font-size: 0.9rem;
+  }
+
+  .dados-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+    color: #004080;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 8px;
+  }
 }
 
 </style>
