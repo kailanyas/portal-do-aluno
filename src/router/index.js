@@ -3,12 +3,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import BibliotecaView from '../views/BibliotecaView.vue'
 import CalendarioAcademicoView from '../views/CalendarioAcademicoView.vue'
-import DisciplinasView from '../views/DisciplinasView.vue'
-import LinksExternosView from '../views/LinksExternosView.vue'
+import DisciplinasView from '../views/Disciplinas/DisciplinasView.vue'
+import LinksExternosView from '../views/Links/LinksExternosView.vue'
 import OfertaDisciplinasView from '../views/OfertaDisciplinasView.vue'
 import DocumentosView from '../views/DocumentosView.vue'
-import SolicitacoesView from '../views/SolicitacoesView.vue'
-import AlterarDadosView from '../views/AlterarDadosView.vue'
+import SolicitacoesView from '../views/Solicitações/SolicitacoesView.vue'
+import AlterarDadosView from '../views/Configurações/AlterarDadosView.vue'
 
 const routes = [
   {
