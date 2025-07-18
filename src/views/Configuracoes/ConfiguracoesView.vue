@@ -33,18 +33,27 @@ function goTo(path) {
       <main class="main-content">
         <!-- Botão para mobile -->
         <button class="btn-toggle-sub" @click="toggleSubSidebar">
-          {{ mostrarSubSidebar ? 'Esconder Menu' : 'Mostrar Menu' }}
+          {{ mostrarSubSidebar ? "Esconder Menu" : "Mostrar Menu" }}
         </button>
 
         <div class="config-layout">
           <aside v-if="mostrarSubSidebar" class="sidebar-filho">
             <ul>
-              <li @click="goTo('/configuracoes/dados-cadastrais')">Alterar Dados Pessoais</li>
-              <li @click="goTo('/configuracoes/documentos')">Alterar Documentos</li>
-              <li @click="goTo('/configuracoes/email-endereco')">Alterar E-mail/Endereço</li>
-              <li @click="goTo('/configuracoes/nome-social')">Incluir Nome Social</li>
-              <li @click="goTo('/configuracoes/dados-bancarios')">Incluir Dados Bancários</li>
-              <li @click="goTo('/configuracoes/alterar-senha')">Alterar Senha</li>
+              <li @click="goTo('/configuracoes/dados-cadastrais')">
+                Alterar Dados Pessoais
+              </li>
+              <li @click="goTo('/configuracoes/config-documentos')">
+                Alterar Documentos
+              </li>
+              <li @click="goTo('/configuracoes/email-endereco')">
+                Alterar E-mail/Endereço
+              </li>
+              <li @click="goTo('/configuracoes/dados-bancarios')">
+                Incluir Dados Bancários
+              </li>
+              <li @click="goTo('/configuracoes/alterar-senha')">
+                Alterar Senha
+              </li>
             </ul>
           </aside>
 
