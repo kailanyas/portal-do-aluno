@@ -140,7 +140,7 @@ import HeaderC from '@/components/Header.vue';
 import FooterR from '@/components/Footer.vue';
 import CardQuadrado from '@/components/CardQuadrado.vue';
 
-// --- Variáveis de Estado da Página ---
+
 const isSidebarOpen = ref(false);
 function toggleSidebar() {
   isSidebarOpen.value = !isSidebarOpen.value;
@@ -151,19 +151,15 @@ const solicitacoes = ref([
   { id: 2, validacao: 'Validado', descricao: 'Curso online de Python', atividade: 'Udemy - Python Avançado', carga_horaria: 20, dataInicio: '2024-01-15', dataTermino: '2024-03-15' },
 ]);
 
-// ================================================================
-// ✨ LÓGICA DO MODAL (PASSOS 2 E 4) ✨
-// ================================================================
 
-// 1. Variáveis que controlam o estado e os dados do modal
-const checkboxModal = ref(null); // Referência para o <input> do modal
-const modoEdicao = ref(false); // Define se estamos inserindo (false) ou editando (true)
-const solicitacaoParaFormulario = ref({}); // Guarda os dados do formulário
+const checkboxModal = ref(null); 
+const modoEdicao = ref(false); 
+const solicitacaoParaFormulario = ref({}); 
 
-// 2. Função para ABRIR o modal no modo INSERIR
+
 function abrirModalParaInserir() {
   modoEdicao.value = false;
-  // Limpa o objeto para garantir que o formulário apareça vazio
+  
   solicitacaoParaFormulario.value = {
     descricao: '',
     tipoAtividade: '',
@@ -171,35 +167,35 @@ function abrirModalParaInserir() {
     dataInicio: '',
     dataTermino: ''
   };
-  // Abre o modal marcando o checkbox
+  
   checkboxModal.value.checked = true;
 }
 
-// 3. Função para ABRIR o modal no modo EDITAR
+
 function abrirModalParaEditar(solicitacao) {
   modoEdicao.value = true;
-  // Copia os dados da linha da tabela para o objeto do formulário
+  
   solicitacaoParaFormulario.value = { ...solicitacao };
-  // Abre o modal
+  
   checkboxModal.value.checked = true;
 }
 
-// 4. Função para FECHAR o modal (usada pelo botão Cancelar)
+
 function fecharModal() {
-  // Fecha o modal desmarcando o checkbox
+  
   checkboxModal.value.checked = false;
 }
 
-// 5. Função para SALVAR os dados do formulário
+
 function salvarDados() {
   if (modoEdicao.value) {
-    // Lógica de EDIÇÃO: Encontra o item na lista e o substitui
+    
     const index = solicitacoes.value.findIndex(s => s.id === solicitacaoParaFormulario.value.id);
     if (index !== -1) {
       solicitacoes.value[index] = solicitacaoParaFormulario.value;
     }
   } else {
-    // Lógica de INSERÇÃO: Cria um novo ID e adiciona o item na lista
+    
     const novoId = solicitacoes.value.length > 0 ? Math.max(...solicitacoes.value.map(s => s.id)) + 1 : 1;
     solicitacoes.value.push({
       ...solicitacaoParaFormulario.value,
@@ -207,11 +203,11 @@ function salvarDados() {
       validacao: 'Pendente'
     });
   }
-  // Fecha o modal após salvar
+  
   fecharModal();
 }
 
-// Função de deletar (já existente)
+
 const deleteSolicitacao = (id) => {
   if (confirm(`Tem certeza que deseja excluir a solicitação com ID: ${id}?`)) {
     solicitacoes.value = solicitacoes.value.filter(s => s.id !== id);
@@ -243,7 +239,7 @@ const deleteSolicitacao = (id) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Alinhado ao topo */
+  justify-content: flex-start; 
 }
 
 .instructions-section {
