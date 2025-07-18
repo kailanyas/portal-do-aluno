@@ -1,198 +1,132 @@
-<script setup>
-import { ref } from 'vue'
-const isSidebarOpen = ref(false)
-function toggleSidebar() {
-  isSidebarOpen.value = !isSidebarOpen.value
-}
-
-function alterar() {
-  alert('Função alterar ainda não implementada')
-}
-
-function exibir() {
-  alert('Função exibir ainda não implementada')
-}
-
-function adicionarEndereco() {
-  alert('Função adicionar endereço ainda não implementada')
-}
-</script>
-
 <template>
-  <div class="layout-container">
+  <div class="container">
+    <h2 class="subtitulo">Alteração de Dados Cadastrais</h2>
 
-    <div class="content-area">
-
-      <main class="main-content">
-        <h1>Alteração de Dados Cadastrais</h1>
-
-        <table class="dados-table">
-          <thead>
-            <tr>
-              <th>Endereço</th>
-              <th>Email</th>
-              <th colspan="2">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                Outros: Rua, Número, Complemento, Bairro, CIDADE<br />
-                <strong>endereço principal</strong>
-              </td>
-              <td>exemplo@email.com</td>
-              <td><button @click="alterar">Alterar</button></td>
-              <td><button @click="exibir">Exibir</button></td>
-            </tr>
-            <tr>
-              <td colspan="4" class="center">
-                <button @click="adicionarEndereco">Adicionar endereço</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="obs">
-          Para excluir ou definir um endereço como principal, entre em alterar
+    <form>
+      <div class="secao">
+        <h3 class="secao-titulo">Dados Pessoais</h3>
+        <div class="grid">
+          <label>Nome Civil:<input type="text" value="Exemplo Nome Civil" disabled /></label>
+          <label>Nome Social:<input type="text" value="Exemplo Nome Social" disabled /></label>
+          <label>Nome da mãe ou 1º parental:<input type="text" value="Maria Exemplo" disabled /></label>
+          <label>Nome do pai ou 2º parental:<input type="text" value="João Exemplo" disabled /></label>
+          <label>Data de Nascimento:<input type="text" value="01/01/2000" disabled /></label>
+          <label>Sexo:<input type="text" value="Masculino" disabled /></label>
+          <label>Estado Civil:<input type="text" value="Solteiro(a)" disabled /></label>
+          <label>Etnia:<input type="text" value="Parda" disabled /></label>
+          <label>Tipo Sanguíneo:<input type="text" value="Não Informado" disabled /></label>
+          <label>Fator RH:<input type="text" value="Não Informado" disabled /></label>
+          <label>Ano de conclusão do Ensino Médio:<input type="text" value="2020" disabled /></label>
+          <label>Deficiência(s):<input type="text" value="Sem deficiência" disabled /></label>
+          <label>Identidade de Gênero:<input type="text" value="Não declarado" disabled /></label>
+        </div>
+        <p class="aviso">
+          IMPORTANTE: a identidade de gênero será usada no Diploma Digital. Caso não informe, será usado o sexo cadastrado.
         </p>
-      </main>
-    </div>
+      </div>
+
+      <div class="secao">
+        <h3 class="secao-titulo">Contato para casos de emergência</h3>
+        <div class="grid">
+          <label>Nome do Contato:<input type="text" value="Contato Exemplo" disabled /></label>
+          <label>Telefone do Contato:<input type="text" value="(27)99999-9999" disabled /></label>
+        </div>
+      </div>
+
+      <div class="secao">
+        <h3 class="secao-titulo">Naturalidade</h3>
+        <div class="grid">
+          <label>País:<input type="text" value="Brasil" disabled /></label>
+          <label>Estado:<input type="text" value="Espírito Santo" disabled /></label>
+          <label>Naturalidade:<input type="text" value="João Neiva" disabled /></label>
+          <label>Nacionalidade:<input type="text" value="Brasileira" disabled /></label>
+        </div>
+      </div>
+    </form>
+
+    <p class="aviso-final">
+      Favor preencher os campos vazios ou não informados.<br />
+      ATENÇÃO: Dados bloqueados devem ser alterados diretamente pela PROGRAD.
+    </p>
   </div>
 </template>
 
 <style scoped>
-.layout-container {
-  display: flex;
-  justify-content: flex-start;
-  padding: 0.2rem;
-  width: 100%;
+.container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.content-area {
-  width: 100%;
-  max-width: 1000px; /* limite máximo de largura mais realista */
-  margin: 0 auto;     /* centraliza horizontalmente */
+.container h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.container h3 {
+  font-size: 16px;
+  color: #006699;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.titulo {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.subtitulo {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 24px;
+}
+form {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  gap: 24px;
 }
-
-.main-content {
-  background-color: #f4f4f4;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Cabeçalho azul com texto branco */
-h1 {
-  background-color: #004080; /* azul UFES */
-  color: white;
-  padding: 10px 20px;
+.secao {
+  padding: 16px;
+  background: #fff;
   border-radius: 8px;
-  font-size: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
-
-/* Tabela branca com letras azul-ufes */
-.dados-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  background-color: white;
-  color: #004080;
-  border: 1px solid #004080;
-  border-radius: 8px;
-  overflow: hidden;
+.secao-titulo {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #444;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
 }
-
-.dados-table th {
-  background-color: #004080;
-  color: white;
-  padding: 12px;
-  text-align: left;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
 }
-
-.dados-table td {
-  padding: 12px;
-  border-top: 1px solid #004080;
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #333;
 }
-
-button {
-  background-color: #004080;
-  color: white;
-  border: none;
-  padding: 6px 12px;
+input[type="text"] {
+  margin-top: 4px;
+  padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  cursor: pointer;
+  background: #f1f1f1;
+  color: #555;
 }
-
-button:hover {
-  background-color: #0059b3;
+.aviso, .aviso-final {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #b22222;
+  background: #fff3f3;
+  padding: 10px;
+  border-left: 4px solid #b22222;
+  border-radius: 4px;
 }
-
-.center {
-  text-align: center;
-}
-
-.obs {
-  margin-top: 20px;
-  font-style: italic;
-  color: #004080;
-}
-@media (max-width: 768px) {
-  .main-content {
-    padding: 1rem;
-  }
-
-  h1 {
-    font-size: 1.2rem;
-    padding: 8px 16px;
-    text-align: center;
-  }
-
-  .dados-table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    font-size: 0.9rem;
-  }
-
-  .dados-table thead {
-    display: none; /* Esconde cabeçalho em telas pequenas (opcional) */
-  }
-
-  .dados-table tbody tr {
-    display: block;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    background-color: white;
-    padding: 10px;
-  }
-
-  .dados-table td {
-    display: block;
-    text-align: left;
-    border: none;
-    padding: 6px 0;
-    font-size: 0.9rem;
-  }
-
-  .dados-table td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    display: inline-block;
-    width: 120px;
-    color: #004080;
-  }
-
-  .center {
-    text-align: center;
-  }
-
-  button {
-    width: 100%;
-    margin-top: 8px;
-  }
-}
-
 </style>
