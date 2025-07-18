@@ -28,6 +28,7 @@ import Login from "../views/Login.vue";
 import MinhasDisciplinasView from "../views/Disciplinas/MinhasDisciplinasView.vue";
 import EmentasDisciplinasView from "../views/Disciplinas/EmentasDisciplinasView.vue";
 import AcompanhamentoAcademicoView from "../views/Disciplinas/AcompanhamentoAcademicoView.vue";
+import ProgramaDeDisciplinaView from "../views/Disciplinas/ProgramaDeDisciplinasView.vue";
 
 
 
@@ -76,6 +77,11 @@ const routes = [
     path: "/disciplinas/AcompanhamentoAcademico",
     name: "AcompanhamentoAcademico",
     component: AcompanhamentoAcademicoView,
+  },
+  {
+    path: "/disciplinas/ProgramaDeDisciplina",
+    name: "ProgramaDeDisciplina",
+    component: ProgramaDeDisciplinaView,
   },
   {
     path: "/links-externos",
