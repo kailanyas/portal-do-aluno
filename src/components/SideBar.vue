@@ -314,4 +314,42 @@ function deslogar() {
   font-size: 1rem !important;
 }
 
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+
+  #sidebar.open-sidebar {
+    left: 0;
+    min-width: 70%;
+  }
+
+  #open_btn {
+    transition: left 0.5s ease;
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 1100;
+    background-color: #144575;
+    color: white;
+  }
+
+  #sidebar.open-sidebar #open_btn {
+    left: calc(70% - 20px);
+  }
+
+  #sidebar_content {
+    padding-bottom: 60px; /* espaço para botão logout */
+  }
+
+  #logout {
+    padding-bottom: 20px;
+  }
+}
+
 </style>

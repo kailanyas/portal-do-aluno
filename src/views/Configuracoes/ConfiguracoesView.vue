@@ -6,8 +6,14 @@ import FooterR from "@/components/Footer.vue";
 import { useRouter } from "vue-router";
 
 const isSidebarOpen = ref(false);
+const mostrarSubSidebar = ref(true); // controla visibilidade da sub-sidebar
+
 function toggleSidebar() {
   isSidebarOpen.value = !isSidebarOpen.value;
+}
+
+function toggleSubSidebar() {
+  mostrarSubSidebar.value = !mostrarSubSidebar.value;
 }
 
 const router = useRouter();
@@ -25,17 +31,29 @@ function goTo(path) {
       <HeaderC titulo="Configurações" />
 
       <main class="main-content">
-        <h1>Configurações</h1>
+        <!-- Botão para mobile -->
+        <button class="btn-toggle-sub" @click="toggleSubSidebar">
+          {{ mostrarSubSidebar ? "Esconder Menu" : "Mostrar Menu" }}
+        </button>
 
         <div class="config-layout">
-          <aside class="sidebar-filho">
+          <aside v-if="mostrarSubSidebar" class="sidebar-filho">
             <ul>
-              <li @click="goTo('/configuracoes/dados-cadastrais')">Alterar Dados Pessoais</li>
-              <li @click="goTo('/configuracoes/documentos')">Alterar Documentos</li>
-              <li @click="goTo('/configuracoes/email-endereco')">Alterar E-mail/Endereço</li>
-              <li @click="goTo('/configuracoes/nome-social')">Incluir Nome Social</li>
-              <li @click="goTo('/configuracoes/dados-bancarios')">Incluir Dados Bancários</li>
-              <li @click="goTo('/configuracoes/alterar-senha')">Alterar Senha</li>
+              <li @click="goTo('/configuracoes/dados-cadastrais')">
+                Alterar Dados Pessoais
+              </li>
+              <li @click="goTo('/configuracoes/config-documentos')">
+                Alterar Documentos
+              </li>
+              <li @click="goTo('/configuracoes/email-endereco')">
+                Alterar E-mail/Endereço
+              </li>
+              <li @click="goTo('/configuracoes/dados-bancarios')">
+                Incluir Dados Bancários
+              </li>
+              <li @click="goTo('/configuracoes/alterar-senha')">
+                Alterar Senha
+              </li>
             </ul>
           </aside>
 
@@ -85,8 +103,10 @@ h1 {
 .config-layout {
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 
+/* Sub-sidebar */
 .sidebar-filho {
   width: 250px;
   background-color: white;
@@ -117,12 +137,40 @@ h1 {
   background-color: #0059b3;
 }
 
+/* View das rotas filhas */
 .descricao {
   flex: 1;
-  padding: 1rem;
-  background-color: white;
-  border: 1px solid #004080;
-  border-radius: 8px;
-  color: #004080;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+/* Botão que aparece só no mobile */
+.btn-toggle-sub {
+  display: none;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #004080;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Mostrar o botão e esconder menu por padrão em telas pequenas */
+@media (max-width: 768px) {
+  .btn-toggle-sub {
+    display: inline-block;
+  }
+
+  .config-layout {
+    flex-direction: column;
+  }
+
+  .sidebar-filho {
+    width: 100%;
+  }
 }
 </style>

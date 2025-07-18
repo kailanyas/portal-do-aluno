@@ -86,10 +86,6 @@ const routes = [
         component: () => import("@/views/configuracoes/EmailEnderecoView.vue"),
       },
       {
-        path: "nome-social",
-        component: () => import("@/views/configuracoes/NomeSocialView.vue"),
-      },
-      {
         path: "dados-bancarios",
         component: () => import("@/views/configuracoes/DadosBancariosView.vue"),
       },
