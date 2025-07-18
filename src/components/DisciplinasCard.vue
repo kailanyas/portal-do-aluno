@@ -53,7 +53,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button"  @click="navigateTo('MinhasDisciplinas')">Acessar</button>
+      <button class="card-button"  @click="navigateTo('ProgramaDeDisciplina')">Acessar</button>
     </div>
   </div>
 </template>
