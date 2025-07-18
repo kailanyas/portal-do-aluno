@@ -56,13 +56,5 @@
         align-items: center;
     }
 
-    .main-title {
-        text-align: center; 
-        width: 100%; 
-        margin-bottom: 2rem; 
-        margin-top: 1rem; 
-        color: #ffffff; 
-        font-size: 2em;
-    }
 
 </style>

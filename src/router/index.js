@@ -9,7 +9,7 @@ import LinksExternosView from "../views/Links/LinksExternosView.vue";
 import OfertaDisciplinasView from "../views/OfertaDisciplinasView.vue";
 import DocumentosView from "../views/DocumentosView.vue";
 import SolicitacoesView from "../views/Solicitacoes/SolicitacoesView.vue";
-import ConfiguracoesView from "../views/Configuracoes/ConfiguracoesView.vue";
+import ConfiguracoesView from "../views/configuracoes/ConfiguracoesView.vue";
 
 //imports Solicitações:
 import AtividadesComplementaresView from "../views/Solicitacoes/AtividadesComplementaresView.vue";
@@ -22,6 +22,14 @@ import DesistenciaCursoView from "../views/Solicitacoes/DesistenciaCursoView.vue
 //Import Configurações:
 
 import Login from "../views/Login.vue";
+
+
+//Import Disciplinas:
+import MinhasDisciplinasView from "../views/Disciplinas/MinhasDisciplinasView.vue";
+import EmentasDisciplinasView from "../views/Disciplinas/EmentasDisciplinasView.vue";
+import AcompanhamentoAcademicoView from "../views/Disciplinas/AcompanhamentoAcademicoView.vue";
+
+
 
 const routes = [
   {
@@ -53,6 +61,21 @@ const routes = [
     path: "/disciplinas",
     name: "Disciplinas",
     component: DisciplinasView,
+  },
+  {
+    path: "/disciplinas/MinhasDisciplinas",
+    name: "MinhasDisciplinas",
+    component: MinhasDisciplinasView,
+  },
+  {
+    path: "/disciplinas/EmentasDisciplinas",
+    name: "EmentasDisciplinas",
+    component: EmentasDisciplinasView,
+  },
+  {
+    path: "/disciplinas/AcompanhamentoAcademico",
+    name: "AcompanhamentoAcademico",
+    component: AcompanhamentoAcademicoView,
   },
   {
     path: "/links-externos",
