@@ -37,7 +37,14 @@ function fazerLogin() {
       </form>
 
       <div id="footer-login">
-        Em caso de dúvidas, consulte o <a href="#">Tutorial</a> ou <a href="#">FAQ</a>.
+        Em caso de dúvidas, consulte o 
+        <router-link to="/tutorial" class="logo-link">
+              <span>Tutorial</span>
+        </router-link>
+        ou 
+        <router-link to="/faq" class="logo-link">
+              <span>FAQ</span>.
+        </router-link>
       </div>
     </div>
   </div>
@@ -157,7 +164,7 @@ function fazerLogin() {
   color: #333;
 }
 
-#footer-login a {
+#footer-login span {
   color: #0e3f73;
   text-decoration: underline;
   font-weight: 500;
