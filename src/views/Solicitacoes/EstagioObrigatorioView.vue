@@ -172,7 +172,7 @@ function salvarDados() {
       periodo: '2025.1',
       documentoUrl: '#',
       dataSolicitacao: dataFormatada,
-      situacao: 'Pendente' // ✨ CORRIGIDO
+      situacao: 'Pendente'
     });
     alert('Documentos enviados para análise!');
   }
@@ -196,8 +196,8 @@ const deleteSolicitacao = (id) => {
 .no-solicitations {
   text-align: center;
   font-style: italic;
-  color: #777; /* Um tom de cinza */
-  padding: 20px; /* Um espaçamento extra para a mensagem respirar */
+  color: #777; 
+  padding: 20px; 
 }
 .content-area {
   display: flex;
