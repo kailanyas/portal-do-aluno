@@ -17,7 +17,7 @@
 
             <ul id="side_items">
               <li class="side-item">
-                    <router-link to="/">
+                    <router-link to="/home">
                         <i class="fa-solid fa-house"></i>
                         <span class="item-description">
                             Início
@@ -134,8 +134,8 @@ function deslogar() {
 		title: 'Você realmente deseja sair?',
 		icon: 'warning',
 		showCancelButton: true,
-		confirmButtonColor: '#d33',
-		cancelButtonColor: '#144575',
+		confirmButtonColor: '#144575',
+		cancelButtonColor: '#d33',
 		confirmButtonText: 'Sim',
 		cancelButtonText: 'Cancelar',
 		width: '350px',

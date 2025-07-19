@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import LoginView from "../views/Login.vue";
+import RecuperarSenhaView from "../views/RecuperarSenhaView.vue";
 import HomeView from "../views/HomeView.vue";
 import BibliotecaView from "../views/BibliotecaView.vue";
 import CalendarioAcademicoView from "../views/CalendarioAcademicoView.vue";
@@ -19,11 +20,6 @@ import EstagioObrigatorioView from "../views/Solicitacoes/EstagioObrigatorioView
 import TrancamentoMatriculaView from "../views/Solicitacoes/TrancamentoMatriculaView.vue";
 import DesistenciaCursoView from "../views/Solicitacoes/DesistenciaCursoView.vue";
 
-//Import Configurações:
-
-import Login from "../views/Login.vue";
-
-
 //Import Disciplinas:
 import MinhasDisciplinasView from "../views/Disciplinas/MinhasDisciplinasView.vue";
 import EmentasDisciplinasView from "../views/Disciplinas/EmentasDisciplinasView.vue";
@@ -37,6 +33,11 @@ const routes = [
     path: "/",
     name: "Login",
     component: LoginView,
+  },
+  {
+    path: "/recuperar-senha",
+    name: "RecuperarSenha",
+    component: RecuperarSenhaView,
   },
   {
     path: "/home",

@@ -1,9 +1,10 @@
-
 <template>
   <header class="header">
     <div class="header-content">
       <h1 class="title">{{ titulo }}</h1>
-      <img src="../../public/imagens/logo-ufes.png" alt="Logo da UFES" class="logo-ufes" />
+      <router-link to="/home" class="logo-link">
+        <img src="../../public/imagens/logo-ufes.png" alt="Logo da UFES" class="logo-ufes" />
+      </router-link>
     </div>
   </header>
 </template>
@@ -15,11 +16,8 @@ defineProps({
 </script>
 
 <style scoped>
-
-
 h1 {
   color: #ffffff;
-
 }
 
 .header {
@@ -46,9 +44,13 @@ h1 {
   margin: 0;
 }
 
-.logo-ufes {
+.logo-link {
   grid-column: 3;
   justify-self: end;
+  display: inline-block;
+}
+
+.logo-ufes {
   height: 60px;
 }
 

@@ -3,8 +3,8 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-function fazerLogin() {
-  router.push('/home')
+function recuperarSenha() {
+  router.push('/')
 }
 </script>
 
@@ -13,32 +13,16 @@ function fazerLogin() {
     <div id="login">
       <div id="header-login">
         <img id="logo" src="../../public/imagens/logo-ufes.png" alt="Logo UFES" />
-        <h1>Bem-vindo(a)!</h1>
-        <p class="subtitle">Entre com suas credenciais para acessar o Portal do Aluno</p>
+        <h1>Recuperar Senha</h1>
+        <p class="subtitle">Insira seu nome de usuário e enviaremos um link no seu email institucional para alteração de senha</p>
       </div>
 
-      <form id="login-form" @submit.prevent="fazerLogin">
+      <form id="login-form" @submit.prevent="recuperarSenha">
         <label for="usuario">Usuário</label>
         <input type="text" id="usuario" />
 
-        <label for="senha">Senha</label>
-        <input type="password" id="senha" />
-
-        <div class="login-options">
-          <label class="lembrar-me">
-            <input type="checkbox" /> Lembrar-me
-          </label>
-          <router-link to="/recuperar-senha" class="logo-link">
-              <span class="esqueceu-senha">Esqueceu a senha?</span>
-          </router-link>
-        </div>
-
-        <button type="submit">Entrar</button>
+        <button type="submit">Enviar link</button>
       </form>
-
-      <div id="footer-login">
-        Em caso de dúvidas, consulte o <a href="#">Tutorial</a> ou <a href="#">FAQ</a>.
-      </div>
     </div>
   </div>
     
@@ -83,18 +67,17 @@ function fazerLogin() {
 }
 
 #login-form {
-  text-align: left;
+  text-align: center;
 }
 
 #login-form label {
   font-weight: 500;
-  font-size: 0.90rem;
+  font-size: 1rem;
   margin-bottom: 0.2rem;
   display: block;
 }
 
-#login-form input[type="text"],
-#login-form input[type="password"] {
+#login-form input[type="text"]{
   width: 100%;
   padding: 0.7rem;
   border-radius: 8px;
@@ -103,35 +86,6 @@ function fazerLogin() {
   font-size: 0.95rem;
 }
 
-.login-options {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  font-size: 0.85rem;
-  color: #333;
-  flex-wrap: wrap; 
-  gap: 0.8rem; 
-}
-
-.login-options > .lembrar-me {
-  margin-right: auto; 
-}
-
-.lembrar-me {
-  display: flex;
-  align-items: center;
-}
-
-.lembrar-me input {
-  cursor: pointer;
-}
-
-.esqueceu-senha {
-  cursor: pointer;
-  color: #0e3f73;
-  text-decoration: underline;
-  font-weight: 500;
-}
 
 #login-form button {
   width: 100%;
@@ -151,18 +105,6 @@ function fazerLogin() {
   background-color: #0a2d52;
 }
 
-#footer-login {
-  margin-top: 1.5rem;
-  font-size: 0.90rem;
-  color: #333;
-}
-
-#footer-login a {
-  color: #0e3f73;
-  text-decoration: underline;
-  font-weight: 500;
-}
-
 @media (max-width: 768px) {
   #login {
     padding: 2.5rem;
@@ -177,8 +119,7 @@ function fazerLogin() {
     font-size: 0.85rem;
   }
 
-  #login-form input[type="text"],
-  #login-form input[type="password"] {
+  #login-form input[type="text"]{
     padding: 0.6rem;
     font-size: 0.9rem;
   }
@@ -186,10 +127,6 @@ function fazerLogin() {
   #login-form button {
     padding: 0.7rem;
     font-size: 0.95rem;
-  }
-
-  #footer-login {
-    font-size: 0.85rem;
   }
 }
 
@@ -217,25 +154,14 @@ function fazerLogin() {
     font-size: 0.8rem;
   }
 
-  #login-form input[type="text"],
-  #login-form input[type="password"] {
+  #login-form input[type="text"] {
     padding: 0.5rem;
     font-size: 0.85rem;
-  }
-
-  .login-options {
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
   }
 
   #login-form button {
     padding: 0.6rem;
     font-size: 0.9rem;
-  }
-
-  #footer-login {
-    font-size: 0.8rem;
-    margin-top: 1rem;
   }
 }
 </style>
