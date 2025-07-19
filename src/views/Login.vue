@@ -28,7 +28,9 @@ function fazerLogin() {
           <label class="lembrar-me">
             <input type="checkbox" /> Lembrar-me
           </label>
-          <span class="esqueceu-senha">Esqueceu a senha?</span>
+          <router-link to="/recuperar-senha" class="logo-link">
+              <span class="esqueceu-senha">Esqueceu a senha?</span>
+          </router-link>
         </div>
 
         <button type="submit">Entrar</button>
