@@ -11,12 +11,12 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button" @click="navigateTo('AcompanhamentoAcademico')">Acessar</button>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <h3>Avaliação de Docentes</h3>
+        <h3>Ementas Disciplinas</h3>
       </div>
       <p class="card-explanation">
         Confira seus dados cadastrais para a colação de grau e emissão do Diploma Digital, evitando taxas futuras.
@@ -25,12 +25,12 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button"  @click="navigateTo('EmentasDisciplinas')">Baixar</button>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <h3>Diário de Classe</h3>
+        <h3>Minhas Disciplinas</h3>
       </div>
       <p class="card-explanation">
         Envie e acompanhe o status do seu comprovante de vacinação para registro acadêmico.
@@ -39,21 +39,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Plano de Ensino</h3>
-      </div>
-      <p class="card-explanation">
-        Envie os documentos exigidos para o cadastro de seu estágio obrigatório no E-Social, conforme orientação da Coordenação.
-      </p>
-      <ul class="event-items">
-        <li class="event-item">
-          </li>
-      </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button"  @click="navigateTo('MinhasDisciplinas')">Acessar</button>
     </div>
 
     <div class="card">
@@ -61,30 +47,26 @@
         <h3>Programa de Disciplina</h3>
       </div>
       <p class="card-explanation">
-        Solicite o cancelamento definitivo do seu vínculo com a UFES. Atenção: esta ação é irreversível.
+        Envie e acompanhe o status do seu comprovante de vacinação para registro acadêmico.
       </p>
       <ul class="event-items">
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button">Acessar</button>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Ementas Disciplinas</h3>
-      </div>
-      <p class="card-explanation">
-        Suspenda temporariamente suas atividades acadêmicas sem perder o vínculo, via TMA ou TMJ, conforme prazos.
-      </p>
-      <ul class="event-items">
-        <li class="event-item">
-          </li>
-      </ul>
-      <button class="card-button">Acessar</button>
+      <button class="card-button"  @click="navigateTo('ProgramaDeDisciplina')">Acessar</button>
     </div>
   </div>
 </template>
+
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const navigateTo = (routeName) => {
+  router.push({ name: routeName }); // Isso está correto e espera o NOME
+};
+</script>
 
 <style scoped>
 .cards-container {

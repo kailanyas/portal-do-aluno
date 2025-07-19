@@ -16,11 +16,9 @@
         <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
         <div class="content-area">
-            <HeaderC />
+            <HeaderC titulo="Solicitações" /> 
 
             <main class="main-content">
-                <h1 class="main-title">Solicitações</h1> 
-                
                 <Cards /> 
             </main>
 
@@ -49,6 +47,7 @@
         overflow-y: auto;
         padding: 1.5rem;
         box-sizing: border-box;
+        margin-top: 3.2rem;
         
 
         display: flex;
@@ -56,12 +55,4 @@
         align-items: center;
     }
 
-    .main-title {
-        text-align: center; 
-        width: 100%; 
-        margin-bottom: 2rem; 
-        margin-top: 1rem; 
-        color: #ffffff; 
-        font-size: 2em;
-    }
 </style>
