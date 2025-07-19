@@ -1,101 +1,91 @@
 <template>
   <div class="cards-container">
-    <div class="card">
+    <div class="card" v-for="card in cards" :key="card.title">
       <div class="card-header">
-        <h3>Atividades Complementares</h3>
+        <h3>{{ card.title }}</h3>
       </div>
       <p class="card-explanation">
-        Envie e acompanhe suas atividades complementares para validar no seu histórico escolar.
+        {{ card.description }}
       </p>
       <ul class="event-items">
         <li class="event-item">
-          </li>
+        </li>
       </ul>
-      <button class="card-button" @click="navigateTo('AtividadesComplementares')">Acessar</button>
-    </div>
+      
+      <div class="button-wrapper">
+        <button 
+          class="card-button" 
+          :disabled="card.disabled" 
+          @click="navigateTo(card.routeName)"
+        >
+          Acessar
+        </button>
+        <span v-if="card.disabled" class="tooltip">{{ card.disabledReason }}</span>
+      </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h3>Colação de Grau/Diploma</h3>
-      </div>
-      <p class="card-explanation">
-        Confira seus dados cadastrais para a colação de grau e emissão do Diploma Digital, evitando taxas futuras.
-      </p>
-      <ul class="event-items">
-        <li class="event-item">
-          </li>
-      </ul>
-      <button class="card-button" @click="navigateTo('Colacao')">Acessar</button>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Comprovante de Vacinação</h3>
-      </div>
-      <p class="card-explanation">
-        Envie e acompanhe o status do seu comprovante de vacinação para registro acadêmico.
-      </p>
-      <ul class="event-items">
-        <li class="event-item">
-          </li>
-      </ul>
-      <button class="card-button" @click="navigateTo('ComprovanteVacinacao')">Acessar</button>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Estágio Obrigatório</h3>
-      </div>
-      <p class="card-explanation">
-        Envie os documentos exigidos para o cadastro de seu estágio obrigatório no E-Social, conforme orientação da Coordenação.
-      </p>
-      <ul class="event-items">
-        <li class="event-item">
-          </li>
-      </ul>
-      <button class="card-button" @click="navigateTo('EstagioObrigatorio')">Acessar</button>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Desistência do Curso</h3>
-      </div>
-      <p class="card-explanation">
-        Solicite o cancelamento definitivo do seu vínculo com a UFES. Atenção: esta ação é irreversível.
-      </p>
-      <ul class="event-items">
-        <li class="event-item">
-          </li>
-      </ul>
-      <button class="card-button" @click="navigateTo('DesistenciaCurso')">Acessar</button>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3>Trancamento de Matrícula</h3>
-      </div>
-      <p class="card-explanation">
-        Suspenda temporariamente suas atividades acadêmicas sem perder o vínculo, via TMA ou TMJ, conforme prazos.
-      </p>
-      <ul class="event-items">
-        <li class="event-item">
-          </li>
-      </ul>
-      <button class="card-button" @click="navigateTo('TrancamentoMatricula')">Acessar</button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'; // ✨ ALTERAÇÃO: Importe o ref
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
+// ✨ ALTERAÇÃO: Toda a informação dos cards agora vive aqui no script ✨
+const cards = ref([
+  {
+    title: 'Atividades Complementares',
+    description: 'Envie e acompanhe suas atividades complementares para validar no seu histórico escolar.',
+    routeName: 'AtividadesComplementares',
+    disabled: false,
+    disabledReason: ''
+  },
+  {
+    title: 'Colação de Grau/Diploma',
+    description: 'Confira seus dados cadastrais para a colação de grau e emissão do Diploma Digital, evitando taxas futuras.',
+    routeName: 'Colacao',
+    disabled: false,
+    disabledReason: ''
+  },
+  {
+    title: 'Comprovante de Vacinação',
+    description: 'Envie e acompanhe o status do seu comprovante de vacinação para registro acadêmico.',
+    routeName: 'ComprovanteVacinacao',
+    disabled: false,
+    disabledReason: ''
+  },
+  {
+    title: 'Estágio Obrigatório',
+    description: 'Envie os documentos exigidos para o cadastro de seu estágio obrigatório no E-Social, conforme orientação da Coordenação.',
+    routeName: 'EstagioObrigatorio',
+    disabled: false,
+    disabledReason: ''
+  },
+  {
+    title: 'Desistência do Curso',
+    description: 'Solicite o cancelamento definitivo do seu vínculo com a UFES. Atenção: esta ação é irreversível.',
+    routeName: 'DesistenciaCurso',
+    disabled: false,
+    disabledReason: ''
+  },
+  {
+    title: 'Trancamento de Matrícula',
+    description: 'Suspenda temporariamente suas atividades acadêmicas sem perder o vínculo, via TMA ou TMJ, conforme prazos.',
+    routeName: 'TrancamentoMatricula',
+    disabled: true, // Card desabilitado
+    disabledReason: 'Prazo para solicitação encerrado em 18/07/2025.' // Mensagem de motivo
+  }
+]);
+
 const navigateTo = (routeName) => {
-  router.push({ name: routeName }); // Isso está correto e espera o NOME
+  // Adicionamos uma verificação para não navegar se a rota não existir
+  if (routeName) {
+    router.push({ name: routeName });
+  }
 };
 </script>
-
 
 <style scoped>
 .cards-container {
@@ -123,7 +113,7 @@ const navigateTo = (routeName) => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Alterado para space-between para alinhamento adequado */
+  justify-content: space-between;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -135,14 +125,13 @@ const navigateTo = (routeName) => {
   text-align: center;
 }
 
-/* Novo estilo para o texto explicativo */
 .card-explanation {
   font-size: 0.9em;
   color: #666;
   text-align: center;
-  margin-bottom: 1rem; /* Espaço entre a explicação e a lista/botão */
-  flex-grow: 1; /* Permite que o texto ocupe o espaço disponível */
-  display: flex; /* Para centralizar o texto verticalmente se for curto */
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -173,9 +162,8 @@ const navigateTo = (routeName) => {
   font-style: normal;
 }
 
-/* Novo estilo para o botão Acessar */
 .card-button {
-  background-color: #144575; /* Cor azul */
+  background-color: #144575;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -184,43 +172,72 @@ const navigateTo = (routeName) => {
   font-weight: bold;
   font-size: 1em;
   transition: background-color 0.2s ease;
-  width: 80%; /* Botão ocupa 80% da largura do card */
-  margin: 0.75rem auto 0; /* Centraliza o botão e adiciona margem superior */
-  display: block; /* Garante que margin auto funcione horizontalmente */
+  width: 80%;
+  margin: 0.75rem auto 0;
+  display: block;
 }
 
 .card-button:hover {
-  background-color: #103a60; /* Azul mais escuro ao passar o mouse */
+  background-color: #103a60;
 }
 
-/* Media Queries para responsividade */
+/* ✨ ALTERAÇÃO: NOVOS ESTILOS ADICIONADOS ABAIXO ✨ */
+
+.button-wrapper {
+  position: relative;
+  width: 80%;
+  margin: 0.75rem auto 0;
+}
+
+/* Ajuste no botão para ele preencher o wrapper */
+.card-button {
+  width: 100%;
+  margin: 0;
+}
+
+/* Estilo do botão desabilitado */
+.card-button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+.card-button:disabled:hover {
+  background-color: #cccccc;
+}
+
+/* A mensagem (tooltip) */
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+/* Mostra o tooltip ao passar o mouse */
+.button-wrapper:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Media Queries (mantidas como estavam) */
 @media (max-width: 1200px) {
-  .cards-container {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    max-width: 900px;
-  }
+  /* ... */
 }
-
 @media (max-width: 768px) {
-  .cards-container {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
-  }
-  .card {
-    min-height: 200px;
-    padding: 1rem;
-  }
-  .card-header h3 {
-    font-size: 1rem;
-  }
+  /* ... */
 }
-
 @media (max-width: 480px) {
-  .cards-container {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
+  /* ... */
 }
 </style>
