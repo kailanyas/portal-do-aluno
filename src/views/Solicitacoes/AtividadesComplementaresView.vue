@@ -71,7 +71,7 @@
   <div class="modal">
     <div class="modal-content">
       <h2>Formulário de Atividade Complementar</h2>
-      <p>Preencha os campos abaixo para solicitar a validação da sua atividade.</p>
+      <p>Solicite o cadastro preenchendo os campos e, em seguida, apresente os documentos ao coordenador do seu curso para análise e validação.</p>
       
       <form @submit.prevent="salvarDados">
 
@@ -147,8 +147,8 @@ function toggleSidebar() {
 }
 
 const solicitacoes = ref([
-  { id: 1, validacao: 'Pendente', descricao: 'Participação em evento X', atividade: 'Congresso de TI', carga_horaria: 40, dataInicio: '2024-10-20', dataTermino: '2024-10-22' },
-  { id: 2, validacao: 'Validado', descricao: 'Curso online de Python', atividade: 'Udemy - Python Avançado', carga_horaria: 20, dataInicio: '2024-01-15', dataTermino: '2024-03-15' },
+  { id: 1, validacao: 'Pendente', descricao: 'Participação em evento X', atividade: 'Congresso de TI', periodo: '2024.2', chSolicitado: 40, dataInicio: '2024-10-20', dataTermino: '2024-10-22' },
+  { id: 2, validacao: 'Validado', descricao: 'Curso online de Python', atividade: 'Udemy - Python Avançado', periodo: '2024.1', chSolicitado: 20, dataInicio: '2024-01-15', dataTermino: '2024-03-15' },
 ]);
 
 
@@ -292,6 +292,8 @@ li {
   margin-bottom: 8px;
   line-height: 1.5;
 }
+
+
 .important-note {
   background-color: #fff3cd;
   border-left: 5px solid #ffc107;
@@ -652,4 +654,32 @@ li {
     .btn-submit:hover {
         background-color: #218838;
     }
+
+    .solicitacoes-table td:nth-child(4),
+    .solicitacoes-table td:nth-child(5),
+    .solicitacoes-table td:nth-child(6) {
+    text-align: center;
+    }
+
+    @media (max-width: 600px) {
+  
+  .main-content {
+    padding: 0.8rem;
+  }
+
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+  
+  
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
 </style>
