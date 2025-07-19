@@ -11,6 +11,8 @@ import OfertaDisciplinasView from "../views/OfertaDisciplinasView.vue";
 import DocumentosView from "../views/DocumentosView.vue";
 import SolicitacoesView from "../views/Solicitacoes/SolicitacoesView.vue";
 import ConfiguracoesView from "../views/configuracoes/ConfiguracoesView.vue";
+import FAQView from "../views/FAQView.vue";
+import TutorialView from "../views/TutorialView.vue";
 
 //imports Solicitações:
 import AtividadesComplementaresView from "../views/Solicitacoes/AtividadesComplementaresView.vue";
@@ -38,6 +40,16 @@ const routes = [
     path: "/recuperar-senha",
     name: "RecuperarSenha",
     component: RecuperarSenhaView,
+  },
+  {
+    path: "/tutorial",
+    name: "Tutorial",
+    component: TutorialView,
+  },
+  {
+    path: "/faq",
+    name: "FAQ",
+    component: FAQView,
   },
   {
     path: "/home",
