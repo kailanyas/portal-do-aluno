@@ -111,7 +111,7 @@
   text-align: left;
   font-weight: normal;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  height: 350px;
+  height: 340px;
   max-width: 700px;
   width: 100%;
   display: flex;
