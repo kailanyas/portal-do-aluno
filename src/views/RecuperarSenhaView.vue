@@ -77,8 +77,7 @@ function recuperarSenha() {
   display: block;
 }
 
-#login-form input[type="text"],
-#login-form input[type="password"] {
+#login-form input[type="text"]{
   width: 100%;
   padding: 0.7rem;
   border-radius: 8px;
@@ -87,35 +86,6 @@ function recuperarSenha() {
   font-size: 0.95rem;
 }
 
-.login-options {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  font-size: 0.85rem;
-  color: #333;
-  flex-wrap: wrap; 
-  gap: 0.8rem; 
-}
-
-.login-options > .lembrar-me {
-  margin-right: auto; 
-}
-
-.lembrar-me {
-  display: flex;
-  align-items: center;
-}
-
-.lembrar-me input {
-  cursor: pointer;
-}
-
-.esqueceu-senha {
-  cursor: pointer;
-  color: #0e3f73;
-  text-decoration: underline;
-  font-weight: 500;
-}
 
 #login-form button {
   width: 100%;
@@ -135,18 +105,6 @@ function recuperarSenha() {
   background-color: #0a2d52;
 }
 
-#footer-login {
-  margin-top: 1.5rem;
-  font-size: 0.90rem;
-  color: #333;
-}
-
-#footer-login a {
-  color: #0e3f73;
-  text-decoration: underline;
-  font-weight: 500;
-}
-
 @media (max-width: 768px) {
   #login {
     padding: 2.5rem;
@@ -161,8 +119,7 @@ function recuperarSenha() {
     font-size: 0.85rem;
   }
 
-  #login-form input[type="text"],
-  #login-form input[type="password"] {
+  #login-form input[type="text"]{
     padding: 0.6rem;
     font-size: 0.9rem;
   }
@@ -170,10 +127,6 @@ function recuperarSenha() {
   #login-form button {
     padding: 0.7rem;
     font-size: 0.95rem;
-  }
-
-  #footer-login {
-    font-size: 0.85rem;
   }
 }
 
@@ -201,25 +154,14 @@ function recuperarSenha() {
     font-size: 0.8rem;
   }
 
-  #login-form input[type="text"],
-  #login-form input[type="password"] {
+  #login-form input[type="text"] {
     padding: 0.5rem;
     font-size: 0.85rem;
-  }
-
-  .login-options {
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
   }
 
   #login-form button {
     padding: 0.6rem;
     font-size: 0.9rem;
-  }
-
-  #footer-login {
-    font-size: 0.8rem;
-    margin-top: 1rem;
   }
 }
 </style>
