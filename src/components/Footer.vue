@@ -1,6 +1,8 @@
 <template>
   <footer class="footer">
-    <p>Em caso de dúvidas, consulte o <a href="#">Tutorial</a> ou <a href="#">FAQ</a>.</p>
+    <p>Em caso de dúvidas, consulte o 
+      <router-link to="/tutorial"><span>Tutorial</span></router-link> ou 
+      <router-link to="/faq" class="logo-link"><span>FAQ</span></router-link>.</p>
     <p>© 2025 UFES - Todos os direitos reservados.</p>
   </footer>
 </template>
@@ -13,7 +15,7 @@
   color: white;
 }
 
-.footer a {
+.footer span {
   color: white;
   text-decoration: underline;
   font-weight: 500;
