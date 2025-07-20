@@ -57,6 +57,7 @@ export default {
 .cabecalho-expansivel h3 {
   margin: 0;
   color: #333;
+  font-size: 1rem;
 }
 
 .seta {
@@ -76,5 +77,7 @@ export default {
 
 .conteudo-expansivel.aberto {
   max-height: 1000px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 </style>
