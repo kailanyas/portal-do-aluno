@@ -3,7 +3,7 @@
     <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     <div class="content-area">
-      <HeaderC titulo="" />
+      <HeaderC titulo="Solicitação de Desistência do Curso" />
 
       <main class="main-content">
         <CardQuadrado class="form-card">
@@ -38,30 +38,25 @@
               <label for="modalidade-select"><strong>Modalidade:</strong></label>
               <select id="modalidade-select" v-model="modalidadeSelecionada">
                 <option value="" disabled>Escolha uma opção</option>
-                <option 
-                  value="sociais_curso" 
-                  title="Solicitação de Desistência de Curso - Motivos Sociais ou relacionados ao Curso"
-                >
-                  Motivos Sociais / Relacionados ao Curso
-                </option>
-                <option 
-                  value="outros" 
-                  title="Solicitação de Desistência de Curso - Outros Motivos"
-                >
-                  Outros Motivos
-                </option>
+                <option value="sociais">Motivos Sociais</option>
+                <option value="curso">Relacionados ao Curso</option>
+                <option value="outros">Outros Motivos</option>
               </select>
             </div>
             
-            <div v-if="modalidadeSelecionada === 'sociais_curso'" class="conditional-options">
+            <div v-if="modalidadeSelecionada === 'sociais'" class="conditional-options">
+              <h4>Selecione os motivos (pode marcar mais de um):</h4>
+              <div class="checkbox-group reason-checkbox">
+                <input type="checkbox" id="motivo-social" value="Dificuldades sociais/econômicas" v-model="motivosSelecionados">
+                <label for="motivo-social">Dificuldades sociais, econômicas, familiares, de saúde ou outros.</label>
+              </div>
+            </div>
+
+            <div v-if="modalidadeSelecionada === 'curso'" class="conditional-options">
               <h4>Selecione os motivos (pode marcar mais de um):</h4>
               <div class="checkbox-group reason-checkbox">
                 <input type="checkbox" id="motivo-academico" value="Dificuldades acadêmicas" v-model="motivosSelecionados">
                 <label for="motivo-academico">Dificuldades acadêmicas (reprovação, relacionamento com colegas e docentes, entre outros).</label>
-              </div>
-              <div class="checkbox-group reason-checkbox">
-                <input type="checkbox" id="motivo-social" value="Dificuldades sociais/econômicas" v-model="motivosSelecionados">
-                <label for="motivo-social">Dificuldades sociais, econômicas, familiares, de saúde ou outros.</label>
               </div>
               <div class="checkbox-group reason-checkbox">
                 <input type="checkbox" id="motivo-ufes" value="Problemas relacionados à Ufes" v-model="motivosSelecionados">
@@ -137,12 +132,10 @@ watch(modalidadeSelecionada, () => {
 });
 
 function solicitarDesistencia() {
-
   if (!isFormularioValido.value) {
     alert('Por favor, preencha todos os campos obrigatórios.');
     return;
   }
-
 
   Swal.fire({
     title: 'Você tem certeza?',
@@ -154,16 +147,11 @@ function solicitarDesistencia() {
     confirmButtonText: 'Sim, quero desistir',
     cancelButtonText: 'Cancelar'
   }).then((result) => {
-    
     if (result.isConfirmed) {
-      
-      
-      
       console.log('--- Solicitação de Desistência ---');
       console.log('Modalidade:', modalidadeSelecionada.value);
       console.log('Motivos Marcados:', motivosSelecionados.value);
       console.log('Informações Adicionais:', maioresInformacoes.value);
-      
       
       Swal.fire(
         'Solicitação Enviada!',
@@ -171,7 +159,6 @@ function solicitarDesistencia() {
         'success'
       );
 
-      
       router.push('/home');
     }
   });
