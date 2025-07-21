@@ -1,25 +1,24 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import SideBar from "@/components/SideBar.vue";
 import HeaderC from "@/components/Header.vue";
 import FooterR from "@/components/Footer.vue";
-import { useRouter } from "vue-router";
+import CardQuadrado from "@/components/CardQuadrado.vue";
 
 const isSidebarOpen = ref(false);
-const mostrarSubSidebar = ref(true); // controla visibilidade da sub-sidebar
+const mostrarAbas = ref(false);
+const abaSelecionada = ref("");
+const router = useRouter();
 
 function toggleSidebar() {
   isSidebarOpen.value = !isSidebarOpen.value;
 }
 
-function toggleSubSidebar() {
-  mostrarSubSidebar.value = !mostrarSubSidebar.value;
-}
-
-const router = useRouter();
-
-function goTo(path) {
-  router.push(path);
+function abrirConfiguracao(caminho, aba) {
+  mostrarAbas.value = true;
+  abaSelecionada.value = aba;
+  router.push(caminho);
 }
 </script>
 
@@ -30,38 +29,104 @@ function goTo(path) {
     <div class="content-area">
       <HeaderC titulo="Configurações" />
 
-      <main class="main-content">
-        <!-- Botão para mobile -->
-        <button class="btn-toggle-sub" @click="toggleSubSidebar">
-          {{ mostrarSubSidebar ? "Esconder Menu" : "Mostrar Menu" }}
-        </button>
+      <main class="main-content" :class="{ 'center-cards': !mostrarAbas }">
+        <!-- Cards -->
+        <transition name="fade">
+          <div v-if="!mostrarAbas" class="cards-container">
+            <div class="card">
+              <div class="card-header">
+                <h3>Alterar Dados Pessoais</h3>
+              </div>
+              <p>Atualize seu nome, CPF, data de nascimento e outros dados básicos.</p>
+               <ul><li class="event-item"></li></ul>
+              <div class="button-wrapper">
+                <button class="card-button" @click="abrirConfiguracao('/configuracoes/dados-cadastrais', 'dados')">
+                  Acessar
+                </button>
+              </div>
+            </div>
 
-        <div class="config-layout">
-          <aside v-if="mostrarSubSidebar" class="sidebar-filho">
-            <ul>
-              <li @click="goTo('/configuracoes/dados-cadastrais')">
-                Alterar Dados Pessoais
-              </li>
-              <li @click="goTo('/configuracoes/config-documentos')">
-                Alterar Documentos
-              </li>
-              <li @click="goTo('/configuracoes/email-endereco')">
-                Alterar E-mail/Endereço
-              </li>
-              <li @click="goTo('/configuracoes/dados-bancarios')">
-                Incluir Dados Bancários
-              </li>
-              <li @click="goTo('/configuracoes/alterar-senha')">
-                Alterar Senha
-              </li>
-            </ul>
-          </aside>
+            <div class="card">
+              <div class="card-header">
+                <h3>Alterar Documentos</h3>
+              </div>
+              <p>Envie ou substitua documentos pessoais como RG, CNH, etc.</p>
+               <ul><li class="event-item"></li></ul>
+              <div class="button-wrapper">
+                <button class="card-button" @click="abrirConfiguracao('/configuracoes/config-documentos', 'documentos')">
+                  Acessar
+                </button>
+              </div>
+            </div>
 
-          <section class="descricao">
-            <!-- Aqui entram as views filhas -->
+            <div class="card">
+              <div class="card-header">
+                <h3>Alterar E-mail/Endereço</h3>
+              </div>
+              <p>Modifique seu endereço residencial ou e-mail de contato.</p>
+               <ul><li class="event-item"></li></ul>
+              <div class="button-wrapper">
+                <button class="card-button" @click="abrirConfiguracao('/configuracoes/email-endereco', 'email')">
+                  Acessar
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3>Incluir Dados Bancários</h3>
+              </div>
+              <p>Adicione uma nova conta bancária para recebimentos.</p>
+               <ul><li class="event-item"></li></ul>
+              <div class="button-wrapper">
+                <button class="card-button" @click="abrirConfiguracao('/configuracoes/dados-bancarios', 'banco')">
+                  Acessar
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3>Alterar Senha</h3>
+              </div>
+              <p>Troque sua senha de acesso por uma nova.</p>
+               <ul><li class="event-item"></li></ul>
+              <div class="button-wrapper">
+                <button class="card-button" @click="abrirConfiguracao('/configuracoes/alterar-senha', 'senha')">
+                  Acessar
+                </button>
+              </div>
+            </div>
+          </div>
+        </transition>
+
+        <!-- Abas -->
+        <transition name="slide-fade">
+          <div v-if="mostrarAbas" class="menu-abas">
+            <button @click="abrirConfiguracao('/configuracoes/dados-cadastrais', 'dados')" :class="{ active: abaSelecionada === 'dados' }">
+              Dados Pessoais
+            </button>
+            <button @click="abrirConfiguracao('/configuracoes/config-documentos', 'documentos')" :class="{ active: abaSelecionada === 'documentos' }">
+              Documentos
+            </button>
+            <button @click="abrirConfiguracao('/configuracoes/email-endereco', 'email')" :class="{ active: abaSelecionada === 'email' }">
+              E-mail/Endereço
+            </button>
+            <button @click="abrirConfiguracao('/configuracoes/dados-bancarios', 'banco')" :class="{ active: abaSelecionada === 'banco' }">
+              Dados Bancários
+            </button>
+            <button @click="abrirConfiguracao('/configuracoes/alterar-senha', 'senha')" :class="{ active: abaSelecionada === 'senha' }">
+              Alterar Senha
+            </button>
+          </div>
+        </transition>
+
+        <!-- Conteúdo das views filhas -->
+        <transition name="fade-in-aba">
+          <CardQuadrado v-if="mostrarAbas">
             <router-view />
-          </section>
-        </div>
+          </CardQuadrado>
+        </transition>
       </main>
 
       <FooterR />
@@ -70,107 +135,162 @@ function goTo(path) {
 </template>
 
 <style scoped>
+/* ✅ CSS organizado em ordem alfabética */
+.aba-content {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.card {
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  font-weight: normal;
+  height: auto;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 400px;
+  min-height: 250px;
+  padding: 1.25rem;
+  text-align: left;
+  width: 100%;
+}
+
+.card-button {
+  background-color: #144575;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.card-button:hover {
+  background-color: #103a60;
+}
+
+.card-header h3 {
+  color: #144575;
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.card p {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.cards-container {
+  box-sizing: border-box;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  height: auto;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.content-area {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.event-item {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+}
+
 .layout-container {
   display: flex;
   height: 100vh;
   width: 100vw;
 }
 
-.content-area {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100vh;
-  overflow: hidden;
-}
-
 .main-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1.5rem;
+  align-items: center;
+  background-color: #f5f5f5;
   box-sizing: border-box;
-  background-color: #f4f4f4;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 2rem;
 }
 
-h1 {
-  background-color: #004080;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
+.main-content.center-cards {
+  justify-content: center;
+}
+
+.menu-abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
   margin-bottom: 1.5rem;
 }
 
-.config-layout {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-/* Sub-sidebar */
-.sidebar-filho {
-  width: 250px;
-  background-color: white;
-  border: 1px solid #004080;
-  border-radius: 8px;
-  padding: 1rem;
-  height: fit-content;
-}
-
-.sidebar-filho ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-filho li {
-  padding: 10px;
-  margin-bottom: 8px;
-  background-color: #004080;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-align: center;
-}
-
-.sidebar-filho li:hover {
-  background-color: #0059b3;
-}
-
-/* View das rotas filhas */
-.descricao {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-}
-
-/* Botão que aparece só no mobile */
-.btn-toggle-sub {
-  display: none;
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #004080;
-  color: white;
+.menu-abas button {
+  background-color: #e0e0e0;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  transition: background-color 0.3s ease;
 }
 
-/* Mostrar o botão e esconder menu por padrão em telas pequenas */
-@media (max-width: 768px) {
-  .btn-toggle-sub {
-    display: inline-block;
-  }
+.menu-abas button.active,
+.menu-abas button:hover {
+  background-color: #004080;
+  color: white;
+}
 
-  .config-layout {
-    flex-direction: column;
-  }
+/* Animações */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s;
+}
 
-  .sidebar-filho {
-    width: 100%;
-  }
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-in-aba-enter-active,
+.fade-in-aba-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.fade-in-aba-enter-from,
+.fade-in-aba-leave-to {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.4s ease;
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 </style>
