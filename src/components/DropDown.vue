@@ -5,7 +5,9 @@
       <span class="seta" :class="{ 'rotacionada': estaAberto }">▼</span>
     </div>
     <div class="conteudo-expansivel" :class="{ 'aberto': estaAberto }">
-      <slot></slot>
+      <div class="conteudo-interno">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -37,11 +39,12 @@ export default {
 </script>
 
 <style scoped>
+
 .secao-expansivel {
+
   border: 1px solid #ddd;
   margin-bottom: 10px;
   border-radius: 4px;
-  overflow: hidden;
 }
 
 .cabecalho-expansivel {
@@ -69,15 +72,23 @@ export default {
 }
 
 .conteudo-expansivel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease;
-  padding: 0 15px;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-out;
 }
 
 .conteudo-expansivel.aberto {
-  max-height: 1000px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  /* Quando aberto, o conteúdo expande para sua altura total (1fr) */
+  grid-template-rows: 1fr;
+}
+
+.conteudo-interno {
+  overflow: hidden;
+  padding: 0 15px; /* Mantém o padding */
+}
+
+.conteudo-expansivel.aberto .conteudo-interno {
+    padding-top: 10px;
+    padding-bottom: 15px;
 }
 </style>

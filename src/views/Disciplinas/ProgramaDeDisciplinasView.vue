@@ -1,228 +1,276 @@
 <script setup>
 import { ref, watch } from 'vue'
+import SideBar from '@/components/SideBar.vue'
+import HeaderC from '@/components/Header.vue'
+import FooterR from '@/components/Footer.vue'
 
-// --- Lógica para o formulário interativo ---
+const isSidebarOpen = ref(false)
+function toggleSidebar() {
+    isSidebarOpen.value = !isSidebarOpen.value
+}
 
-// 1. Dados de exemplo
+const open = ref(false)
 const data = {
-  professores: [
-    { value: 'giuliano', text: 'Giuliano Prado' },
-    { value: 'ana_paula', text: 'Ana Paula Marques' },
-    { value: 'carlos_eduardo', text: 'Carlos Eduardo' }
-  ],
-  disciplinas: [
-    { value: 'dev_web', text: 'Desenvolvimento Web' },
-    { value: 'banco_dados', text: 'Banco de Dados' },
-    { value: 'eng_software', text: 'Engenharia de Software' }
-  ],
-  cursos: [
-    { value: 'cc', text: 'Ciência da Computação' },
-    { value: 'si', text: 'Sistemas de Informação' },
+professores: [
+    { value: 'cc', text: 'Introdução a Ciência da Computação' },
+    { value: 'si', text: 'Redes de computadores' },
     { value: 'es', text: 'Engenharia de Software' }
-  ]
+],
+disciplinas: [
+    { value: 'dev_web', text: 'Cálculo I' },
+    { value: 'banco_dados', text: 'Algebra Linear' },
+    { value: 'eng_software', text: 'Matemática Básica' }
+],
+cursos: [
+    { value: 'cc', text: 'Introdução a Biologia' },
+    { value: 'si', text: 'Biologia orgânica' },
+    { value: 'es', text: 'Parasitologia' }
+]
 };
-
-// 2. Variáveis reativas para guardar o estado do formulário
 const selectedCategory = ref(''); // Guarda a categoria do 1º select
-const selectedItem = ref('');     // Guarda o item escolhido no 2º select
-const subOptions = ref([]);       // Guarda a LISTA de opções para o 2º select
-const searchTerm = ref('');       // Guarda o texto da barra de busca
+const selectedItem = ref('');     // Guarda o item escolhido no 2º select
+const subOptions = ref([]);       // Guarda a LISTA de opções para o 2º select
+const searchTerm = ref('');       // Guarda o texto da barra de busca
 
-// 3. Lógica de reatividade (a "mágica" do Vue)
-//    Observa a variável `selectedCategory`. Sempre que ela mudar, este código executa.
+
 watch(selectedCategory, (newCategory) => {
-  // Limpa a seleção anterior
-  selectedItem.value = '';
-  // Atualiza as opções do segundo select com base na escolha do primeiro
-  subOptions.value = data[newCategory] || [];
+
+selectedItem.value = '';
+
+subOptions.value = data[newCategory] || [];
 });
 
-// 4. Função que é chamada ao clicar no botão "Buscar"
 function handleSearch() {
-  if (!selectedCategory.value) {
-    alert('Por favor, selecione uma categoria para filtrar.');
+if (!selectedCategory.value) {
+    alert('Por favor, selecione o departamento que oferta a disciplina.');
     return;
-  }
-  
-  // Aqui você faria a lógica de busca real (ex: chamar uma API)
-  // Por enquanto, vamos apenas mostrar os dados no console para confirmar
-  console.log('Buscando com os seguintes filtros:');
-  console.log('Categoria:', selectedCategory.value);
-  console.log('Item:', selectedItem.value);
-  console.log('Termo de Busca:', searchTerm.value);
-  
-  alert(`Busca enviada! Veja o console (F12) para os detalhes.`);
+}
+
+console.log('Buscando com os seguintes filtros:');
+console.log('Categoria:', selectedCategory.value);
+console.log('Item:', selectedItem.value);
+console.log('Termo de Busca:', searchTerm.value);
+
+alert(`Busca enviada! Veja o console (F12) para os detalhes.`);
 }
 </script>
 
 <template>
-  <div class="card card-grande">
-    <div class="cardHeader">
-      <h3>Filtro de Busca Acadêmica</h3>
-      <p>Selecione os filtros e pesquise por informações</p>
-    </div>
-    
-    <div class="cardBody">
-      <form class="filter-form" @submit.prevent="handleSearch">
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="category-select">Filtrar por</label>
-            <select id="category-select" v-model="selectedCategory">
-              <option disabled value="">Selecione uma categoria...</option>
-              <option value="professores">Professores</option>
-              <option value="disciplinas">Disciplinas</option>
-              <option value="cursos">Cursos</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="item-select">Item específico</label>
-            <select id="item-select" v-model="selectedItem" :disabled="!selectedCategory">
-              <option disabled value="">Selecione um item...</option>
-              <option v-for="option in subOptions" :key="option.value" :value="option.value">
-                {{ option.text }}
-              </option>
-            </select>
-          </div>
+    <div class="layout-container">
+        <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
+
+        <div class="content-area">
+            
+            <HeaderC titulo="Minhas Disciplinas"/>
+
+            <main class="main-content">
+                <div class="card card-grande">
+                <div class="cardHeader">
+                <h3>Busca de Programas de Disciplinas</h3>
+                <p>Selecione os filtros ou pesquise pelo código da disciplina</p>
+                </div>
+                
+                <div class="cardBody">
+                <form class="filter-form" @submit.prevent="handleSearch">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="category-select">Departamento</label>
+                            <select id="category-select" v-model="selectedCategory">
+                            <option disabled value="">Selecione uma categoria...</option>
+                            <option value="professores">Departamento Computação</option>
+                            <option value="disciplinas">Departamento Matemática</option>
+                            <option value="cursos">Departamento Biologia</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="item-select">Disciplina</label>
+                            <select id="item-select" v-model="selectedItem" :disabled="!selectedCategory">
+                            <option disabled value="">Selecione um item...</option>
+                            <option v-for="option in subOptions" :key="option.value" :value="option.value">
+                                {{ option.text }}
+                            </option>
+                            </select>
+                        </div>
+                        <div class="form-button">
+                            <button id="botaoBaixar" type="button">Baixar</button>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <label for="search-input">Pesquisar</label>
+                        <div class="search-bar">
+                                <input 
+                                    type="text" 
+                                    id="search-input" 
+                                    v-model="searchTerm" 
+                                    placeholder="Digite um termo para a busca..."
+                                >
+                                <button type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+                </div>
+            </main>
+            <FooterR />
         </div>
-        
-        <div class="form-group">
-            <label for="search-input">Pesquisar</label>
-            <div class="search-bar">
-                <input 
-                    type="text" 
-                    id="search-input" 
-                    v-model="searchTerm" 
-                    placeholder="Digite um termo para a busca..."
-                >
-                <button type="submit">Buscar</button>
-            </div>
-        </div>
-        
-      </form>
     </div>
-  </div>
 </template>
 
 <style scoped>
-/* Mantendo os estilos base do card que você já tinha */
-.card {
-    background-color: #f5f5f5;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden; 
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-.cardHeader {
-    background-color: #5A82AA;
-    width: 100%;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.25rem;
-    min-height: 4.5rem; 
-}
-.cardHeader h3 {
-    font-size: 1.5rem;
-    color: #f5f5f5;
-    margin: 0;
-}
-.cardHeader p {
-    font-size: 0.9rem;
-    color: #f5f5f5;
-    margin: 0;
-    opacity: 0.9;
-}
-.cardBody {
-    flex-grow: 1; 
-    padding: 2rem; /* Mais padding para o formulário respirar */
-}
-
-/* Novo estilo para o card maior e centralizado */
-.card-grande {
-    width: 100%;
-    max-width: 800px;
-    margin: 2rem auto; /* Centraliza o card na tela */
-}
-
-/* Estilos para o novo formulário de filtro */
-.filter-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-.form-row {
-    display: flex;
-    gap: 1.5rem;
-}
-.form-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1; /* Faz os grupos na mesma linha terem larguras iguais */
-}
-.form-group label {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #2d3748;
-}
-.form-group select,
-.form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #cbd5e0;
-    border-radius: 6px;
-    background-color: #fff;
-}
-.form-group select:disabled {
-    background-color: #edf2f7;
-    cursor: not-allowed;
-}
-
-/* Estilos específicos para a barra de busca */
-.search-bar {
-    display: flex;
-}
-.search-bar input {
-    flex: 1;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: none;
-}
-.search-bar button {
-    padding: 0.75rem 1.5rem;
-    border: 1px solid #3182ce;
-    background-color: #3182ce;
-    color: white;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    transition: background-color 0.2s ease;
-}
-.search-bar button:hover {
-    background-color: #2b6cb0;
-}
-
-/* --- Responsividade para o novo card --- */
-@media (max-width: 768px) {
-    .card-grande {
-        margin: 1rem auto;
+    .layout-container {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        background-color: var(--dark-blue-bg);
     }
-    .cardBody {
+
+    .content-area {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .main-content {
+        flex: 1;
+        overflow-y: auto;
         padding: 1.5rem;
+        box-sizing: border-box;
     }
-    .form-row {
+
+    .card {
+        background-color: #f5f5f5;
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden; 
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card-grande {
+        width: 100%;
+        max-width: 800px; /* Largura máxima para o formulário */
+        margin: 0 auto; /* Centraliza o card na área de conteúdo */
+    }
+
+    .cardHeader {
+        background-color: #f5f5f5;
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .cardHeader h3 {
+        font-size: 1.5rem;
+        color: #144575;
+        margin: 0 0 0.25rem 0;
+        font-weight: 600;
+    }
+
+    .cardHeader p {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin: 0;
+        opacity: 0.8;
+    }
+
+    .cardBody {
+        background-color: var(--form-bg);
+        flex-grow: 1; 
+        padding: 2rem;
+    }
+
+    /* Estilos para o formulário de filtro */
+    .filter-form {
+        display: flex;
         flex-direction: column;
         gap: 1.5rem;
     }
-}
+    .form-row {
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-end; /* Alinha os itens na base */
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .form-group label {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+    .form-group select,
+    .form-group input {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid var(--form-border);
+        border-radius: 8px;
+        background-color: #fff;
+        transition: border-color 0.2s ease;
+    }
+    .form-group select:focus,
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 3px rgba(90, 130, 170, 0.2);
+    }
+    .form-group select:disabled {
+        background-color: #edf2f7;
+        cursor: not-allowed;
+    }
+
+    /* Estilos unificados para os botões */
+    #botaoBaixar,
+    .search-bar button {
+        padding: 0.75rem 1.5rem;
+        height: calc(1.5rem + 2 * 0.75rem + 2px); /* Altura igual aos inputs */
+        border: none;
+        background-color: #144575;
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+    }
+
+    #botaoBaixar:hover,
+    .search-bar button:hover {
+        background-color: #103a60;
+    }
+
+    .search-bar {
+        display: flex;
+    }
+    .search-bar input {
+        flex: 1;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .search-bar button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    /* --- Responsividade --- */
+    @media (max-width: 768px) {
+        .main-content {
+            padding: 1rem;
+        }
+        .cardBody {
+            padding: 1.5rem;
+        }
+        .form-row {
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: stretch; /* Faz os itens ocuparem toda a largura */
+        }
+    }
 </style>
