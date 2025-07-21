@@ -1,270 +1,275 @@
 <script setup>
-    import { ref } from 'vue'
-    import SideBar from '@/components/SideBar.vue'
-    import HeaderC from '@/components/Header.vue'
-    import FooterR from '@/components/Footer.vue'
-    import Cards from '@/components/DisciplinasCard.vue'
-    import Modal from '@/components/Modal.vue'
-    
-    const isSidebarOpen = ref(false)
-    function toggleSidebar() {
-        isSidebarOpen.value = !isSidebarOpen.value
-    }
+import { ref } from 'vue'
 
-    const open = ref(false)
+import SideBar from '@/components/SideBar.vue'
+import HeaderC from '@/components/Header.vue'
+import FooterR from '@/components/Footer.vue'
+import Cards from '@/components/DisciplinasCard.vue'
+import Modal from '@/components/Modal.vue'
+import Dropdown from '@/components/DropDown.vue'
+
+const isSidebarOpen = ref(false)
+function toggleSidebar() {
+  isSidebarOpen.value = !isSidebarOpen.value
+}
+
+const open = ref(false)
 </script>
 
 <template>
-    <div class="layout-container">
-        <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
+  <div class="layout-container">
+    <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
-        <div class="content-area">
-            
-            <HeaderC titulo="Minhas Disciplinas"/>
+    <div class="content-area">
+      <HeaderC titulo="Minhas Disciplinas" />
 
-            <main class="main-content">
-                <div class="bg">
-                    <div class="cards">
-                        <div class="card">
-                            <div class="cardHeader"><h3>Desenvolvimento Web</h3></div>
-                            <div class="cardBody">
-                                <p>Professor: Giuliano Prado</p>
-                                <p>Departamento: Computação</p>
-                                <p>Turma: CC1</p>
-                                <p>Período: 2025/1</p>
-                            </div>
-                            <hr>
-                            <div class="cardFooter">
-                                <Modal/>
-                                <button>Diário de Classe</button>
-                                <button>Programa de Disciplina</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="cardHeader"><h3>Desenvolvimento Web</h3></div>
-                            <div class="cardBody">
-                                <p>Professor: Giuliano Prado</p>
-                                <p>Departamento: Computação</p>
-                                <p>Turma: CC1</p>
-                                <p>Período: 2025/1</p>
-                            </div>
-                            <hr>
-                            <div class="cardFooter">
-                                <Modal/>
-                                <button>Diário de Classe</button>
-                                <button>Programa de Disciplina</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="cardHeader"><h3>Desenvolvimento Web</h3></div>
-                            <div class="cardBody">
-                                <p>Professor: Giuliano Prado</p>
-                                <p>Departamento: Computação</p>
-                                <p>Turma: CC1</p>
-                                <p>Período: 2025/1</p>
-                            </div>
-                            <hr>
-                            <div class="cardFooter">
-                                <Modal/>
-                                <button>Diário de Classe</button>
-                                <button>Programa de Disciplina</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="cardHeader"><h3>Desenvolvimento Web</h3></div>
-                            <div class="cardBody">
-                                <p>Professor: Giuliano Prado</p>
-                                <p>Departamento: Computação</p>
-                                <p>Turma: CC1</p>
-                                <p>Período: 2025/1</p>
-                            </div>
-                            <hr>
-                            <div class="cardFooter">
-                                <Modal/>
-                                <button>Diário de Classe</button>
-                                <button>Programa de Disciplina</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="cardHeader"><h3>Desenvolvimento Web</h3></div>
-                            <div class="cardBody">
-                                <p>Professor: Giuliano Prado</p>
-                                <p>Departamento: Computação</p>
-                                <p>Turma: CC1</p>
-                                <p>Período: 2025/1</p>
-                            </div>
-                            <hr>
-                            <div class="cardFooter">
-                                <Modal/>
-                                <button>Diário de Classe</button>
-                                <button>Programa de Disciplina</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="cardHeader"><h3>Desenvolvimento Web</h3></div>
-                            <div class="cardBody">
-                                <p>Professor: Giuliano Prado</p>
-                                <p>Departamento: Computação</p>
-                                <p>Turma: CC1</p>
-                                <p>Período: 2025/1</p>
-                            </div>
-                            <hr>
-                            <div class="cardFooter">
-                                <Modal/>
-                                <button>Diário de Classe</button>
-                                <button>Programa de Disciplina</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
+      <main class="main-content">
+        <Dropdown class="dropdown" titulo="Disciplinas 2025/1" :abertoInicialmente="true">
+          <div class="cards">
+            <div class="card">
+              <div class="cardHeader"><h3>Desenvolvimento Web</h3></div>
+              <div class="cardBody">
+                <p><strong>Professor:</strong> Giuliano Prado</p>
+                <p><strong>Departamento:</strong> Computação</p>
+                <p><strong>Turma:</strong> CC1</p>
+                <p><strong>Período:</strong> 2025/1</p>
+              </div>
+              <div class="cardFooter">
+                <Modal />
+                <button>Diário de Classe</button>
+                <button>Programa de Disciplina</button>
+              </div>
+            </div>
 
-            <FooterR />
-        </div>
+            <div class="card">
+              <div class="cardHeader"><h3>Banco de Dados</h3></div>
+              <div class="cardBody">
+                <p><strong>Professor:</strong> Antônio Almeida</p>
+                <p><strong>Departamento:</strong> Computação</p>
+                <p><strong>Turma:</strong> CC1</p>
+                <p><strong>Período:</strong> 2025/1</p>
+              </div>
+              <div class="cardFooter">
+                <Modal />
+                <button>Diário de Classe</button>
+                <button>Programa de Disciplina</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="cardHeader"><h3>Engenharia de Software</h3></div>
+              <div class="cardBody">
+                <p><strong>Professor:</strong> Clayton Fraga</p>
+                <p><strong>Departamento:</strong> Computação</p>
+                <p><strong>Turma:</strong> CC1</p>
+                <p><strong>Período:</strong> 2025/1</p>
+              </div>
+              <div class="cardFooter">
+                <Modal />
+                <button>Diário de Classe</button>
+                <button>Programa de Disciplina</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="cardHeader"><h3>Redes de Computadores</h3></div>
+              <div class="cardBody">
+                <p><strong>Professor:</strong> Helder Amorim</p>
+                <p><strong>Departamento:</strong> Computação</p>
+                <p><strong>Turma:</strong> CC1</p>
+                <p><strong>Período:</strong> 2025/1</p>
+              </div>
+              <div class="cardFooter">
+                <Modal />
+                <button>Diário de Classe</button>
+                <button>Programa de Disciplina</button>
+              </div>
+            </div>
+          </div>
+        </Dropdown>
+
+        <Dropdown class="dropdown" titulo="Disciplinas 2024/2">
+          <div class="cards">
+            <div class="card">
+              <div class="cardHeader"><h3>Teoria dos grafos</h3></div>
+              <div class="cardBody">
+                <p><strong>Professor:</strong> Edmar Hell</p>
+                <p><strong>Departamento:</strong> Computação</p>
+                <p><strong>Turma:</strong> CC1</p>
+                <p><strong>Período:</strong> 2025/1</p>
+              </div>
+              <div class="cardFooter">
+                <Modal />
+                <button>Diário de Classe</button>
+                <button>Programa de Disciplina</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="cardHeader"><h3>Inteligência Artificial</h3></div>
+              <div class="cardBody">
+                <p><strong>Professor:</strong> Jacson Silva</p>
+                <p><strong>Departamento:</strong> Computação</p>
+                <p><strong>Turma:</strong> CC1</p>
+                <p><strong>Período:</strong> 2025/1</p>
+              </div>
+              <div class="cardFooter">
+                <Modal />
+                <button>Diário de Classe</button>
+                <button>Programa de Disciplina</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="cardHeader"><h3>Engenharia de Requisitos</h3></div>
+              <div class="cardBody">
+                <p><strong>Professor:</strong> Bruno Vilela</p>
+                <p><strong>Departamento:</strong> Computação</p>
+                <p><strong>Turma:</strong> CC1</p>
+                <p><strong>Período:</strong> 2025/1</p>
+              </div>
+              <div class="cardFooter">
+                <Modal />
+                <button>Diário de Classe</button>
+                <button>Programa de Disciplina</button>
+              </div>
+            </div>
+          </div>
+        </Dropdown>
+      </main>
+
+      <FooterR />
     </div>
+  </div>
 </template>
 
 <style scoped>
-    .layout-container {
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-    }
+.layout-container {
+  display: flex;
+  width: 100vw;
+  background-color: var(--dark-blue-bg);
+}
 
-    .content-area {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        height: 100vh;
-        overflow: hidden;
-    }
+.content-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
-    .main-content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 1rem;
-        box-sizing: border-box;
-        
+.main-content {
+  flex: 1;
+  overflow-y: auto; /* Apenas uma declaração é necessária */
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.dropdown {
+  width: 100%;
+  /* REMOVIDO: overflow-y: auto; */
+  /* REMOVIDO: max-height: 100%; */
+}
 
-  .bg {
-        width: 95%;
-        background-color: #144575;
-        border-radius: 6px;
-        padding: 1.5rem;
-        box-sizing: border-box;
+.dropdown :deep(.dropdown-header) {
+  background-color: transparent !important;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  padding: 0 0 1rem 0;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  /* REMOVIDO: overflow-y: auto; */ /* Esta propriedade era desnecessária aqui */
+}
 
-        height: 100%;
-        display: flex; 
-    }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
 
-    .cards {
-        display: grid;
-        /* ✅ CORREÇÃO 2: Grade fixa de 3 colunas e 2 linhas */
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        gap: 1.5rem; /* Reduzido o gap para caber melhor */
-        width: 100%;
-        height: 100%;
-        
-    }
+/* O restante do seu CSS permanece o mesmo... */
 
-    @media (max-width: 900px) {
-        .cards {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            grid-template-rows: auto;
-            height: auto; 
-        }
-        .bg {
-            height: auto;
-            width: 100%;
-        }
-    }
+.card {
+  background-color: #f5f5f5;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .card {
-        background-color: #5A82AA;
-        border: none;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden; 
-        border-radius: 12px;
-        text-align: left;
-        font-weight: normal;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
 
-    .cardHeader {
-        width: 100%;
-        height: 25%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
+.cardHeader {
+  padding: 1rem 1.5rem;
+  background-color: var(--card-bg);
+}
 
-        box-shadow: 0 0 0 6px #5A82AA;
-    }
-
-    .cardHeader h3{
-        font-size: 1.2rem;
-        color: #f5f5f5;
-    }
+.cardHeader h3 {
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
+  color: #144575;
+}
 
 .cardBody {
-    background-color: #f5f5f5;
-    flex-grow: 1; 
-    overflow-y: auto;
-    height: 60%; 
-    padding: 0.5rem 0;
+  background-color: var(--text-light);
+  flex-grow: 1;
+  padding: 1.5rem;
 }
 
 .cardBody p {
-    margin: 0.25rem 0.5rem; 
-    font-size: 1rem;
-    color: #666
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.cardBody p:last-child {
+  margin-bottom: 0;
+}
+
+.cardBody strong {
+  color: #000;
 }
 
 .cardFooter {
-    background-color: #f5f5f5;
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    align-items: center; 
-    
-    padding: 0.75rem;
-    gap: 0.5rem; 
-    height: auto; 
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+  background-color: var(--text-light);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  gap: 0.75rem;
+  border-top: 1px solid #e0e0e0;
 }
 
+.cardFooter button {
+  color: #f5f5f5;
+}
 
-.cardFooter button, 
+.cardFooter button,
 .cardFooter :deep(.btn-open) {
-    flex: 1;
-
-    min-height: 3.5rem; 
-    margin: 0;
-    font-size: 0.8rem;
-    background-color: #5A82AA;
-    color: #f5f5f5;
-    border: none;
-    border-radius: 6px;
-    padding: 0.6rem;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.2s ease;
+  flex: 1 1 auto;
+  min-height: 3rem;
+  font-size: 0.9rem;
+  background-color: #144575;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
+
 .cardFooter button:hover,
 .cardFooter :deep(.btn-open:hover) {
-    background-color: #4a6e8f;
+  background-color: #103a60;
 }
-
 </style>

@@ -196,7 +196,7 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
     .cardHeader {
-        background-color: #5A82AA;
+        background-color: #f5f5f5;
         width: 100%;
         padding: 1rem;
         display: flex;
@@ -210,13 +210,13 @@
 
     .cardHeader h3 {
         font-size: 1.2rem;
-        color: #f5f5f5;
+        color: #144575;
         margin: 0;
     }
 
     .cardHeader p {
         font-size: 0.8rem;
-        color: #f5f5f5;
+        color: #144575;
         margin: 0;
         opacity: 0.9; /* Bônus: Deixa o subtítulo um pouco mais sutil */
     }
@@ -236,24 +236,24 @@
     .cardBody th, .cardBody td {
         padding: 0.75rem;
         text-align: left;
-        border-bottom: 1px solid #e0e0e0;
+        border-bottom: 1px solid #f5f5f5;
     }
     
     .cardBody th {
-        background-color: #f1f3f5;
+        background-color: #f5f5f5;
         font-weight: bold;
         color: #495057;
     }
     
     .cardBody tbody tr:hover {
-        background-color: #f8f9fa;
+        background-color: #f5f5f5;
     }
     
     /* Os estilos de 'status' foram mantidos caso você queira usá-los no futuro */
     .status {
         padding: 0.2rem 0.5rem;
         border-radius: 12px;
-        color: white;
+        color: #144575;
         font-size: 0.75rem;
         font-weight: bold;
         text-align: center;

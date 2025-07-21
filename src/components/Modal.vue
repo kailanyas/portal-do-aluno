@@ -1,233 +1,153 @@
+<script setup>
+import { ref } from 'vue'
+
+// Reativo para controlar a visibilidade do modal
+const isModalOpen = ref(false)
+
+function openModal() {
+  isModalOpen.value = true
+}
+
+function closeModal() {
+  isModalOpen.value = false
+}
+
+// Função para lidar com o envio do formulário
+function submitEvaluation() {
+  // Aqui você pode adicionar a lógica para enviar os dados do formulário
+  alert('Avaliação enviada com sucesso!')
+  closeModal() // Fecha o modal após o envio
+}
+</script>
+
 <template>
-    <label for="modal-toggle" class="btn-open">Avaliar Docente</label>
+  <button @click="openModal" class="btn-open">Avaliar Docente</button>
 
-    <input type="checkbox" id="modal-toggle" class="modal-toggle">
-
-    <div class="modal">
+  <Teleport to="body">
+    <Transition name="modal-fade">
+      <div v-if="isModalOpen" class="modal" @click.self="closeModal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>Formulário de Avaliação</h2>
-                <p>Avalie os critérios abaixo com uma nota de 1 a 10.</p>
-            </div>
+          <div class="modal-header">
+            <h2>Formulário de Avaliação</h2>
+            <p>Avalie os critérios abaixo com uma nota de 1 a 10.</p>
+          </div>
 
-            <div class="evaluation-scale">
-                <div class="barra">
-                    <div class="item">1</div><div class="item">2</div><div class="item">3</div><div class="item">4</div><div class="item">5</div>
-                    <div class="item">6</div><div class="item">7</div><div class="item">8</div><div class="item">9</div><div class="item">10</div>
-                </div>
-                <div class="legenda">
-                    <span>Péssimo</span>
-                    <span>Excelente</span>
-                </div>
+          <div class="evaluation-scale">
+            <div class="barra">
+              <div class="item">1</div><div class="item">2</div><div class="item">3</div><div class="item">4</div><div class="item">5</div>
+              <div class="item">6</div><div class="item">7</div><div class="item">8</div><div class="item">9</div><div class="item">10</div>
+            </div>
+            <div class="legenda">
+              <span>Péssimo</span>
+              <span>Excelente</span>
+            </div>
+          </div>
+          
+          <form @submit.prevent="submitEvaluation" class="evaluation-form">
+            <div class="form-group">
+              <label for="q1">1. Apresentou e discutiu o programa da disciplina (objetivos, estratégias, conteúdos, recursos, etc.)</label>
+              <select id="q1" name="q1"><option value="5" selected>5</option></select>
+            </div>
+            <div class="form-group">
+              <label for="q2">2. Utilizou metodologia e recursos de ensino motivadores e condizentes com os objetivos e conteúdos propostos</label>
+              <select id="q2" name="q2"><option value="5" selected>5</option></select>
+            </div>
+            <div class="form-group">
+              <label for="q3">3. Estabeleceu conexão entre os conteúdos teóricos e as práticas profissionais ou com o contexto social concreto</label>
+              <select id="q3" name="q3"><option value="5" selected>5</option></select>
+            </div>
+            <div class="form-group">
+              <label for="q4">4. Demonstrou disponibilidade para atendimento individual ao aluno</label>
+              <select id="q4" name="q4"><option value="5" selected>5</option></select>
+            </div>
+            <div class="form-group">
+              <label for="q5">5. Foi pontual, assíduo e cumpriu a carga horária prevista para a disciplina</label>
+              <select id="q5" name="q5"><option value="5" selected>5</option></select>
+            </div>
+            <div class="form-group">
+              <label for="q6">6. Demonstrou disponibilidade para atendimento individual ao aluno</label>
+              <select id="q6" name="q6"><option value="5" selected>5</option></select>
+            </div>
+            <div class="form-group">
+              <label for="q7">7. Elabora avaliações compatíveis e coerentes com o conteúdo desenvolvido, discute e analisa os resultados com os alunos</label>
+              <select id="q7" name="q7"><option value="5" selected>5</option></select>
+            </div>
+            <div class="form-group">
+              <label for="q8">8. Promoveu ambiente de aprendizagem com predomínio do respeito mútuo e interação</label>
+              <select id="q8" name="q8"><option value="5" selected>5</option></select>
+            </div>
+            <div class="form-group">
+              <label for="q9">9. Em resumo, em que medida o professor contribuiu para a aquisição de seus conhecimentos na disciplina ministrada</label>
+              <select id="q9" name="q9"><option value="5" selected>5</option></select>
             </div>
             
-            <form action="#" class="evaluation-form">
-                <div class="form-group">
-                    <label for="q1">1. Apresentou e discutiu o programa da disciplina (objetivos, estratégias, conteúdos, recursos, etc.)</label>
-                    <select id="q1" name="q1">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="q2">2. Utilizou metodologia e recursos de ensino motivadores e condizentes com os objetivos e conteúdos propostos</label>
-                    <select id="q2" name="q2">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="q3">3. Estabeleceu conexão entre os conteúdos teóricos e as práticas profissionais ou com o contexto social concreto</label>
-                    <select id="q3" name="q3">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="q4">4. Demonstrou disponibilidade para atendimento individual ao aluno</label>
-                    <select id="q4" name="q4">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="q5">5. Foi pontual, assíduo e cumpriu a carga horária prevista para a disciplina</label>
-                    <select id="q5" name="q5">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="q6">6. Demonstrou disponibilidade para atendimento individual ao aluno</label>
-                    <select id="q6" name="q6">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="q7">7. Elabora avaliações compatíveis e coerentes com o conteúdo desenvolvido, discute e analisa os resultados com os alunos</label>
-                    <select id="q7" name="q7">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="q8">8. Promoveu ambiente de aprendizagem com predomínio do respeito mútuo e interação</label>
-                    <select id="q8" name="q8">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="q9">9. Em resumo, em que medida o professor contribuiu para a aquisição de seus conhecimentos na disciplina ministrada</label>
-                    <select id="q9" name="q9">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                
-                <div class="form-buttons">
-                    <label for="modal-toggle" class="btn btn-cancel">Cancelar</label>
-                    <button type="submit" class="btn btn-submit">Enviar Avaliação</button>
-                </div>
-            </form>
+            <div class="form-buttons">
+              <button type="button" @click="closeModal" class="btn btn-cancel">Cancelar</button>
+              <button type="submit" class="btn btn-submit">Enviar Avaliação</button>
+            </div>
+          </form>
         </div>
-    </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <style scoped>
 /* --- Estilos Globais do Componente --- */
-* {
-    box-sizing: border-box;
-}
-
-body, input, button, label, select { /* Adicionado 'select' */
-    font: bold;
-}
+/* Seu CSS pode continuar quase o mesmo. Apenas uma pequena adaptação é necessária. */
 
 /* --- Lógica e Estilo do Modal --- */
-.modal-toggle {
-    display: none;
-}
-
+/* Removemos o seletor do checkbox e as propriedades de visibilidade iniciais */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(10, 25, 47, 0.7);
-    backdrop-filter: blur(4px);
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 25, 47, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  z-index: 1000;
 }
 
+/* As animações agora são controladas por classes do <Transition> */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.modal-fade-enter-active .modal-content,
+.modal-fade-leave-active .modal-content {
+  transition: transform 0.3s ease;
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+.modal-fade-enter-from .modal-content,
+.modal-fade-leave-to .modal-content {
+  transform: translateY(20px);
+}
+
+
+/* O restante do seu CSS pode permanecer o mesmo */
 .modal-content {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 800px;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-    overflow-y: auto;
-    max-height: 90vh;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 800px;
+  overflow-y: auto;
+  max-height: 90vh;
 }
-
-.modal-toggle:checked ~ .modal {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-toggle:checked ~ .modal .modal-content {
-    transform: translateY(0);
-}
-
-/* --- Cabeçalho do Modal --- */
 .modal-header {
-    text-align: center;
-    margin-bottom: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .modal-header h2 {
