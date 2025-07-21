@@ -118,6 +118,7 @@ const routes = [
       {
         path: "dados-cadastrais",
         component: () => import("@/views/configuracoes/DadosCadastraisView.vue"),
+        name: "dados-cadastrais",
       },
       {
         path: "config-documentos",
