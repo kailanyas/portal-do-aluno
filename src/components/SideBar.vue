@@ -2,7 +2,7 @@
     <nav id="sidebar" :class="{'open-sidebar': isOpen}">
         <div id="sidebar_content">
             <div id="user">
-                <img src="../../public/imagens/logo-user.png" id="logo_user" alt="Logo do Usuário" />
+                <img src="/imagens/logo-user.png" id="logo_user" alt="Logo do Usuário" />
                 
                 <p id="user_infos">
                     <span class="item-description">
