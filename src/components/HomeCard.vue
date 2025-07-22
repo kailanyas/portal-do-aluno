@@ -62,7 +62,7 @@
                             Prova de Desenvolvimento Web
                         </span>
                         <span class="event-date">
-                            2 de agosto
+                            19 de agosto
                         </span>
                     </div>
                 </li>
