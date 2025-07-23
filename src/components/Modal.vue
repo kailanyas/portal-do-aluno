@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import Swal from 'sweetalert2'
 
 // Reativo para controlar a visibilidade do modal
 const isModalOpen = ref(false)
@@ -12,11 +13,34 @@ function closeModal() {
   isModalOpen.value = false
 }
 
-// Função para lidar com o envio do formulário
 function submitEvaluation() {
-  // Aqui você pode adicionar a lógica para enviar os dados do formulário
-  alert('Avaliação enviada com sucesso!')
-  closeModal() // Fecha o modal após o envio
+  Swal.fire({
+    title: 'Avaliação enviada com sucesso!',
+    text: 'Obrigado por sua participação.',
+    icon: 'success',
+    confirmButtonColor: '#144575',
+    confirmButtonText: 'OK',
+    width: '500px'
+  }).then(() => {
+    closeModal()
+  })
+}
+
+function confirmarEnvio() {
+  Swal.fire({
+    title: 'Tem certeza que deseja enviar a avaliação?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#144575',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sim',
+    cancelButtonText: 'Cancelar',
+    width: '500px'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      submitEvaluation()
+    }
+  })
 }
 </script>
 
@@ -43,7 +67,7 @@ function submitEvaluation() {
             </div>
           </div>
           
-          <form @submit.prevent="submitEvaluation" class="evaluation-form">
+          <form @submit.prevent="confirmarEnvio" class="evaluation-form">
             <div class="form-group">
               <label for="q1">1. Apresentou e discutiu o programa da disciplina (objetivos, estratégias, conteúdos, recursos, etc.)</label>
               <select id="q1" name="q1"><option value="5" selected>5</option></select>
