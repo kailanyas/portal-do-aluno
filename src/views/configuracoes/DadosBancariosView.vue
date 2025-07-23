@@ -3,7 +3,7 @@
     <h2>Alterar Dados Bancários</h2>
 
     <div class="orientacoes-container">
-      <h2>📌 Orientações</h2>
+      <h2>Orientações</h2>
       <ol class="lista-orientacoes">
         <li>Informe a conta bancária para receber bolsas e auxílios.</li>
         <li>Mantenha os dados sempre atualizados.</li>
@@ -167,7 +167,7 @@ h2 {
 
 h3 {
   font-size: 1.15rem;
-  color: #004080;
+  color: #144575;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
@@ -248,13 +248,13 @@ h3 {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #28a745;
+  background-color: #144575;
   color: white;
   transition: background-color 0.2s ease;
 }
 
 .botoes-edicao button:hover {
-  background-color: #218838;
+  background-color: #103a60;
 }
 
 .atencao {

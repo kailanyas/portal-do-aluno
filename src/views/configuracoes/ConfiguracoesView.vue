@@ -226,7 +226,7 @@ function abrirConfiguracao(caminho, aba) {
 
 .main-content {
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: #144575;
   box-sizing: border-box;
   display: flex;
   flex: 1;
@@ -258,8 +258,8 @@ function abrirConfiguracao(caminho, aba) {
 
 .menu-abas button.active,
 .menu-abas button:hover {
-  background-color: #004080;
-  color: white;
+  background-color: #ccc;
+  color: rgb(0, 0, 0);
 }
 
 /* Animações */

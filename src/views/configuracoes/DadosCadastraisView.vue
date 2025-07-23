@@ -454,7 +454,7 @@ form {
 .secao-titulo {
   font-size: 18px;
   margin-bottom: 16px;
-  color: #006699;
+  color: #144575;
   border-bottom: 1px solid #ddd;
   padding-bottom: 8px;
 }
@@ -508,13 +508,13 @@ button {
 }
 
 .btn-editar {
-  background-color: #e0e0e0;
-  border: 1px solid #ccc;
-  color: #333;
+  background-color: #144575;
+  border: 1px solid #ffffff;
+  color: #ffffff;
 }
 
 .btn-editar:hover {
-  background-color: #d0d0d0;
+  background-color: #103a60;
 }
 
 .btn-salvar {

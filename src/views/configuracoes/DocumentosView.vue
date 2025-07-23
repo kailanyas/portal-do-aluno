@@ -208,7 +208,7 @@ const enviarFormulario = () => {
 
 .container h3 {
   font-size: 16px;
-  color: #006699;
+  color: #144575;
   margin-top: 24px;
   margin-bottom: 12px;
 }
@@ -249,7 +249,7 @@ const enviarFormulario = () => {
 .botao {
   margin-top: 16px;
   padding: 10px 18px;
-  background-color: #006699;
+  background-color: #144575;
   color: #fff;
   font-size: 14px;
   border: none;
@@ -258,7 +258,7 @@ const enviarFormulario = () => {
 }
 
 .botao:hover {
-  background-color: #004c73;
+  background-color: #103a60;
 }
 
 .atencao {
