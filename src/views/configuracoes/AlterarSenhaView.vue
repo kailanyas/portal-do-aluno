@@ -145,7 +145,7 @@ label {
 }
 
 .btn-salvar {
-  background-color: #006699;
+  background-color: #144575;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -156,7 +156,7 @@ label {
 }
 
 .btn-salvar:hover {
-  background-color: #388e3c;
+  background-color: #103e6d;
 }
 
 .btn-salvar:disabled {
