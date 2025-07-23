@@ -4,7 +4,6 @@ import { useRouter } from "vue-router";
 import SideBar from "@/components/SideBar.vue";
 import HeaderC from "@/components/Header.vue";
 import FooterR from "@/components/Footer.vue";
-import CardQuadrado from "@/components/CardQuadrado.vue";
 
 const isSidebarOpen = ref(false);
 const mostrarAbas = ref(false);
@@ -123,9 +122,9 @@ function abrirConfiguracao(caminho, aba) {
 
         <!-- Conteúdo das views filhas -->
         <transition name="fade-in-aba">
-          <CardQuadrado v-if="mostrarAbas">
+          <div if="mostrarAbas">
             <router-view />
-          </CardQuadrado>
+          </div>
         </transition>
       </main>
 
@@ -135,7 +134,6 @@ function abrirConfiguracao(caminho, aba) {
 </template>
 
 <style scoped>
-/* ✅ CSS organizado em ordem alfabética */
 .aba-content {
   background-color: white;
   border-radius: 8px;

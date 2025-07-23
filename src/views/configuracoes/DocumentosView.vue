@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 
-// Refs para os dados do novo documento
+// Refs para o formulário de novo documento
 const tipo = ref("");
 const numero = ref("");
 const uf = ref("");
@@ -9,9 +9,12 @@ const orgao = ref("");
 const expedicao = ref("");
 const validade = ref("");
 
-// Submissão do formulário
+// Lista de documentos cadastrados
+const documentos = ref([]);
+
+// Enviar e salvar novo documento
 const enviarFormulario = () => {
-  const dados = {
+  const novoDocumento = {
     tipo: tipo.value,
     numero: numero.value,
     uf: uf.value,
@@ -19,8 +22,19 @@ const enviarFormulario = () => {
     expedicao: expedicao.value,
     validade: validade.value,
   };
-  console.log("Dados enviados:", dados);
-  // aqui você pode adicionar lógica para enviar para backend ou API
+
+  // Adiciona à lista
+  documentos.value.push(novoDocumento);
+
+  console.log("Documento cadastrado:", novoDocumento);
+
+  // Limpa os campos
+  tipo.value = "";
+  numero.value = "";
+  uf.value = "";
+  orgao.value = "";
+  expedicao.value = "";
+  validade.value = "";
 };
 </script>
 
@@ -28,37 +42,32 @@ const enviarFormulario = () => {
   <div class="container">
     <h2>Alterar Documentos Pessoais</h2>
 
+    <!-- Documentos fixos exibidos inicialmente -->
     <div class="documento">
       <h3>Documento Atual</h3>
-
       <div class="campo-grupo">
         <label>Tipo de documento</label>
         <input type="text" value="Cadastro de Pessoas Físicas" readonly />
       </div>
-
       <div class="campo-grupo">
         <label>Número*</label>
         <input type="text" value="169.521.107-39" readonly />
       </div>
-
       <div class="linha">
         <div class="campo-grupo">
           <label>UF</label>
           <input type="text" value="**" readonly />
         </div>
-
         <div class="campo-grupo">
           <label>Órgão Emissor</label>
           <input type="text" readonly />
         </div>
       </div>
-
       <div class="linha">
         <div class="campo-grupo">
           <label>Data Expedição</label>
           <input type="date" readonly />
         </div>
-
         <div class="campo-grupo">
           <label>Data Validade</label>
           <input type="date" readonly />
@@ -68,87 +77,108 @@ const enviarFormulario = () => {
 
     <div class="documento">
       <h3>Documento Atual</h3>
-
       <div class="campo-grupo">
         <label>Tipo de documento</label>
         <input type="text" value="Carteira de Identidade" readonly />
       </div>
-
       <div class="campo-grupo">
         <label>Número*</label>
         <input type="text" value="4225237" readonly />
       </div>
-
       <div class="linha">
         <div class="campo-grupo">
           <label>UF*</label>
           <input type="text" value="ES" readonly />
         </div>
-
         <div class="campo-grupo">
           <label>Órgão Emissor*</label>
           <input type="text" value="SSP" readonly />
         </div>
       </div>
-
       <div class="linha">
         <div class="campo-grupo">
           <label>Data Expedição*</label>
           <input type="date" value="2017-06-19" readonly />
         </div>
-
         <div class="campo-grupo">
           <label>Data Validade</label>
           <input type="date" readonly />
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de documentos cadastrados dinamicamente -->
+    <div v-for="(doc, index) in documentos" :key="index" class="documento">
+      <h3>Documento Cadastrado</h3>
+      <div class="campo-grupo">
+        <label>Tipo de documento</label>
+        <input type="text" :value="doc.tipo" readonly />
+      </div>
+      <div class="campo-grupo">
+        <label>Número*</label>
+        <input type="text" :value="doc.numero" readonly />
+      </div>
+      <div class="linha">
+        <div class="campo-grupo">
+          <label>UF</label>
+          <input type="text" :value="doc.uf" readonly />
+        </div>
+        <div class="campo-grupo">
+          <label>Órgão Emissor</label>
+          <input type="text" :value="doc.orgao" readonly />
+        </div>
+      </div>
+      <div class="linha">
+        <div class="campo-grupo">
+          <label>Data Expedição</label>
+          <input type="date" :value="doc.expedicao" readonly />
+        </div>
+        <div class="campo-grupo">
+          <label>Data Validade</label>
+          <input type="date" :value="doc.validade" readonly />
         </div>
       </div>
     </div>
 
     <hr />
 
-    <!-- FORMULÁRIO COMEÇA AQUI -->
+    <!-- Formulário para novo documento -->
     <form @submit.prevent="enviarFormulario" class="documento">
       <h3>Cadastrar Novo Documento</h3>
-
       <div class="campo-grupo">
         <label>Tipo de documento</label>
         <select v-model="tipo">
           <option value="">Selecione</option>
           <option>Carteira de Identidade Nacional</option>
           <option>Passaporte</option>
-          <!-- outros tipos -->
+          <option>Documento Militar</option>
+          <option>Título de Eleitor</option>
         </select>
       </div>
-
       <div class="campo-grupo">
         <label>Número*</label>
         <input type="text" v-model="numero" required />
       </div>
-
       <div class="linha">
         <div class="campo-grupo">
           <label>UF</label>
           <input type="text" v-model="uf" />
         </div>
-
         <div class="campo-grupo">
           <label>Órgão Emissor</label>
           <input type="text" v-model="orgao" />
         </div>
       </div>
-
       <div class="linha">
         <div class="campo-grupo">
           <label>Data Expedição</label>
           <input type="date" v-model="expedicao" />
         </div>
-
         <div class="campo-grupo">
           <label>Data Validade</label>
           <input type="date" v-model="validade" />
         </div>
       </div>
-
       <button type="submit" class="botao">Salvar Documento</button>
     </form>
 

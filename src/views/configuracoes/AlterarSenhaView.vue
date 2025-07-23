@@ -14,137 +14,176 @@ function salvarSenha() {
     alert('A nova senha e a confirmação não coincidem.')
     return
   }
-  alert('Função salvar senha ainda não implementada')
+  
+  // Simulação de envio para o backend
+  alert('Senha alterada com sucesso!')
+  
+  // Limpar os campos após o sucesso
+  senhaAtual.value = ''
+  novaSenha.value = ''
+  confirmarSenha.value = ''
 }
 </script>
 
 <template>
-  <div class="layout-container">
-    <div class="content-area">
-      <main class="main-content">
-        <h1>Alterar Senha</h1>
+  <div class="container">
+    <h2 class="subtitulo">Alteração de Senha</h2>
 
-        <form @submit.prevent="salvarSenha" class="form-senha">
-          <div class="form-group">
-            <label for="senhaAtual">Senha Atual</label>
-            <input type="password" id="senhaAtual" v-model="senhaAtual" required />
+    <div class="secao">
+      <form @submit.prevent="salvarSenha" class="form-senha">
+        <div class="grid">
+          <div class="campo-container">
+            <label>Senha Atual:</label>
+            <input 
+              type="password" 
+              v-model="senhaAtual" 
+              required 
+              class="campo-input"
+            />
           </div>
 
-          <div class="form-group">
-            <label for="novaSenha">Nova Senha</label>
-            <input type="password" id="novaSenha" v-model="novaSenha" required />
+          <div class="campo-container">
+            <label>Nova Senha:</label>
+            <input 
+              type="password" 
+              v-model="novaSenha" 
+              required 
+              class="campo-input"
+            />
           </div>
 
-          <div class="form-group">
-            <label for="confirmarSenha">Confirmar Nova Senha</label>
-            <input type="password" id="confirmarSenha" v-model="confirmarSenha" required />
+          <div class="campo-container">
+            <label>Confirmar Nova Senha:</label>
+            <input 
+              type="password" 
+              v-model="confirmarSenha" 
+              required 
+              class="campo-input"
+            />
           </div>
+        </div>
 
-          <div class="center">
-            <button type="submit">Salvar</button>
-          </div>
-        </form>
-      </main>
+        <div class="botoes-formulario">
+          <button type="submit" class="btn-salvar">
+            Salvar Alterações
+          </button>
+        </div>
+      </form>
+
+      <p class="aviso-final">
+        A senha deve conter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas e números.
+      </p>
     </div>
   </div>
 </template>
 
 <style scoped>
-.layout-container {
-  display: flex;
-  justify-content: flex-start;
-  padding: 0.2rem;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.content-area {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.main-content {
-  background-color: #f4f4f4;
-  padding: 1.5rem;
+.container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  background-color: #004080;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Formulário */
-.form-senha {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-bottom: 6px;
-  font-weight: bold;
-  color: #004080;
-}
-
-input {
-  padding: 10px;
-  border: 1px solid #004080;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-/* Botão */
-button {
-  background-color: #004080;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0059b3;
-}
-
-.center {
+.subtitulo {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 24px;
   text-align: center;
 }
 
-/* Responsivo */
+.secao {
+  padding: 16px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-senha {
+  margin-top: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.campo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.campo-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.campo-input:focus {
+  outline: none;
+  border-color: #006699;
+  box-shadow: 0 0 0 2px rgba(0, 102, 153, 0.2);
+}
+
+.botoes-formulario {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.btn-salvar {
+  background-color: #006699;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-salvar:hover {
+  background-color: #388e3c;
+}
+
+.btn-salvar:disabled {
+  background-color: #b0bec5;
+  cursor: not-allowed;
+}
+
+.aviso-final {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
+
 @media (max-width: 600px) {
-  .main-content {
-    padding: 1rem;
+  .container {
+    padding: 15px;
   }
-
-  input {
-    font-size: 0.95rem;
+  
+  .botoes-formulario {
+    justify-content: center;
   }
-
-  h1 {
-    font-size: 1.2rem;
-    padding: 8px 16px;
-  }
-
-  button {
+  
+  .btn-salvar {
     width: 100%;
+    padding: 12px;
   }
 }
 </style>
