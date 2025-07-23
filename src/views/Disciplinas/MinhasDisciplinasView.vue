@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import Swal from 'sweetalert2'
 
 import SideBar from '@/components/SideBar.vue'
 import HeaderC from '@/components/Header.vue'
@@ -14,6 +15,23 @@ function toggleSidebar() {
 }
 
 const open = ref(false)
+
+function abrirLink(titulo, caminho) {
+        Swal.fire({
+            title: `Você deseja abrir o arquivo "${titulo}?"`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#144575',
+		    cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Cancelar',
+            width: '500px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.open(caminho, '_blank', 'noopener')
+            }
+        })
+}
 </script>
 
 <template>
@@ -36,8 +54,8 @@ const open = ref(false)
               </div>
               <div class="cardFooter">
                 <Modal />
-                <button>Diário de Classe</button>
-                <button>Programa de Disciplina</button>
+                <button @click="abrirLink('Diário de Classe', '')">Diário de Classe</button>
+                <button @click="abrirLink('Programa de Disciplina', '')">Programa de Disciplina</button>
               </div>
             </div>
 
@@ -51,8 +69,8 @@ const open = ref(false)
               </div>
               <div class="cardFooter">
                 <Modal />
-                <button>Diário de Classe</button>
-                <button>Programa de Disciplina</button>
+                <button @click="abrirLink('Diário de Classe', '')">Diário de Classe</button>
+                <button @click="abrirLink('Programa de Disciplina', '')">Programa de Disciplina</button>
               </div>
             </div>
 
@@ -66,8 +84,8 @@ const open = ref(false)
               </div>
               <div class="cardFooter">
                 <Modal />
-                <button>Diário de Classe</button>
-                <button>Programa de Disciplina</button>
+                <button @click="abrirLink('Diário de Classe', '')">Diário de Classe</button>
+                <button @click="abrirLink('Programa de Disciplina', '')">Programa de Disciplina</button>
               </div>
             </div>
 
@@ -81,8 +99,8 @@ const open = ref(false)
               </div>
               <div class="cardFooter">
                 <Modal />
-                <button>Diário de Classe</button>
-                <button>Programa de Disciplina</button>
+                <button @click="abrirLink('Diário de Classe', '')">Diário de Classe</button>
+                <button @click="abrirLink('Programa de Disciplina', '')">Programa de Disciplina</button>
               </div>
             </div>
           </div>
@@ -100,8 +118,8 @@ const open = ref(false)
               </div>
               <div class="cardFooter">
                 <Modal />
-                <button>Diário de Classe</button>
-                <button>Programa de Disciplina</button>
+                <button @click="abrirLink('Diário de Classe', '')">Diário de Classe</button>
+                <button @click="abrirLink('Programa de Disciplina', '')">Programa de Disciplina</button>
               </div>
             </div>
 
@@ -115,8 +133,8 @@ const open = ref(false)
               </div>
               <div class="cardFooter">
                 <Modal />
-                <button>Diário de Classe</button>
-                <button>Programa de Disciplina</button>
+                <button @click="abrirLink('Diário de Classe', '')">Diário de Classe</button>
+                <button @click="abrirLink('Programa de Disciplina', '')">Programa de Disciplina</button>
               </div>
             </div>
 
@@ -130,8 +148,8 @@ const open = ref(false)
               </div>
               <div class="cardFooter">
                 <Modal />
-                <button>Diário de Classe</button>
-                <button>Programa de Disciplina</button>
+                <button @click="abrirLink('Diário de Classe', '')">Diário de Classe</button>
+                <button @click="abrirLink('Programa de Disciplina', '')">Programa de Disciplina</button>
               </div>
             </div>
           </div>
