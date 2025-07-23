@@ -71,6 +71,15 @@
                 </li>
 
                 <li class="side-item">
+                    <router-link to="/solicitacao-matricula">
+                        <i class="fa-solid fa-file-circle-plus"></i>
+                        <span class="item-description">
+                            Solicitação de Matrícula
+                        </span>
+                    </router-link>
+                </li>
+
+                <li class="side-item">
                     <router-link to="/documentos">
                         <i class="fa-solid fa-folder-open"></i>
                         <span class="item-description">
