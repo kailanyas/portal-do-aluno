@@ -13,6 +13,7 @@ import SolicitacoesView from "../views/Solicitacoes/SolicitacoesView.vue";
 import ConfiguracoesView from "../views/configuracoes/ConfiguracoesView.vue";
 import FAQView from "../views/FAQView.vue";
 import TutorialView from "../views/TutorialView.vue";
+import SolicitacaoMatriculaView from "@/views/SolicitacaoMatriculaView.vue";
 
 //imports Solicitações:
 import AtividadesComplementaresView from "../views/Solicitacoes/AtividadesComplementaresView.vue";
@@ -24,7 +25,6 @@ import DesistenciaCursoView from "../views/Solicitacoes/DesistenciaCursoView.vue
 
 //Import Disciplinas:
 import MinhasDisciplinasView from "../views/Disciplinas/MinhasDisciplinasView.vue";
-import EmentasDisciplinasView from "../views/Disciplinas/EmentasDisciplinasView.vue";
 import AcompanhamentoAcademicoView from "../views/Disciplinas/AcompanhamentoAcademicoView.vue";
 import ProgramaDeDisciplinaView from "../views/Disciplinas/ProgramaDeDisciplinasView.vue";
 
@@ -82,11 +82,6 @@ const routes = [
     component: MinhasDisciplinasView,
   },
   {
-    path: "/disciplinas/EmentasDisciplinas",
-    name: "EmentasDisciplinas",
-    component: EmentasDisciplinasView,
-  },
-  {
     path: "/disciplinas/AcompanhamentoAcademico",
     name: "AcompanhamentoAcademico",
     component: AcompanhamentoAcademicoView,
@@ -105,6 +100,11 @@ const routes = [
     path: "/oferta-disciplinas",
     name: "OfertaDisciplinas",
     component: OfertaDisciplinasView,
+  },
+  {
+    path: "/solicitacao-matricula",
+    name: "SolicitacaoMatricula",
+    component: SolicitacaoMatriculaView,
   },
   {
     path: "/documentos",
