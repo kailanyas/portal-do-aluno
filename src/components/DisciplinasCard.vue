@@ -25,7 +25,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button"  @click="navigateTo('EmentasDisciplinas')">Baixar</button>
+      <button class="card-button"  @click="abrirLink('Ementas Disciplinas', '')">Baixar</button>
     </div>
 
     <div class="card">
@@ -60,12 +60,30 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
+import Swal from 'sweetalert2'
 
 const router = useRouter();
 
 const navigateTo = (routeName) => {
-  router.push({ name: routeName }); // Isso está correto e espera o NOME
+  router.push({ name: routeName });
 };
+
+function abrirLink(titulo, caminho) {
+        Swal.fire({
+            title: `Você deseja abrir o arquivo "${titulo}?"`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#144575',
+		    cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Cancelar',
+            width: '500px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.open(caminho, '_blank', 'noopener')
+            }
+        })
+}
 </script>
 
 <style scoped>
