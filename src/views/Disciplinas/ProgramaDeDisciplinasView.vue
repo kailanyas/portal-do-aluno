@@ -1,5 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
+import Swal from 'sweetalert2'
+
 import SideBar from '@/components/SideBar.vue'
 import HeaderC from '@/components/Header.vue'
 import FooterR from '@/components/Footer.vue'
@@ -51,7 +53,23 @@ console.log('Categoria:', selectedCategory.value);
 console.log('Item:', selectedItem.value);
 console.log('Termo de Busca:', searchTerm.value);
 
-alert(`Busca enviada! Veja o console (F12) para os detalhes.`);
+}
+
+function abrirLink(titulo, caminho) {
+        Swal.fire({
+            title: `Você deseja abrir o arquivo "${titulo}?"`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#144575',
+		    cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Cancelar',
+            width: '500px'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.open(caminho, '_blank', 'noopener')
+            }
+        })
 }
 </script>
 
@@ -61,7 +79,7 @@ alert(`Busca enviada! Veja o console (F12) para os detalhes.`);
 
         <div class="content-area">
             
-            <HeaderC titulo="Minhas Disciplinas"/>
+            <HeaderC titulo="Programas de Disciplinas"/>
 
             <main class="main-content">
                 <div class="card card-grande">
@@ -94,7 +112,7 @@ alert(`Busca enviada! Veja o console (F12) para os detalhes.`);
                             </select>
                         </div>
                         <div class="form-button">
-                            <button id="botaoBaixar" type="button">Baixar</button>
+                            <button id="botaoBaixar" type="button" @click="abrirLink('Programa de Disciplina', '')">Abrir</button>
                         </div>
                     </div>
                         
