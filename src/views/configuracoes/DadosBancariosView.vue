@@ -19,33 +19,33 @@
       <h3>Banco Atual</h3>
       <div class="campo-grupo">
         <label>Banco</label>
-        <input type="text" value="BANCO DO BRASIL S.A. - 001" readonly />
+        <input type="text" :value="dadosBancarios.banco" readonly />
       </div>
       <div class="campo-grupo">
         <label>Agência*</label>
-        <input type="text" value="1234-5" readonly />
+        <input type="text" :value="dadosBancarios.agencia" readonly />
       </div>
       <div class="campo-grupo">
         <label>Conta Corrente*</label>
-        <input type="text" value="987654-3" readonly />
+        <input type="text" :value="dadosBancarios.conta" readonly />
       </div>
       <div class="linha">
         <div class="campo-grupo">
           <label>Tipo de Conta</label>
-          <input type="text" value="Conta Corrente" readonly />
+          <input type="text" :value="dadosBancarios.tipoConta" readonly />
         </div>
         <div class="campo-grupo">
           <label>Operação</label>
-          <input type="text" value="001" readonly />
+          <input type="text" :value="dadosBancarios.operacao" readonly />
         </div>
       </div>
       <div class="campo-grupo">
         <label>CPF do titular*</label>
-        <input type="text" value="000.000.000-00" readonly />
+        <input type="text" :value="dadosBancarios.cpf" readonly />
       </div>
       <div class="campo-grupo">
         <label>Nome do titular*</label>
-        <input type="text" value="Nome Exemplo do Estudante" readonly />
+        <input type="text" :value="dadosBancarios.nome" readonly />
       </div>
     </div>
 
@@ -55,25 +55,25 @@
       <h3>Cadastrar Nova Conta Bancária</h3>
       <div class="campo-grupo">
         <label>Banco</label>
-        <select>
+        <select v-model="novaConta.banco">
           <option value="">Selecione</option>
-          <option value="001">BANCO DO BRASIL S.A. - 001</option>
-          <option value="104">CAIXA ECONÔMICA FEDERAL - 104</option>
-          <option value="341">ITAÚ UNIBANCO S.A. - 341</option>
+          <option value="BANCO DO BRASIL S.A. - 001">BANCO DO BRASIL S.A. - 001</option>
+          <option value="CAIXA ECONÔMICA FEDERAL - 104">CAIXA ECONÔMICA FEDERAL - 104</option>
+          <option value="ITAÚ UNIBANCO S.A. - 341">ITAÚ UNIBANCO S.A. - 341</option>
         </select>
       </div>
       <div class="campo-grupo">
         <label>Agência*</label>
-        <input type="text" />
+        <input type="text" v-model="novaConta.agencia" />
       </div>
       <div class="campo-grupo">
         <label>Conta Corrente*</label>
-        <input type="text" />
+        <input type="text" v-model="novaConta.conta" />
       </div>
       <div class="linha">
         <div class="campo-grupo">
           <label>Tipo de Conta</label>
-          <select>
+          <select v-model="novaConta.tipoConta">
             <option value="">Selecione</option>
             <option>Conta Corrente</option>
             <option>Poupança</option>
@@ -81,16 +81,20 @@
         </div>
         <div class="campo-grupo">
           <label>Operação</label>
-          <input type="text" />
+          <input type="text" v-model="novaConta.operacao" />
         </div>
       </div>
       <div class="campo-grupo">
         <label>CPF do titular*</label>
-        <input type="text" />
+        <input type="text" v-model="novaConta.cpf" />
       </div>
       <div class="campo-grupo">
         <label>Nome do titular*</label>
-        <input type="text" />
+        <input type="text" v-model="novaConta.nome" />
+      </div>
+
+      <div class="botoes-edicao">
+        <button @click="salvarNovaConta">Salvar Nova Conta</button>
       </div>
     </div>
 
@@ -99,6 +103,50 @@
     </p>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const dadosBancarios = ref({
+  banco: 'BANCO DO BRASIL S.A. - 001',
+  agencia: '1234-5',
+  conta: '987654-3',
+  tipoConta: 'Conta Corrente',
+  operacao: '001',
+  cpf: '000.000.000-00',
+  nome: 'Nome Exemplo do Estudante'
+})
+
+const novaConta = ref({
+  banco: '',
+  agencia: '',
+  conta: '',
+  tipoConta: '',
+  operacao: '',
+  cpf: '',
+  nome: ''
+})
+
+function salvarNovaConta() {
+  const confirmado = confirm(
+    'Tem certeza que deseja substituir os dados da conta atual? Essa ação não poderá ser desfeita.'
+  )
+
+  if (confirmado) {
+    dadosBancarios.value = { ...novaConta.value }
+    alert('Conta atualizada com sucesso!')
+    novaConta.value = {
+      banco: '',
+      agencia: '',
+      conta: '',
+      tipoConta: '',
+      operacao: '',
+      cpf: '',
+      nome: ''
+    }
+  }
+}
+</script>
 
 <style scoped>
 .bancarios-container {
@@ -186,6 +234,27 @@ h3 {
 .lista-orientacoes strong {
   color: #c0392b;
   font-weight: 600;
+}
+
+.botoes-edicao {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.botoes-edicao button {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.botoes-edicao button:hover {
+  background-color: #218838;
 }
 
 .atencao {
