@@ -1,166 +1,123 @@
 <template>
-    <nav id="sidebar" :class="{'open-sidebar': isOpen}">
-        <div id="sidebar_content">
-            <div id="user">
-                <img src="/imagens/logo-user.png" id="logo_user" alt="Logo do Usuário" />
-                
-                <p id="user_infos">
-                    <span class="item-description">
-                        Nome do Usuário
-                    </span>
-                    <span class="item-description">
-                        Matricula
-                    </span>
-                </p>
-            </div>
-
-
-            <ul id="side_items">
-              <li class="side-item">
-                    <router-link to="/home">
-                        <i class="fa-solid fa-house"></i>
-                        <span class="item-description">
-                            Início
-                        </span>
-                    </router-link>
-                </li>
-
-                <li class="side-item">
-                    <router-link to="/biblioteca">
-                        <i class="fa-solid fa-swatchbook"></i>
-                        <span class="item-description">
-                            Biblioteca
-                        </span>
-                    </router-link>
-                </li>
-
-                <li class="side-item">
-                    <router-link to="/calendario-academico">
-                        <i class="fa-solid fa-calendar-days"></i>
-                        <span class="item-description">
-                            Calendário Acadêmico
-                        </span>
-                    </router-link>
-                </li>
-
-                <li class="side-item">
-                    <router-link to="/disciplinas">
-                        <i class="fa-solid fa-book"></i>
-                        <span class="item-description">
-                            Disciplinas
-                        </span>
-                    </router-link>
-                </li>
-
-                <li class="side-item">
-                    <router-link to="/links-externos">
-                        <i class="fa-solid fa-link"></i>
-                        <span class="item-description">
-                            Links Externos
-                        </span>
-                    </router-link>
-                </li>
-
-                <li class="side-item">
-                    <router-link to="/oferta-disciplinas">
-                        <i class="fa-solid fa-calendar-plus"></i>
-                        <span class="item-description">
-                            Oferta de Disciplinas
-                        </span>
-                    </router-link>
-                </li>
-
-                <li class="side-item">
-                    <router-link to="/solicitacao-matricula">
-                        <i class="fa-solid fa-file-circle-plus"></i>
-                        <span class="item-description">
-                            Solicitação de Matrícula
-                        </span>
-                    </router-link>
-                </li>
-
-                <li class="side-item">
-                    <router-link to="/documentos">
-                        <i class="fa-solid fa-folder-open"></i>
-                        <span class="item-description">
-                            Documentos
-                        </span>
-                    </router-link>
-                </li>
-
-                <li class="side-item">
-                    <router-link to="/solicitacoes">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <span class="item-description">
-                            Solicitações
-                        </span>
-                    </router-link>
-                </li>
-
-                <li class="side-item"> 
-                    <router-link to="/configuracoes">
-                        <i class="fa-solid fa-gear"></i>
-                        <span class="item-description">
-                            Configurações
-                        </span>
-                    </router-link>
-                </li>
-            </ul>
-
-            <button @click="toggleSideBar" id="open_btn">
-                <i id="open_btn_icon" class="fa-solid" :class="isOpen ? 'fa-chevron-left' : 'fa-chevron-right'"></i>
-            </button>
-        </div>
-
-        <div id="logout">
-            <button id="logout_btn" @click="deslogar">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span class="item-description">
-                    Logout
-                </span>
-            </button>
-        </div>
-    </nav>
+  <nav id="sidebar" :class="{ 'open-sidebar': isOpen }" @click="toggleSideBar">
+    <div id="sidebar_content" @click.stop>
+      <div id="user">
+        <img src="/imagens/logo-user.png" id="logo_user" alt="Logo do Usuário" />
+        <p id="user_infos">
+          <span class="item-description">Nome do Usuário</span>
+          <span class="item-description">Matricula</span>
+        </p>
+      </div>
+      <ul id="side_items">
+        <li class="side-item">
+          <router-link to="/home">
+            <i class="fa-solid fa-house"></i>
+            <span class="item-description">Início</span>
+          </router-link>
+        </li>
+        <li class="side-item">
+          <router-link to="/biblioteca">
+            <i class="fa-solid fa-swatchbook"></i>
+            <span class="item-description">Biblioteca</span>
+          </router-link>
+        </li>
+        <li class="side-item">
+          <router-link to="/calendario-academico">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span class="item-description">Calendário Acadêmico</span>
+          </router-link>
+        </li>
+        <li class="side-item">
+          <router-link to="/disciplinas">
+            <i class="fa-solid fa-book"></i>
+            <span class="item-description">Disciplinas</span>
+          </router-link>
+        </li>
+        <li class="side-item">
+          <router-link to="/links-externos">
+            <i class="fa-solid fa-link"></i>
+            <span class="item-description">Links Externos</span>
+          </router-link>
+        </li>
+        <li class="side-item">
+          <router-link to="/oferta-disciplinas">
+            <i class="fa-solid fa-calendar-plus"></i>
+            <span class="item-description">Oferta de Disciplinas</span>
+          </router-link>
+        </li>
+        <li class="side-item">
+          <router-link to="/solicitacao-matricula">
+            <i class="fa-solid fa-file-circle-plus"></i>
+            <span class="item-description">Solicitação de Matrícula</span>
+          </router-link>
+        </li>
+        <li class="side-item">
+          <router-link to="/documentos">
+            <i class="fa-solid fa-folder-open"></i>
+            <span class="item-description">Documentos</span>
+          </router-link>
+        </li>
+        <li class="side-item">
+          <router-link to="/solicitacoes">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <span class="item-description">Solicitações</span>
+          </router-link>
+        </li>
+        <li class="side-item">
+          <router-link to="/configuracoes">
+            <i class="fa-solid fa-gear"></i>
+            <span class="item-description">Configurações</span>
+          </router-link>
+        </li>
+      </ul>
+      <button @click="toggleSideBar" id="open_btn">
+        <i id="open_btn_icon" class="fa-solid" :class="isOpen ? 'fa-chevron-left' : 'fa-chevron-right'"></i>
+      </button>
+    </div>
+    <div id="logout" @click.stop>
+      <button id="logout_btn" @click="deslogar">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span class="item-description">Logout</span>
+      </button>
+    </div>
+  </nav>
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from "vue";
-import {useRouter} from 'vue-router'
+import { defineProps, defineEmits } from 'vue'
+import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 
 const router = useRouter()
-const props = defineProps({
-  isOpen: Boolean,
-});
-const emit = defineEmits(["toggle"]);
+const props = defineProps({ isOpen: Boolean })
+const emit = defineEmits(['toggle'])
 
 function toggleSideBar() {
-  emit("toggle");
+  emit('toggle')
 }
 
 function deslogar() {
-	Swal.fire({
-		title: 'Você realmente deseja sair?',
-		icon: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#144575',
-		cancelButtonColor: '#d33',
-		confirmButtonText: 'Sim',
-		cancelButtonText: 'Cancelar',
-		width: '350px',
-
-		customClass: {
-		icon: 'icone-menor',
-		title: 'titulo-menor',
-		htmlContainer: 'texto-menor',
-		confirmButton: 'botao-menor',
-		cancelButton: 'botao-menor'
-    	}
-	}).then((result) => {
-		if (result.isConfirmed) {
-			router.push('/')
-		}
-	})
+  Swal.fire({
+    title: 'Você realmente deseja sair?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#144575',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sim',
+    cancelButtonText: 'Cancelar',
+    width: '350px',
+    customClass: {
+      icon: 'icone-menor',
+      title: 'titulo-menor',
+      htmlContainer: 'texto-menor',
+      confirmButton: 'botao-menor',
+      cancelButton: 'botao-menor',
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      router.push('/')
+    }
+  })
 }
 </script>
 
@@ -176,10 +133,12 @@ function deslogar() {
   transition: all 0.5s;
   min-width: 82px;
   z-index: 10;
+  cursor: pointer;
 }
 
 #sidebar_content {
   padding: 12px;
+  cursor: default;
 }
 
 #user {
@@ -253,6 +212,7 @@ function deslogar() {
 #logout {
   border-top: 1px solid #e3e9f7;
   padding: 12px;
+  cursor: default;
 }
 
 #logout_btn {
@@ -275,8 +235,9 @@ function deslogar() {
 
 #open_btn {
   position: absolute;
-  top: 30px;
-  right: -10px;
+  top: 50%;
+  right: -15px;
+  transform: translateY(900%);
   background-color: black;
   color: #e3e9f7;
   border-radius: 100%;
@@ -291,13 +252,13 @@ function deslogar() {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: 14px;
   transition: width 0.6s;
   height: 0px;
 }
 
 #sidebar.open-sidebar {
-  min-width: 15%;
+  min-width: 220px;
 }
 
 #sidebar.open-sidebar .item-description {
@@ -326,39 +287,42 @@ function deslogar() {
 @media (max-width: 768px) {
   #sidebar {
     position: fixed;
-    left: -100%;
+    left: 0;
     top: 0;
-    height: 100%;
-    transition: left 0.3s ease;
+    height: 100vh;
     z-index: 1000;
+    border-radius: 0px 18px 18px 0px;
+    min-width: 82px;
   }
 
   #sidebar.open-sidebar {
-    left: 0;
-    min-width: 70%;
+    min-width: 75%;
   }
 
-  #open_btn {
-    transition: left 0.5s ease;
-    position: fixed;
-    top: 20px;
-    left: 10px;
-    z-index: 1100;
-    background-color: #144575;
-    color: white;
-  }
-
-  #sidebar.open-sidebar #open_btn {
-    left: calc(70% - 20px);
+  .item-description {
+    font-size: 13px;
   }
 
   #sidebar_content {
-    padding-bottom: 60px; /* espaço para botão logout */
+    padding: 8px;
   }
 
-  #logout {
-    padding-bottom: 20px;
+  .side-item {
+    padding: 8px;
+  }
+
+  #user_infos span {
+    font-size: 12px;
+  }
+
+  #logo_user {
+    width: 40px;
+    height: 40px;
+  }
+
+  #logout_btn {
+    font-size: 14px;
+    padding: 8px;
   }
 }
-
 </style>

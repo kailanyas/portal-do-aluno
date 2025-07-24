@@ -264,4 +264,46 @@ const atributosDatas = ref([
   font-weight: bold;
   margin-top: 1.5rem !important;
 }
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+    height: auto;
+  }
+
+  .calendar-section {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    box-shadow: none;
+    border-radius: 10px;
+  }
+
+  .calendar-wrapper {
+    overflow-x: hidden;
+  }
+
+  .calendar-section :deep(.vc-container) {
+    font-size: 1rem;
+  }
+
+  .calendar-section :deep(.vc-title) {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .calendar-section :deep(.vc-weekday) {
+    font-size: 1rem;
+    margin-top: 1rem !important;
+  }
+
+  .calendar-section :deep(.vc-day-content) {
+    font-size: 1rem !important;
+  }
+
+  .calendar-section :deep(.vc-day) {
+    padding: 0.5rem;
+  }
+}
+
 </style>
