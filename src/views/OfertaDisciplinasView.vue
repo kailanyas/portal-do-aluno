@@ -236,7 +236,7 @@ function confirmarEnvio() {
                             </div>
                             
                             <div class="cardBody">
-                            <form class="filter-form" @submit.prevent="handleSearch">
+                            <form class="filter-form">
                                 
                                 <div class="form-row">
                                     <div class="form-group">
