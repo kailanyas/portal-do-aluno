@@ -3,7 +3,7 @@
     <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     <div class="content-area">
-      <HeaderC titulo="" />
+      <HeaderC titulo="Atividades Complementares" />
 
       <main class="main-content">
         <CardQuadrado class="form-card" maxWidth="200rem">

@@ -3,7 +3,7 @@
     <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     <div class="content-area">
-      <HeaderC titulo="" />
+      <HeaderC titulo="Colação de Grau/Diploma" />
 
       <main class="main-content">
         <CardQuadrado class="form-card">
