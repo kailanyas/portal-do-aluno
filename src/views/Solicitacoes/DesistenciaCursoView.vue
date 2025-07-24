@@ -3,7 +3,7 @@
     <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     <div class="content-area">
-      <HeaderC titulo="Solicitação de Desistência do Curso" />
+      <HeaderC titulo="Desistência do Curso" />
 
       <main class="main-content">
         <CardQuadrado class="form-card">
