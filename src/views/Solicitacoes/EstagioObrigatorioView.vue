@@ -3,7 +3,7 @@
     <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     <div class="content-area">
-      <HeaderC titulo="Solicitação de Estágio Obrigatório" />
+      <HeaderC titulo="Estágio Obrigatório" />
 
       <main class="main-content">
         <CardQuadrado class="form-card">

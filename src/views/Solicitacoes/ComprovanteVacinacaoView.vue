@@ -3,7 +3,7 @@
     <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
     <div class="content-area">
-      <HeaderC titulo="" />
+      <HeaderC titulo="Comprovante de Vacinação" />
 
       <main class="main-content">
         <CardQuadrado class="form-card">
