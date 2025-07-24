@@ -59,23 +59,15 @@ h1 {
   max-width: 100%;
 }
 
-
 .back-button {
- 
   grid-column: 1;
   justify-self: start; 
-  
- 
   background-color: white;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: none;
-  
- 
   color: #144575;
-
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +78,6 @@ h1 {
 .back-button:hover {
   background-color: #e9ecef;
 }
-
 
 .title {
   grid-column: 2; 
@@ -111,12 +102,10 @@ h1 {
   .header {
     padding: 0.8rem 1rem;
   }
-
-  
+ 
   .header-content {
     gap: 0.5rem; 
   }
-
 
   .title {
     font-size: 1.7rem; 
@@ -127,8 +116,7 @@ h1 {
   }
   
   .back-button {
-    width: 30px;
-    height: 30px;
+    display: none;
   }
 }
 </style>
