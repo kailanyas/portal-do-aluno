@@ -193,7 +193,7 @@ function confirmarEnvio() {
             <main class="main-content">
                 <div class="dropdown-view">
                     
-                    <Dropdown titulo="DISCIPLINAS OBRIGATÓRIAS DO PERÍODO" :abertoInicialmente="true">
+                    <Dropdown titulo="DISCIPLINAS OBRIGATÓRIAS DO PERÍODO" :abertoInicialmente="true" class="drop">
                         <div class="table-wrapper">
                             <table class="results-table">
                                 <thead>
@@ -227,7 +227,7 @@ function confirmarEnvio() {
                         </div>
                     </Dropdown>
 
-                    <Dropdown titulo="BUSCAR POR DISCIPLINAS EM OUTROS CURSOS">
+                    <Dropdown titulo="BUSCAR POR DISCIPLINAS EM OUTROS CURSOS"  class="drop">
                         <div class="card card-grande">
                             <div class="cardHeader">
                             <p>Selecione os filtros ou pesquise pelo código/nome da disciplina</p>
@@ -314,7 +314,7 @@ function confirmarEnvio() {
                             </div>
                     </Dropdown>
                     
-                    <Dropdown v-if="disciplinasAdicionadas.length > 0" titulo="CONFIRMAR DISCIPLINAS" :abertoInicialmente="true">
+                    <Dropdown v-if="disciplinasAdicionadas.length > 0" titulo="CONFIRMAR DISCIPLINAS" :abertoInicialmente="true"  class="drop">
                         <div class="solicitacao-final-container">
                             <ul class="lista-solicitacao">
                                 <li v-for="disciplina in disciplinasAdicionadas" :key="`cart-${disciplina.codigo}`">
@@ -327,7 +327,7 @@ function confirmarEnvio() {
                         </div>
                     </Dropdown>
 
-                    <Dropdown v-if="disciplinasAdicionadas.length > 0" titulo="GRADE DE HORÁRIOS PROVISÓRIA" :abertoInicialmente="true">
+                    <Dropdown v-if="disciplinasAdicionadas.length > 0" titulo="GRADE DE HORÁRIOS PROVISÓRIA" :abertoInicialmente="true"  class="drop">
                         <div class="grade-horario-wrapper">
                             <table class="grade-horario-table">
                                 <thead>
@@ -366,7 +366,6 @@ function confirmarEnvio() {
 
 <style scoped>
     :root {
-      /* Adicionando variáveis para cores, se não existirem globalmente */
       --border-color: #e2e8f0;
       --text-light: #4a5568;
       --text-dark: #1a202c;
@@ -379,12 +378,15 @@ function confirmarEnvio() {
     .content-area { display: flex; flex-direction: column; flex: 1; height: 100vh; overflow: hidden; }
     .main-content { flex: 1; overflow-y: auto; padding: 1rem; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; }
     .dropdown-view {
-        border-radius: 10px; 
-        background-color: #144575;
+        border-radius: 14px; 
+        background-color:  #f5f5f5;
         width: 100%; 
         max-width: 900px; 
     }
     
+    .drop {
+        background-color: #f5f5f5;
+    }
     .card-grande {
         background-color: #f5f5f5;
         width: 100%;
@@ -508,7 +510,7 @@ function confirmarEnvio() {
     .results-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
     .results-table th, .results-table td { padding: 0.8rem 1rem; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
     .results-table thead { border-bottom: 2px solid #cbd5e0; }
-    .results-table th { background-color: #f8fafc; font-weight: 600; color: #4a5568; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; }
+    .results-table th { background-color: #144575; font-weight: 600; color: white; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; }
     
     .btn-adicionar { background-color: #38a169; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s ease; white-space: nowrap; }
     .btn-adicionar:hover:not(:disabled) { background-color: #2f855a; }
@@ -526,15 +528,15 @@ function confirmarEnvio() {
     .btn-remover { background-color: #e53e3e; color: white; border: none; border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s ease; }
     .btn-remover:hover { background-color: #c53030; }
     
-    .solicitacao-final-actions { margin-top: 1.5rem; padding: 1rem; background-color: #144575; border-radius: 12px; text-align: center; }
+    .solicitacao-final-actions { margin-top: 1.5rem; padding: 1rem; background-color: #144575; border-radius: 0 0 12px; text-align: center; }
     .btn-solicitar-final { width: 100%; max-width: 400px; padding: 1rem; font-size: 1.2rem; font-weight: 700; background-color: #38a169; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.2s ease; }
     .btn-solicitar-final:hover { background-color: #2f855a; }
     
     .grade-horario-wrapper { padding: 1rem; overflow-x: auto; background-color: #f5f5f5;}
     .grade-horario-table { width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; table-layout: fixed; }
     .grade-horario-table th, .grade-horario-table td { border: 1px solid #e2e8f0; padding: 0.5rem; text-align: center; height: 80px; }
-    .grade-horario-table th { background-color: #f8fafc; font-weight: 600; color: #4a5568; font-size: 0.9rem; }
-    .grade-horario-table td { vertical-align: top; font-size: 0.85rem; }
+    .grade-horario-table th { background-color: #144575; font-weight: 600; color: white; font-size: 0.9rem; }
+    .grade-horario-table td { vertical-align: top; font-size: 0.85rem; background-color: white; }
     
     .disciplina-cell { background-color: #e3eefc; border-radius: 8px; padding: 0.5rem; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05); color: #3c5a7b; overflow: hidden; }
     .disciplina-cell strong { font-size: 0.9rem; display: block; margin-bottom: 0.25rem; }
