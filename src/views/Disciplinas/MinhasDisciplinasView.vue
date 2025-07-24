@@ -183,8 +183,7 @@ function abrirLink(titulo, caminho) {
 
 .dropdown {
   width: 100%;
-  /* REMOVIDO: overflow-y: auto; */
-  /* REMOVIDO: max-height: 100%; */
+  background-color: white;
 }
 
 .dropdown :deep(.dropdown-header) {
