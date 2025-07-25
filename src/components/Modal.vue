@@ -2,8 +2,13 @@
 import { ref } from 'vue'
 import Swal from 'sweetalert2'
 
-// Reativo para controlar a visibilidade do modal
+
 const isModalOpen = ref(false)
+
+
+const avaliacao = ref({
+  q1: 5, q2: 5, q3: 5, q4: 5, q5: 5, q6: 5, q7: 5, q8: 5, q9: 5
+});
 
 function openModal() {
   isModalOpen.value = true
@@ -14,6 +19,9 @@ function closeModal() {
 }
 
 function submitEvaluation() {
+  
+  console.log('Notas da avaliação:', avaliacao.value);
+
   Swal.fire({
     title: 'Avaliação enviada com sucesso!',
     text: 'Obrigado por sua participação.',
@@ -70,39 +78,57 @@ function confirmarEnvio() {
           <form @submit.prevent="confirmarEnvio" class="evaluation-form">
             <div class="form-group">
               <label for="q1">1. Apresentou e discutiu o programa da disciplina (objetivos, estratégias, conteúdos, recursos, etc.)</label>
-              <select id="q1" name="q1"><option value="5" selected>5</option></select>
+              <select id="q1" v-model="avaliacao.q1">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="q2">2. Utilizou metodologia e recursos de ensino motivadores e condizentes com os objetivos e conteúdos propostos</label>
-              <select id="q2" name="q2"><option value="5" selected>5</option></select>
+              <select id="q2" v-model="avaliacao.q2">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="q3">3. Estabeleceu conexão entre os conteúdos teóricos e as práticas profissionais ou com o contexto social concreto</label>
-              <select id="q3" name="q3"><option value="5" selected>5</option></select>
+              <select id="q3" v-model="avaliacao.q3">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="q4">4. Demonstrou disponibilidade para atendimento individual ao aluno</label>
-              <select id="q4" name="q4"><option value="5" selected>5</option></select>
+              <select id="q4" v-model="avaliacao.q4">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="q5">5. Foi pontual, assíduo e cumpriu a carga horária prevista para a disciplina</label>
-              <select id="q5" name="q5"><option value="5" selected>5</option></select>
+              <select id="q5" v-model="avaliacao.q5">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="q6">6. Demonstrou disponibilidade para atendimento individual ao aluno</label>
-              <select id="q6" name="q6"><option value="5" selected>5</option></select>
+              <select id="q6" v-model="avaliacao.q6">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="q7">7. Elabora avaliações compatíveis e coerentes com o conteúdo desenvolvido, discute e analisa os resultados com os alunos</label>
-              <select id="q7" name="q7"><option value="5" selected>5</option></select>
+              <select id="q7" v-model="avaliacao.q7">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="q8">8. Promoveu ambiente de aprendizagem com predomínio do respeito mútuo e interação</label>
-              <select id="q8" name="q8"><option value="5" selected>5</option></select>
+              <select id="q8" v-model="avaliacao.q8">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="q9">9. Em resumo, em que medida o professor contribuiu para a aquisição de seus conhecimentos na disciplina ministrada</label>
-              <select id="q9" name="q9"><option value="5" selected>5</option></select>
+              <select id="q9" v-model="avaliacao.q9">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
             
             <div class="form-buttons">
@@ -117,11 +143,7 @@ function confirmarEnvio() {
 </template>
 
 <style scoped>
-/* --- Estilos Globais do Componente --- */
-/* Seu CSS pode continuar quase o mesmo. Apenas uma pequena adaptação é necessária. */
 
-/* --- Lógica e Estilo do Modal --- */
-/* Removemos o seletor do checkbox e as propriedades de visibilidade iniciais */
 .modal {
   position: fixed;
   top: 0;
@@ -136,8 +158,6 @@ function confirmarEnvio() {
   padding: 15px;
   z-index: 1000;
 }
-
-/* As animações agora são controladas por classes do <Transition> */
 .modal-fade-enter-active,
 .modal-fade-leave-active {
   transition: opacity 0.3s ease;
@@ -146,19 +166,14 @@ function confirmarEnvio() {
 .modal-fade-leave-active .modal-content {
   transition: transform 0.3s ease;
 }
-
 .modal-fade-enter-from,
 .modal-fade-leave-to {
   opacity: 0;
 }
-
 .modal-fade-enter-from .modal-content,
 .modal-fade-leave-to .modal-content {
   transform: translateY(20px);
 }
-
-
-/* O restante do seu CSS pode permanecer o mesmo */
 .modal-content {
   background-color: #ffffff;
   padding: 2rem;
@@ -173,33 +188,27 @@ function confirmarEnvio() {
   text-align: center;
   margin-bottom: 1.5rem;
 }
-
 .modal-header h2 {
     margin: 0 0 0.5rem 0;
     color: #1a202c;
     font-size: 1.75rem;
 }
-
 .modal-header p {
     margin: 0;
     color: #4a5568;
     font-size: 1rem;
 }
-
-/* --- Barra de Notas e Legenda --- */
 .evaluation-scale {
     margin-bottom: 2rem;
 }
-
 .barra {
     display: flex;
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    background-color: #0d47a1; /* Cor do último item para evitar falhas de pixel */
+    background-color: #0d47a1;
 }
-
 .item {
     flex: 1;
     padding: 0.75rem 0;
@@ -214,7 +223,6 @@ function confirmarEnvio() {
     filter: brightness(1.1);
     z-index: 2;
 }
-
 .legenda {
     display: flex;
     justify-content: space-between;
@@ -223,8 +231,6 @@ function confirmarEnvio() {
     color: #718096;
     font-weight: 500;
 }
-
-/* --- Cores da Barra (Vermelho -> Azul) --- */
 .item:nth-child(1) { background-color: #ef5350; }
 .item:nth-child(2) { background-color: #f78c5a; }
 .item:nth-child(3) { background-color: #ffc107; }
@@ -235,8 +241,6 @@ function confirmarEnvio() {
 .item:nth-child(8) { background-color: #2e7d32; }
 .item:nth-child(9) { background-color: #1b5e20; }
 .item:nth-child(10) { background-color: #0d47a1; }
-
-/* --- Formulário de Avaliação --- */
 .form-group {
     display: flex;
     align-items: center;
@@ -247,13 +251,11 @@ function confirmarEnvio() {
 .form-group:last-of-type {
     border-bottom: none;
 }
-
 .form-group label {
     flex: 1;
     color: #2d3748;
     font-weight: 500;
 }
-
 .form-group input,
 .form-group select {
     flex-basis: 85px;
@@ -265,18 +267,15 @@ function confirmarEnvio() {
     text-align: center;
     font-size: 1rem;
     font-weight: 700;
-    background-color: #fff; /* Garante fundo branco para o select */
+    background-color: #fff;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-
 .form-group input:focus, .form-group input:focus-visible,
 .form-group select:focus, .form-group select:focus-visible {
     outline: none;
     border-color: #4299e1;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
 }
-
-/* --- Botões de Abrir e de Ação --- */
 .btn-open, .btn {
     display: inline-flex;
     align-items: center;
@@ -290,7 +289,6 @@ function confirmarEnvio() {
     transition: all 0.2s ease;
     text-decoration: none;
 }
-
 .btn-open {
     margin: 6px;
     font-size: 0.8rem;
@@ -306,7 +304,6 @@ function confirmarEnvio() {
 .btn-open:hover {
    background-color: #5A82AA;
 }
-
 .form-buttons {
     display: flex;
     justify-content: flex-end;
@@ -315,7 +312,6 @@ function confirmarEnvio() {
     padding-top: 1.5rem;
     border-top: 1px solid #e2e8f0;
 }
-
 .btn-cancel {
     background-color: #edf2f7;
     color: #4a5568;
@@ -324,7 +320,6 @@ function confirmarEnvio() {
 .btn-cancel:hover {
     background-color: #e2e8f0;
 }
-
 .btn-submit {
     background-color: #38a169;
     color: white;
@@ -332,39 +327,30 @@ function confirmarEnvio() {
 .btn-submit:hover {
     background-color: #2f855a;
 }
-
-/* =============================================== */
-/* ---             RESPONSIVIDADE                --- */
-/* =============================================== */
 @media (max-width: 768px) {
     .modal-content {
         padding: 1.5rem;
     }
-
     .modal-header h2 {
         font-size: 1.5rem;
     }
     .modal-header p {
         font-size: 0.9rem;
     }
-
     .form-group {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
         padding: 1rem 0;
     }
-
-    /* ATUALIZADO para incluir 'select' na responsividade */
     .form-group input,
     .form-group select {
         width: 100%;
         text-align: left;
         padding: 0.75rem;
     }
-    
     .form-buttons {
-        flex-direction: column-reverse; /* Botão principal fica por cima */
+        flex-direction: column-reverse;
         gap: 0.75rem;
     }
     .btn {
