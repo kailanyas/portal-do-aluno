@@ -71,7 +71,11 @@
         </li>
       </ul>
       <button @click="toggleSideBar" id="open_btn">
-        <i id="open_btn_icon" class="fa-solid" :class="isOpen ? 'fa-chevron-left' : 'fa-chevron-right'"></i>
+        <i
+          id="open_btn_icon"
+          class="fa-solid"
+          :class="isOpen ? 'fa-chevron-left' : 'fa-chevron-right'"
+        ></i>
       </button>
     </div>
     <div id="logout" @click.stop>
@@ -136,9 +140,11 @@ function deslogar() {
   cursor: pointer;
 }
 
+
 #sidebar_content {
   padding: 12px;
-  cursor: default;
+   cursor: default;
+  
 }
 
 #user {
@@ -212,7 +218,7 @@ function deslogar() {
 #logout {
   border-top: 1px solid #e3e9f7;
   padding: 12px;
-  cursor: default;
+   cursor: default;
 }
 
 #logout_btn {
@@ -252,13 +258,13 @@ function deslogar() {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 14px;
+  font-size: 16px;
   transition: width 0.6s;
   height: 0px;
 }
 
 #sidebar.open-sidebar {
-  min-width: 220px;
+  min-width: 15%;
 }
 
 #sidebar.open-sidebar .item-description {
@@ -287,42 +293,40 @@ function deslogar() {
 @media (max-width: 768px) {
   #sidebar {
     position: fixed;
-    left: 0;
+    left: -100%;
     top: 0;
-    height: 100vh;
+    height: 100%;
+    transition: left 0.3s ease;
     z-index: 1000;
-    border-radius: 0px 18px 18px 0px;
-    min-width: 82px;
   }
 
   #sidebar.open-sidebar {
-    min-width: 75%;
+    left: 0;
+    min-width: 70%;
   }
 
-  .item-description {
-    font-size: 13px;
+  #open_btn {
+    transform: translateY(000%);
+    transition: left 0.5s ease;
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 1100;
+    color: white;
+  }
+
+  #sidebar.open-sidebar #open_btn {
+    left: calc(70% - 20px);
   }
 
   #sidebar_content {
-    padding: 8px;
+    padding-bottom: 60px; 
   }
 
-  .side-item {
-    padding: 8px;
-  }
-
-  #user_infos span {
-    font-size: 12px;
-  }
-
-  #logo_user {
-    width: 40px;
-    height: 40px;
-  }
-
-  #logout_btn {
-    font-size: 14px;
-    padding: 8px;
+  #logout {
+    padding-bottom: 20px;
   }
 }
+
+
 </style>
