@@ -13,15 +13,13 @@ function toggleSidebar() {
 }
 
 const disciplinasAdicionadas = ref([]);
-
 const disciplinasPeriodo = ref([
     { codigo: 'CIC401', nome: 'Computação Gráfica', vagas: 40, status: 'Disponível', horarios: [{ dia: "Segunda", hora: "08:00 - 10:00" }, { dia: "Quarta", hora: "08:00 - 10:00" }], departamento: 'Computação' },
     { codigo: 'CIC402', nome: 'Compiladores', vagas: 40, status: 'Disponível', horarios: [{ dia: "Terça", hora: "10:00 - 12:00" }, { dia: "Quinta", hora: "10:00 - 12:00" }], departamento: 'Computação' },
     { codigo: 'CIC403', nome: 'Inteligência Artificial', vagas: 35, status: 'Disponível', horarios: [{ dia: "Terça", hora: "14:00 - 16:00" }, { dia: "Quinta", hora: "14:00 - 16:00" }], departamento: 'Computação' },
     { codigo: 'CIC404', nome: 'TCC I', vagas: 0, status: 'Lotada', horarios: [{ dia: "Sexta", hora: "08:00 - 10:00" }, { dia: "Sexta", hora: "10:00 - 12:00" }], departamento: 'Computação' },
-    { codigo: 'CIC405', nome: 'Redes de Computadores', vagas: 20, status: 'Disponível', horarios: [{ dia: "Segunda", hora: "08:00 - 10:00" }, { dia: "Quarta", hora: "10:00 - 12:00" }], departamento: 'Computação' } // Conflito com CIC401
+    { codigo: 'CIC405', nome: 'Redes de Computadores', vagas: 20, status: 'Disponível', horarios: [{ dia: "Segunda", hora: "08:00 - 10:00" }, { dia: "Quarta", hora: "10:00 - 12:00" }], departamento: 'Computação' }
 ]);
-
 const todasAsDisciplinas = ref([
     ...disciplinasPeriodo.value,
     { codigo: 'MAT001', nome: 'Cálculo I', vagas: 10, status: 'Disponível', horarios: [{ dia: "Segunda", hora: "10:00 - 12:00" }, { dia: "Quarta", hora: "10:00 - 12:00" }], departamento: 'Matemática' },
@@ -32,116 +30,51 @@ const todasAsDisciplinas = ref([
     { codigo: 'BIO203', nome: 'Parasitologia', vagas: 30, status: 'Disponível', horarios: [{ dia: "Sexta", hora: "08:00 - 10:00" }], departamento: 'Biologia' },
     { codigo: 'FIS202', nome: 'Física Moderna', vagas: 3, status: 'Disponível', horarios: [{ dia: "Segunda", hora: "14:00 - 16:00" }, { dia: "Sexta", hora: "14:00 - 16:00" }], departamento: 'Física' }
 ]);
-
-
 const data = {
-    Computação: [
-        { value: 'CIC401', text: 'Computação Gráfica' },
-        { value: 'CIC402', text: 'Compiladores' },
-    ],
-    Matemática: [
-        { value: 'MAT001', text: 'Cálculo I' },
-        { value: 'MAT005', text: 'Algebra Linear' },
-        { value: 'MAT002', text: 'Matemática Básica' }
-    ],
-    Biologia: [
-        { value: 'BIO101', text: 'Introdução a Biologia' },
-        { value: 'BIO102', text: 'Biologia Orgânica' },
-        { value: 'BIO203', text: 'Parasitologia' }
-    ]
+    Computação: [ { value: 'CIC401', text: 'Computação Gráfica' }, { value: 'CIC402', text: 'Compiladores' } ],
+    Matemática: [ { value: 'MAT001', text: 'Cálculo I' }, { value: 'MAT005', text: 'Algebra Linear' }, { value: 'MAT002', text: 'Matemática Básica' } ],
+    Biologia: [ { value: 'BIO101', text: 'Introdução a Biologia' }, { value: 'BIO102', text: 'Biologia Orgânica' }, { value: 'BIO203', text: 'Parasitologia' } ]
 };
-
 const selectedCategory = ref('');
 const selectedItem = ref('');
 const subOptions = ref([]);
 const searchTerm = ref('');
 const showResults = ref(false);
 const searchResults = ref([]);
+watch(selectedCategory, (newCategory) => { selectedItem.value = ''; subOptions.value = data[newCategory] || []; });
 
-// --- LÓGICA DA GRADE DE HORÁRIOS (AGORA PARA DISPLAY) ---
-const diasDaSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
-const intervalosDeTempo = ["08:00 - 10:00", "10:00 - 12:00", "14:00 - 16:00", "16:00 - 18:00"];
-
-const gradeHorarioDisplay = computed(() => {
-    const grade = {};
-    intervalosDeTempo.forEach(intervalo => {
-        grade[intervalo] = {};
-        diasDaSemana.forEach(dia => {
-            grade[intervalo][dia] = null;
-        });
+function handleDownload() {
+  if (selectedCategory.value === 'Matemática' && selectedItem.value === 'MAT005') {
+    const link = document.createElement('a');
+    link.href = '/pdf/RelatórioOferta-Matematica.pdf'; 
+    link.setAttribute('download', 'Ementa_Algebra_Linear.pdf');
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } else {
+    Swal.fire({
+      title: 'Seleção Inválida',
+      text: 'A ementa em PDF está disponível apenas para a seleção de "Departamento: Matemática" e "Disciplina: Algebra Linear".',
+      icon: 'warning',
+      confirmButtonColor: '#144575',
+      confirmButtonText: 'Entendi'
     });
-    disciplinasAdicionadas.value.forEach(disciplina => {
-        disciplina.horarios.forEach(h => {
-            if (grade[h.hora] && grade[h.hora][h.dia] === null) {
-                grade[h.hora][h.dia] = disciplina;
-            }
-        });
-    });
-    return grade;
-});
-
-// --- FUNÇÕES DE MANIPULAÇÃO E VALIDAÇÃO ---
-function verificarConflito(novaDisciplina) {
-    for (const disciplinaAdicionada of disciplinasAdicionadas.value) {
-        for (const horarioAdicionado of disciplinaAdicionada.horarios) {
-            for (const horarioNovo of novaDisciplina.horarios) {
-                if (horarioAdicionado.dia === horarioNovo.dia && horarioAdicionado.hora === horarioNovo.hora) {
-                    return disciplinaAdicionada;
-                }
-            }
-        }
-    }
-    return null;
+  }
 }
 
-function adicionarMateria(materia) {
-    if (isAdicionada(materia.codigo)) {
-        alert(`A disciplina ${materia.nome} já foi adicionada.`);
-        return;
-    }
-    const conflito = verificarConflito(materia);
-    if (conflito) {
-        alert(`Conflito de Horário! A disciplina "${materia.nome}" choca com "${conflito.nome}" que já foi adicionada.`);
-        return;
-    }
-    disciplinasAdicionadas.value.push(materia);
-}
-
-function removerMateria(codigo) {
-    disciplinasAdicionadas.value = disciplinasAdicionadas.value.filter(
-        (disciplina) => disciplina.codigo !== codigo
-    );
-}
-
-function isAdicionada(codigo) {
-    return disciplinasAdicionadas.value.some(disciplina => disciplina.codigo === codigo);
-}
-
-watch(selectedCategory, (newCategory) => {
-    selectedItem.value = '';
-    subOptions.value = data[newCategory] || [];
-});
-
-// *** CORREÇÃO: Lógica de busca funcional ***
 function handleSearch() {
     if (!selectedCategory.value && !selectedItem.value && !searchTerm.value) {
         alert('Por favor, selecione um filtro ou digite um termo na busca.');
         return;
     }
-
     let resultadosFiltrados = todasAsDisciplinas.value;
-
-    // 1. Filtra por Departamento (categoria)
     if (selectedCategory.value) {
         resultadosFiltrados = resultadosFiltrados.filter(d => d.departamento === selectedCategory.value);
     }
-    
-    // 2. Filtra por Disciplina específica (item selecionado no segundo dropdown)
     if (selectedItem.value) {
         resultadosFiltrados = resultadosFiltrados.filter(d => d.codigo === selectedItem.value);
     }
-
-    // 3. Filtra pelo termo de busca (no nome ou código da disciplina)
     if (searchTerm.value) {
         const termo = searchTerm.value.toLowerCase();
         resultadosFiltrados = resultadosFiltrados.filter(d =>
@@ -149,39 +82,25 @@ function handleSearch() {
             d.codigo.toLowerCase().includes(termo)
         );
     }
-
     searchResults.value = resultadosFiltrados;
     showResults.value = true;
 }
 
-function submitEvaluation() {
-  Swal.fire({
-    title: 'Solicitação de matrícula enviada com sucesso!',
-    text: 'Obrigado por sua participação.',
-    icon: 'success',
-    confirmButtonColor: '#144575',
-    confirmButtonText: 'OK',
-    width: '500px'
-  }).then(() => {
-    closeModal()
-  })
-}
-
 function confirmarEnvio() {
-  Swal.fire({
-    title: 'Tem certeza que deseja enviar a solicitação de matrícula?',
-    icon: 'question',
-    showCancelButton: true,
-    confirmButtonColor: '#144575',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Sim',
-    cancelButtonText: 'Cancelar',
-    width: '500px'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      submitEvaluation()
-    }
-  })
+    Swal.fire({
+        title: 'Tem certeza que deseja enviar a solicitação de matrícula?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#144575',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Cancelar',
+        width: '500px'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            submitEvaluation()
+        }
+    })
 }
 </script>
 
@@ -192,7 +111,6 @@ function confirmarEnvio() {
             <HeaderC titulo="Oferta de Disciplinas"/>
             <main class="main-content">
                 <div class="dropdown-view">
-                    
                     <Dropdown titulo="OFERTAS DISCIPLINAS 2025/1" :abertoInicialmente="true" class="drop">
                         <div class="table-wrapper">
                             <table class="results-table">
@@ -209,8 +127,8 @@ function confirmarEnvio() {
                                         <td data-label="Departamento">Computação</td>
                                         <td data-label="Ação">
                                             <button 
-                                              class="btn-adicionar">
-                                               Baixar
+                                                class="btn-adicionar">
+                                                Baixar
                                             </button>
                                         </td>
                                     </tr>
@@ -219,8 +137,8 @@ function confirmarEnvio() {
                                         <td data-label="Disciplina">Computação</td>
                                         <td data-label="Ação">
                                             <button 
-                                              class="btn-adicionar">
-                                               Baixar
+                                                class="btn-adicionar">
+                                                Baixar
                                             </button>
                                         </td>
                                     </tr>
@@ -232,40 +150,39 @@ function confirmarEnvio() {
                     <Dropdown titulo="BUSCAR OFERTAS DE DISCIPLINAS DE OUTROS CURSOS"  class="drop">
                         <div class="card card-grande">
                             <div class="cardHeader">
-                            <p>Selecione os filtros ou pesquise pelo código/nome da disciplina</p>
+                                <p>Selecione os filtros ou pesquise pelo código/nome da disciplina</p>
                             </div>
                             
                             <div class="cardBody">
-                            <form class="filter-form">
-                                
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="category-select">Departamento</label>
-                                        <select id="category-select" v-model="selectedCategory">
-                                            <option disabled value="">Selecione um departamento...</option>
-                                            <option value="Computação">Departamento Computação</option>
-                                            <option value="Matemática">Departamento Matemática</option>
-                                            <option value="Biologia">Departamento Biologia</option>
-                                        </select>
+                                <form class="filter-form" @submit.prevent>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="category-select">Departamento</label>
+                                            <select id="category-select" v-model="selectedCategory">
+                                                <option disabled value="">Selecione um departamento...</option>
+                                                <option value="Computação">Departamento Computação</option>
+                                                <option value="Matemática">Departamento Matemática</option>
+                                                <option value="Biologia">Departamento Biologia</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="item-select">Disciplina</label>
+                                            <select id="item-select" v-model="selectedItem" :disabled="!selectedCategory">
+                                                <option disabled value="">Selecione uma disciplina...</option>
+                                                <option v-for="option in subOptions" :key="option.value" :value="option.value">
+                                                    {{ option.text }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-button">
+                                            <button id="botaoBaixar" type="button" @click="handleDownload">Baixar</button>
+                                        </div>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="item-select">Disciplina</label>
-                                        <select id="item-select" v-model="selectedItem" :disabled="!selectedCategory">
-                                        <option disabled value="">Selecione uma disciplina...</option>
-                                        <option v-for="option in subOptions" :key="option.value" :value="option.value">
-                                            {{ option.text }}
-                                        </option>
-                                        </select>
-                                    </div>
-                                    <div class="form-button">
-                                        <button id="botaoBaixar" type="submit">Baixar</button>
-                                    </div>
-                                </div>
-                                    
-                                <div class="form-group">
-                                    <label for="search-input">Pesquisar por Código ou Nome</label>
-                                    <div class="search-bar">
+                                        <label for="search-input">Pesquisar por Código ou Nome</label>
+                                        <div class="search-bar">
                                             <input 
                                                 type="text" 
                                                 id="search-input" 
@@ -274,9 +191,9 @@ function confirmarEnvio() {
                                                 @keyup.enter="handleSearch"
                                             >
                                             <button id="botaoBuscaTexto" type="button" @click="handleSearch">Buscar</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
                             </div>
 
                             <div v-if="showResults" class="search-results-container">
@@ -297,7 +214,7 @@ function confirmarEnvio() {
                                                 <td data-label="Disciplina">{{ disciplina.nome }}</td>
                                                 <td data-label="Vagas">
                                                     <span :class="['status-badge', disciplina.status === 'Disponível' ? 'status-disponivel' : 'status-lotada']">
-                                                     {{ disciplina.status === 'Disponível' ? `${disciplina.vagas} Vagas` : 'Lotada' }}
+                                                      {{ disciplina.status === 'Disponível' ? `${disciplina.vagas} Vagas` : 'Lotada' }}
                                                     </span>
                                                 </td>
                                                 <td data-label="Ação">
@@ -312,7 +229,7 @@ function confirmarEnvio() {
                                     </table>
                                 </div>
                             </div>
-                            </div>
+                        </div>
                     </Dropdown>
                 </div>
             </main>
@@ -321,15 +238,14 @@ function confirmarEnvio() {
     </div>
 </template>
 
-
 <style scoped>
     :root {
-      --border-color: #e2e8f0;
-      --text-light: #4a5568;
-      --text-dark: #1a202c;
-      --form-bg: #fff;
-      --form-border: #cbd5e0;
-      --accent-blue: #5A82AA;
+        --border-color: #e2e8f0;
+        --text-light: #4a5568;
+        --text-dark: #1a202c;
+        --form-bg: #fff;
+        --form-border: #cbd5e0;
+        --accent-blue: #5A82AA;
     }
 
     .layout-container { display: flex; height: 100vh; width: 100vw; }
@@ -421,7 +337,7 @@ function confirmarEnvio() {
         border-radius: 8px;
         background-color: #fff;
         transition: border-color 0.2s ease;
-        box-sizing: border-box; /* Garante que padding não afete a largura total */
+        box-sizing: border-box;
     }
     .form-group select:focus,
     .form-group input:focus {
