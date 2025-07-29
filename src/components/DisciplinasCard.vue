@@ -19,7 +19,7 @@
         <h3>Ementas Disciplinas</h3>
       </div>
       <p class="card-explanation">
-        Confira seus dados cadastrais para a colação de grau e emissão do Diploma Digital, evitando taxas futuras.
+        Confira sua ementa disciplinar.
       </p>
       <ul class="event-items">
         <li class="event-item">
@@ -33,7 +33,7 @@
         <h3>Minhas Disciplinas</h3>
       </div>
       <p class="card-explanation">
-        Envie e acompanhe o status do seu comprovante de vacinação para registro acadêmico.
+        Acompanhe suas disciplinas.
       </p>
       <ul class="event-items">
         <li class="event-item">
@@ -47,7 +47,7 @@
         <h3>Programa de Disciplina</h3>
       </div>
       <p class="card-explanation">
-        Envie e acompanhe o status do seu comprovante de vacinação para registro acadêmico.
+        Veja o programa de disciplinas.
       </p>
       <ul class="event-items">
         <li class="event-item">
