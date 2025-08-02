@@ -25,7 +25,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button"  @click="abrirLink('Ementas Disciplinas', '')">Baixar</button>
+      <button class="card-button" @click="$emit('abrirEmentaModal')">Acessar</button>
     </div>
 
     <div class="card">
@@ -39,7 +39,7 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button"  @click="navigateTo('MinhasDisciplinas')">Acessar</button>
+      <button class="card-button" @click="navigateTo('MinhasDisciplinas')">Acessar</button>
     </div>
 
     <div class="card">
@@ -53,14 +53,13 @@
         <li class="event-item">
           </li>
       </ul>
-      <button class="card-button"  @click="navigateTo('ProgramaDeDisciplina')">Acessar</button>
+      <button class="card-button" @click="navigateTo('ProgramaDeDisciplina')">Acessar</button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router';
-import Swal from 'sweetalert2'
 
 const router = useRouter();
 
@@ -68,25 +67,11 @@ const navigateTo = (routeName) => {
   router.push({ name: routeName });
 };
 
-function abrirLink(titulo, caminho) {
-        Swal.fire({
-            title: `Você deseja abrir o arquivo "${titulo}?"`,
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#144575',
-		    cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim',
-            cancelButtonText: 'Cancelar',
-            width: '500px'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.open(caminho, '_blank', 'noopener')
-            }
-        })
-}
+
 </script>
 
 <style scoped>
+
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -112,7 +97,7 @@ function abrirLink(titulo, caminho) {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Alterado para space-between para alinhamento adequado */
+  justify-content: space-between;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -124,14 +109,13 @@ function abrirLink(titulo, caminho) {
   text-align: center;
 }
 
-/* Novo estilo para o texto explicativo */
 .card-explanation {
   font-size: 0.9em;
   color: #666;
   text-align: center;
-  margin-bottom: 1rem; /* Espaço entre a explicação e a lista/botão */
-  flex-grow: 1; /* Permite que o texto ocupe o espaço disponível */
-  display: flex; /* Para centralizar o texto verticalmente se for curto */
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -162,9 +146,8 @@ function abrirLink(titulo, caminho) {
   font-style: normal;
 }
 
-/* Novo estilo para o botão Acessar */
 .card-button {
-  background-color: #144575; /* Cor azul */
+  background-color: #144575;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -173,16 +156,15 @@ function abrirLink(titulo, caminho) {
   font-weight: bold;
   font-size: 1em;
   transition: background-color 0.2s ease;
-  width: 80%; /* Botão ocupa 80% da largura do card */
-  margin: 0.75rem auto 0; /* Centraliza o botão e adiciona margem superior */
-  display: block; /* Garante que margin auto funcione horizontalmente */
+  width: 80%;
+  margin: 0.75rem auto 0;
+  display: block;
 }
 
 .card-button:hover {
-  background-color: #103a60; /* Azul mais escuro ao passar o mouse */
+  background-color: #103a60;
 }
 
-/* Media Queries para responsividade */
 @media (max-width: 1200px) {
   .cards-container {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
