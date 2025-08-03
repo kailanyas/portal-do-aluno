@@ -74,7 +74,7 @@ const disciplinasData = {
       bibliografiaComplementar: ['Date, C. J. - Introdução a Sistemas de Bancos de Dados']
     }
   },
-   'Engenharia de Software': {
+    'Engenharia de Software': {
     diario: { tipo: 'diario', codigo: 'COM67890', cargaHoraria: 60, creditos: 3, docente: 'Clayton Fraga', turma: 'CC1', objetivos: ['Entender o ciclo de vida de software', 'Aplicar metodologias ágeis'], ementa: 'Introdução à Engenharia de Software. Processos de software...', aulas: [{ data: '05/08/2025', conteudo: 'Introdução e Processos de Software', horas: 2, faltas: 0 }] },
     programa: { tipo: 'programa', codigo: 'COM67890', disciplina: 'ENGENHARIA DE SOFTWARE', cargaHoraria: 60, creditos: 3, preRequisitos: ['COM10394 - BANCO DE DADOS'], docente: { nome: 'Clayton Fraga', lattes: 'lattes.cnpq.br/112233445' }, ementa: 'Introdução à Engenharia de Software. Processos de software (cascata, ágil, Scrum). Engenharia de requisitos...', objetivos: 'Apresentar os principais conceitos e práticas da Engenharia de Software para o desenvolvimento de sistemas de qualidade.', conteudo: [{ titulo: 'Processos de Software', carga: 10 }, { titulo: 'Engenharia de Requisitos', carga: 20 }, { titulo: 'Modelagem com UML', carga: 20 }, { titulo: 'Testes de Software', carga: 10 }], metodologia: 'Aulas expositivas e desenvolvimento de um projeto em grupo simulando um ambiente real.', avaliacao: 'Avaliações baseadas nas entregas do projeto (50%) e uma prova final (50%).', bibliografiaBasica: ['Pressman & Maxim - Engenharia de Software: Uma Abordagem Profissional'], bibliografiaComplementar: ['Sommerville, I. - Engenharia de Software'] }
   },
@@ -83,6 +83,16 @@ const disciplinasData = {
     programa: { tipo: 'programa', codigo: 'COM09876', disciplina: 'REDES DE COMPUTADORES', cargaHoraria: 60, creditos: 4, preRequisitos: ['Sistemas Operacionais'], docente: { nome: 'Helder Amorim', lattes: 'lattes.cnpq.br/554433221' }, ementa: 'Conceitos básicos de redes de computadores. Modelo de referência OSI e TCP/IP. Camadas Física, de Enlace, de Rede, de Transporte e de Aplicação...', objetivos: 'Estudar a arquitetura e os protocolos utilizados nas redes de computadores, com foco no modelo TCP/IP.', conteudo: [{ titulo: 'Camadas de Aplicação e Transporte', carga: 15 }, { titulo: 'Camada de Rede', carga: 20 }, { titulo: 'Camada de Enlace e Redes Locais', carga: 15 }, { titulo: 'Segurança de Redes', carga: 10 }], metodologia: 'Aulas teóricas e práticas com simuladores de rede (Packet Tracer).', avaliacao: 'Duas provas (P1, P2) e trabalhos práticos em simulador. Média = (P1+P2)/2 * 0.7 + Média_Trabalhos * 0.3.', bibliografiaBasica: ['Kurose & Ross - Redes de Computadores e a Internet'], bibliografiaComplementar: ['Tanenbaum & Wetherall - Redes de Computadores'] }
   }
 };
+
+
+function calcularTotalFaltas(nomeDisciplina) {
+  const disciplina = disciplinasData[nomeDisciplina];
+  if (!disciplina?.diario?.aulas) {
+    return 0; 
+  }
+  
+  return disciplina.diario.aulas.reduce((total, aula) => total + aula.faltas, 0);
+}
 
 function openModal(nomeDisciplina, tipoConteudo) {
   const data = disciplinasData[nomeDisciplina];
@@ -125,7 +135,7 @@ function baixarConteudo() {
                 <p><strong>Professor:</strong> Giuliano Prado</p>
                 <p><strong>Departamento:</strong> Computação</p>
                 <p><strong>Turma:</strong> CC1</p>
-                <p><strong>Período:</strong> 2025/1</p>
+                <p><strong>Faltas:</strong> {{ calcularTotalFaltas('Desenvolvimento Web') }}h</p>
               </div>
               <div class="cardFooter">
                 <Modal />
@@ -140,7 +150,7 @@ function baixarConteudo() {
                 <p><strong>Professor:</strong> Antônio Almeida</p>
                 <p><strong>Departamento:</strong> Computação</p>
                 <p><strong>Turma:</strong> CC1</p>
-                <p><strong>Período:</strong> 2025/1</p>
+                <p><strong>Faltas:</strong> {{ calcularTotalFaltas('Banco de Dados') }}h</p>
               </div>
               <div class="cardFooter">
                 <Modal />
@@ -155,7 +165,7 @@ function baixarConteudo() {
                 <p><strong>Professor:</strong> Clayton Fraga</p>
                 <p><strong>Departamento:</strong> Computação</p>
                 <p><strong>Turma:</strong> CC1</p>
-                <p><strong>Período:</strong> 2025/1</p>
+                <p><strong>Faltas:</strong> {{ calcularTotalFaltas('Engenharia de Software') }}h</p>
               </div>
               <div class="cardFooter">
                 <Modal />
@@ -170,7 +180,7 @@ function baixarConteudo() {
                 <p><strong>Professor:</strong> Helder Amorim</p>
                 <p><strong>Departamento:</strong> Computação</p>
                 <p><strong>Turma:</strong> CC1</p>
-                <p><strong>Período:</strong> 2025/1</p>
+                <p><strong>Faltas:</strong> {{ calcularTotalFaltas('Redes de Computadores') }}h</p>
               </div>
               <div class="cardFooter">
                 <Modal />
@@ -282,287 +292,287 @@ function baixarConteudo() {
 </template>
 
 <style scoped>
-	.layout-container {
-		display: flex;
-		width: 100vw;
-	}
+    .layout-container {
+        display: flex;
+        width: 100vw;
+    }
 
-	.content-area {
-		display: flex;
-		flex-direction: column;
-		flex: 1;
-	}
+    .content-area {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
 
-	.main-content {
-		flex: 1;
-		overflow-y: auto;
-		padding: 1.5rem;
-		box-sizing: border-box;
-	}
+    .main-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.5rem;
+        box-sizing: border-box;
+    }
 
-	.dropdown {
-		width: 100%;
-		background-color: white;
-	}
+    .dropdown {
+        width: 100%;
+        background-color: white;
+    }
 
-	.dropdown :deep(.dropdown-header) {
-		background-color: transparent !important;
-		color: var(--text-light);
-		font-size: 1.5rem;
-		padding: 0 0 1rem 0;
-		border-bottom: 2px solid var(--border-color);
-		margin-bottom: 1.5rem;
-	}
+    .dropdown :deep(.dropdown-header) {
+        background-color: transparent !important;
+        color: var(--text-light);
+        font-size: 1.5rem;
+        padding: 0 0 1rem 0;
+        border-bottom: 2px solid var(--border-color);
+        margin-bottom: 1.5rem;
+    }
 
-	.cards {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-		gap: 1.5rem;
-		width: 100%;
-	}
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        width: 100%;
+    }
 
-	.card {
-		background-color: #f5f5f5;
-		border: 1px solid var(--border-color);
-		display: flex;
-		flex-direction: column;
-		border-radius: 12px;
-		overflow: hidden;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
-	}
+    .card {
+        background-color: #f5f5f5;
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-	.card:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-	}
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
 
-	.cardHeader {
-		padding: 1rem 1.5rem;
-	}
+    .cardHeader {
+        padding: 1rem 1.5rem;
+    }
 
-	.cardHeader h3 {
-		font-size: 1.25rem;
-		text-align: center;
-		margin: 0;
-		font-weight: 600;
-		color: #144575;
-	}
+    .cardHeader h3 {
+        font-size: 1.25rem;
+        text-align: center;
+        margin: 0;
+        font-weight: 600;
+        color: #144575;
+    }
 
-	.cardBody {
-		flex-grow: 1;
-		padding: 1.5rem;
-		background-color: var(--text-light);
-	}
+    .cardBody {
+        flex-grow: 1;
+        padding: 1.5rem;
+        background-color: var(--text-light);
+    }
 
-	.cardBody p {
-		margin: 0 0 0.75rem 0;
-		font-size: 1rem;
-		color: var(--text-dark);
-		line-height: 1.5;
-	}
+    .cardBody p {
+        margin: 0 0 0.75rem 0;
+        font-size: 1rem;
+        color: var(--text-dark);
+        line-height: 1.5;
+    }
 
-	.cardBody p:last-child {
-		margin-bottom: 0;
-	}
+    .cardBody p:last-child {
+        margin-bottom: 0;
+    }
 
-	.cardBody strong {
-		color: #000;
-	}
+    .cardBody strong {
+        color: #000;
+    }
 
-	.cardFooter {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
-		padding: 1rem 1.5rem;
-		gap: 0.75rem;
-		border-top: 1px solid #e0e0e0;
-		background-color: var(--text-light);
-	}
+    .cardFooter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        gap: 0.75rem;
+        border-top: 1px solid #e0e0e0;
+        background-color: var(--text-light);
+    }
 
-	.cardFooter button {
-		color: #f5f5f5;
-	}
+    .cardFooter button {
+        color: #f5f5f5;
+    }
 
-	.cardFooter button,
-	.cardFooter :deep(.btn-open) {
-		flex: 1 1 auto;
-		min-height: 3rem;
-		font-size: 0.9rem;
-		background-color: #144575;
-		border: none;
-		border-radius: 8px;
-		padding: 0.75rem;
-		cursor: pointer;
-		font-weight: bold;
-		text-align: center;
-		transition: background-color 0.2s ease, transform 0.2s ease;
-	}
+    .cardFooter button,
+    .cardFooter :deep(.btn-open) {
+        flex: 1 1 auto;
+        min-height: 3rem;
+        font-size: 0.9rem;
+        background-color: #144575;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem;
+        cursor: pointer;
+        font-weight: bold;
+        text-align: center;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
 
-	.cardFooter button:hover,
-	.cardFooter :deep(.btn-open:hover) {
-		background-color: #103a60;
-	}
+    .cardFooter button:hover,
+    .cardFooter :deep(.btn-open:hover) {
+        background-color: #103a60;
+    }
 
-	.modal-overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.6);
-		backdrop-filter: blur(4px);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		z-index: 1000;
-	}
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
 
-	.modal-content {
-		background-color: #fff;
-		padding: 2rem;
-		border-radius: 12px;
-		box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-		width: 100%;
-		max-width: 800px;
-		max-height: 90vh;
-		display: flex;
-		flex-direction: column;
-	}
+    .modal-content {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        width: 100%;
+        max-width: 800px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+    }
 
-	.modal-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		border-bottom: 1px solid #e2e8f0;
-		padding-bottom: 1rem;
-		margin-bottom: 1.5rem;
-	}
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+    }
 
-	.modal-header h3 {
-		margin: 0;
-		font-size: 1.5rem;
-		color: #144575;
-	}
+    .modal-header h3 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: #144575;
+    }
 
-	.close-button {
-		background: none;
-		border: none;
-		font-size: 2rem;
-		color: #718096;
-		cursor: pointer;
-	}
+    .close-button {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #718096;
+        cursor: pointer;
+    }
 
-	.modal-body {
-		flex-grow: 1;
-		overflow-y: auto;
-		line-height: 1.6;
-		padding-right: 1rem;
-	}
+    .modal-body {
+        flex-grow: 1;
+        overflow-y: auto;
+        line-height: 1.6;
+        padding-right: 1rem;
+    }
 
-	.modal-footer {
-		display: flex;
-		justify-content: flex-end;
-		gap: 1rem;
-		border-top: 1px solid #e2e8f0;
-		padding-top: 1.5rem;
-		margin-top: 1.5rem;
-	}
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+    }
 
-	.btn-primary {
-		background-color: #144575;
-		color: white;
-		border: none;
-		padding: 0.75rem 1.5rem;
-		border-radius: 8px;
-		cursor: pointer;
-	}
+    .btn-primary {
+        background-color: #144575;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+    }
 
-	.btn-primary:hover {
-		background-color: #103a60;
-	}
+    .btn-primary:hover {
+        background-color: #103a60;
+    }
 
-	.btn-secondary {
-		background-color: #edf2f7;
-		color: #4a5568;
-		border: none;
-		padding: 0.75rem 1.5rem;
-		border-radius: 8px;
-		cursor: pointer;
-	}
+    .btn-secondary {
+        background-color: #edf2f7;
+        color: #4a5568;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+    }
 
-	.btn-secondary:hover {
-		background-color: #e2e8f0;
-	}
+    .btn-secondary:hover {
+        background-color: #e2e8f0;
+    }
 
-	.info-grid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 0.5rem 1.5rem;
-		margin-bottom: 2rem;
-		border-top: 1px solid #ccc;
-		border-bottom: 1px solid #ccc;
-		padding: 1rem 0;
-	}
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem 1.5rem;
+        margin-bottom: 2rem;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 1rem 0;
+    }
 
-	.info-grid .full-width {
-		grid-column: 1 / -1;
-	}
+    .info-grid .full-width {
+        grid-column: 1 / -1;
+    }
 
-	.section {
-		margin-bottom: 1.5rem;
-	}
+    .section {
+        margin-bottom: 1.5rem;
+    }
 
-	.section h6 {
-		font-size: 0.9rem;
-		text-transform: uppercase;
-		color: #103a60;
-		border-bottom: 2px solid #144575;
-		padding-bottom: 0.25rem;
-		margin-bottom: 0.75rem;
-	}
+    .section h6 {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: #103a60;
+        border-bottom: 2px solid #144575;
+        padding-bottom: 0.25rem;
+        margin-bottom: 0.75rem;
+    }
 
-	.section p,
-	.section ul,
-	.section ol {
-		margin: 0;
-		padding-left: 1.2rem;
-	}
+    .section p,
+    .section ul,
+    .section ol {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
 
-	.section a {
-		color: #2563eb;
-		text-decoration: none;
-	}
+    .section a {
+        color: #2563eb;
+        text-decoration: none;
+    }
 
-	.section a:hover {
-		text-decoration: underline;
-	}
+    .section a:hover {
+        text-decoration: underline;
+    }
 
-	.aulas-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: 0.9rem;
-	}
+    .aulas-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+    }
 
-	.aulas-table th,
-	.aulas-table td {
-		padding: 8px;
-		border: 1px solid #ddd;
-		text-align: left;
-	}
+    .aulas-table th,
+    .aulas-table td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
 
-	.aulas-table th {
-		background-color: #f2f2f2;
-	}
+    .aulas-table th {
+        background-color: #f2f2f2;
+    }
 
-	.modal-fade-enter-active,
-	.modal-fade-leave-active {
-		transition: opacity 0.3s ease;
-	}
+    .modal-fade-enter-active,
+    .modal-fade-leave-active {
+        transition: opacity 0.3s ease;
+    }
 
-	.modal-fade-enter-from,
-	.modal-fade-leave-to {
-		opacity: 0;
-	}
+    .modal-fade-enter-from,
+    .modal-fade-leave-to {
+        opacity: 0;
+    }
 </style>

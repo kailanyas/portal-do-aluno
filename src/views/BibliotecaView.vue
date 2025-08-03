@@ -9,7 +9,7 @@
         <div class="card-principal">
 
           <div class="pendencia-section">
-            <h3>Pendência com a biblioteca</h3>
+            <h2>Pendência com a biblioteca</h2>
             <div v-if="!temPendencia" class="alert alert-success">
               Você não possui nenhuma pendência no momento.
             </div>
@@ -32,15 +32,16 @@
                 </thead>
                 <tbody>
                   <tr v-for="emprestimo in emprestimos" :key="emprestimo.id">
-                    <td data-label="Livro">{{ emprestimo.titulo }}</td>
-                    <td data-label="Data do Empréstimo">{{ emprestimo.dataEmprestimo }}</td>
-                    <td data-label="Data de Devolução">{{ emprestimo.dataDevolucao }}</td>
-                    <td data-label="Ações">
+                    <td>{{ emprestimo.titulo }}</td>
+                    <td>{{ emprestimo.dataEmprestimo }}</td>
+                    <td>{{ emprestimo.dataDevolucao }}</td>
+                    <td>
                       <a 
                         href="https://acervo.ufes.br/login?redirect=/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="btn-renovar"
+                        :aria-label="`Renovar empréstimo do livro ${emprestimo.titulo}`"
                       >
                         Renovar
                       </a>
@@ -111,7 +112,6 @@ const emprestimos = ref([
 </script>
 
 <style scoped>
-
 .layout-container {
   display: flex;
   height: 100vh;
@@ -148,7 +148,7 @@ const emprestimos = ref([
 
 h2 {
   color: #144575;
-  font-size: 2em;
+  font-size: 1.5em;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid #e0e0e0;
   padding-bottom: 0.5rem;
@@ -159,7 +159,6 @@ h3 {
   font-size: 1.3em;
   margin-bottom: 1rem;
 }
-
 
 .pendencia-section {
   margin-bottom: 2.5rem;
@@ -183,7 +182,6 @@ h3 {
   color: #842029;
   border-color: #f5c2c7;
 }
-
 
 .table-container {
   width: 100%;
@@ -217,7 +215,7 @@ tbody tr:hover {
 }
 
 .btn-renovar {
-  background-color: #28a745;
+  background-color: #218838;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -231,26 +229,22 @@ tbody tr:hover {
 }
 
 .btn-renovar:hover {
-  background-color: #218838;
+  background-color: #1a682c;
 }
-
 
 @media (max-width: 768px) {
   .main-content {
     padding: 1rem;
     align-items: stretch;
   }
-
   .card-principal {
     padding: 1rem;
   }
-
   h2 {
-    font-size: 1.6em;
+    font-size: 1.3em;
   }
-
   h3 {
-    font-size: 1.15em;
+    font-size: 1.1em;
   }
 }
 </style>
