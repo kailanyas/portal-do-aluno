@@ -16,36 +16,41 @@
         <SideBar :isOpen="isSidebarOpen" @toggle="toggleSidebar" />
 
         <div class="content-area">
-            <HeaderC titulo="Acompanhamento Acadêmico"/>
+            <HeaderC titulo="Acompanhamento Acadêmico" />
 
             <main class="main-content">
                 <div class="bg">
                     <div class="cards">
 
                         <div class="card">
-                            <div class="cardHeader"><h3>Plano de Acompanhamento de Estudos (PAE)</h3></div>
+                            <div class="cardHeader">
+                                <h3>Plano de Acompanhamento de Estudos (PAE)</h3>
+                            </div>
                             <div class="cardBody">
                                 <table>
+                                    <caption class="sr-only">
+                                        Tabela com o Plano de Acompanhamento de Estudos (PAE), listando período, atividade e situação.
+                                    </caption>
                                     <thead>
                                         <tr>
-                                            <th>Período</th>
-                                            <th>Atividade Acadêmica</th>
-                                            <th>Situação</th>
+                                            <th scope="col">Período</th>
+                                            <th scope="col">Atividade Acadêmica</th>
+                                            <th scope="col">Situação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>2025/2</td>
+                                            <th scope="row">2025/2</th>
                                             <td>Desenvolvimento Web</td>
                                             <td>Concluído</td>
                                         </tr>
                                         <tr>
-                                            <td>2025/2</td>
+                                            <th scope="row">2025/2</th>
                                             <td>Banco de Dados</td>
                                             <td>Pendente</td>
                                         </tr>
                                         <tr>
-                                            <td>2025/2</td>
+                                            <th scope="row">2025/2</th>
                                             <td>Engenharia de Software</td>
                                             <td>Concluído</td>
                                         </tr>
@@ -55,32 +60,38 @@
                         </div>
 
                         <div class="card">
-                            <div class="cardHeader"><h3>Plano de Integralização Curricular (PIC)</h3><p>Disciplinas do Plano de Estudo</p></div>
+                            <div class="cardHeader">
+                                <h3>Plano de Integralização Curricular (PIC)</h3>
+                                <p>Disciplinas do Plano de Estudo</p>
+                            </div>
                             <div class="cardBody">
                                 <table>
+                                    <caption class="sr-only">
+                                        Tabela com disciplinas do Plano de Integralização Curricular, indicando período, disciplina, carga horária e créditos.
+                                    </caption>
                                     <thead>
                                         <tr>
-                                            <th>Período</th>
-                                            <th>Disciplina</th>
-                                            <th>CH</th>
-                                            <th>Créditos</th>
+                                            <th scope="col">Período</th>
+                                            <th scope="col">Disciplina</th>
+                                            <th scope="col">CH</th>
+                                            <th scope="col">Créditos</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>2024/2</td>
+                                            <th scope="row">2024/2</th>
                                             <td>Algoritmos Avançados</td>
                                             <td>60h</td>
                                             <td>3</td>
                                         </tr>
                                         <tr>
-                                            <td>2024/2</td>
+                                            <th scope="row">2024/2</th>
                                             <td>Desenvolvimento Web</td>
                                             <td>60h</td>
                                             <td>3</td>
                                         </tr>
                                         <tr>
-                                            <td>2024/2</td>
+                                            <th scope="row">2024/2</th>
                                             <td>Redes de Computadores</td>
                                             <td>60h</td>
                                             <td>4</td>
@@ -91,29 +102,35 @@
                         </div>
 
                         <div class="card">
-                            <div class="cardHeader"><h3>Plano de Integralização Curricular (PIC)</h3><p>Atividades por Carga Horária</p></div>
+                            <div class="cardHeader">
+                                <h3>Plano de Integralização Curricular (PIC)</h3>
+                                <p>Atividades por Carga Horária</p>
+                            </div>
                             <div class="cardBody">
                                 <table>
+                                    <caption class="sr-only">
+                                        Tabela com atividades do Plano de Integralização Curricular por carga horária, listando período, tipo e carga horária.
+                                    </caption>
                                     <thead>
                                         <tr>
-                                            <th>Período</th>
-                                            <th>Tipo Atividade</th>
-                                            <th>CH</th>
+                                            <th scope="col">Período</th>
+                                            <th scope="col">Tipo Atividade</th>
+                                            <th scope="col">CH</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>2023/2</td>
+                                            <th scope="row">2023/2</th>
                                             <td>Banco de Dados</td>
                                             <td>90h</td>
                                         </tr>
                                         <tr>
-                                            <td>2023/2</td>
+                                            <th scope="row">2023/2</th>
                                             <td>Engenharia de Software</td>
                                             <td>30h</td>
                                         </tr>
                                         <tr>
-                                            <td>2022/2</td>
+                                            <th scope="row">2022/2</th>
                                             <td>Inteligência Artificial</td>
                                             <td>45h</td>
                                         </tr>
@@ -132,7 +149,7 @@
 </template>
 
 <style scoped>
-    /* Estilos do Layout Principal (Não alterados) */
+    
     .layout-container {
         display: flex;
         height: 100vh;
@@ -183,7 +200,7 @@
         }
     }
 
-    /* Estilos Visuais dos Cards (Não alterados) */
+    
     .card {
         background-color: #f5f5f5;
         border: none;
@@ -218,7 +235,7 @@
         font-size: 0.8rem;
         color: #144575;
         margin: 0;
-        opacity: 0.9; /* Bônus: Deixa o subtítulo um pouco mais sutil */
+        opacity: 0.9; 
     }
     .cardBody {
         flex-grow: 1; 
@@ -226,7 +243,7 @@
         padding: 0; 
     }
 
-    /* Estilos para as Novas Tabelas (Mantidos) */
+    
     .cardBody table {
         width: 100%;
         border-collapse: collapse;
@@ -249,7 +266,7 @@
         background-color: #f5f5f5;
     }
     
-    /* Os estilos de 'status' foram mantidos caso você queira usá-los no futuro */
+    
     .status {
         padding: 0.2rem 0.5rem;
         border-radius: 12px;
