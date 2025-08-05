@@ -13,8 +13,18 @@
               <input
                 type="text"
                 v-model="dados.nomeCivil"
-                :disabled="!editando.nomeCivil"
+                :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('nomeCivil') }"
+                :disabled="campoBloqueado('nomeCivil')"
+                @input="campoAlterado('nomeCivil')"
               />
+              <button
+                v-if="campoModificado('nomeCivil') && !campoBloqueado('nomeCivil')"
+                type="button"
+                class="btn-salvar"
+                @click="salvarCampo('nomeCivil')"
+              >
+                Salvar
+              </button>
             </div>
           </div>
 
@@ -24,8 +34,18 @@
               <input
                 type="text"
                 v-model="dados.nomeMae"
-                :disabled="!editando.nomeMae"
+                :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('nomeMae') }"
+                :disabled="campoBloqueado('nomeMae')"
+                @input="campoAlterado('nomeMae')"
               />
+              <button
+                v-if="campoModificado('nomeMae') && !campoBloqueado('nomeMae')"
+                type="button"
+                class="btn-salvar"
+                @click="salvarCampo('nomeMae')"
+              >
+                Salvar
+              </button>
             </div>
           </div>
 
@@ -35,36 +55,46 @@
               <input
                 type="text"
                 v-model="dados.nomePai"
-                :disabled="!editando.nomePai"
+                :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('nomePai') }"
+                :disabled="campoBloqueado('nomePai')"
+                @input="campoAlterado('nomePai')"
               />
+              <button
+                v-if="campoModificado('nomePai') && !campoBloqueado('nomePai')"
+                type="button"
+                class="btn-salvar"
+                @click="salvarCampo('nomePai')"
+              >
+                Salvar
+              </button>
             </div>
           </div>
 
           <div class="campo-container">
             <label>Data de Nascimento:</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.dataNascimento" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.dataNascimento }}
             </div>
           </div>
 
           <div class="campo-container">
             <label>Sexo:</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.sexo" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.sexo }}
             </div>
           </div>
 
           <div class="campo-container">
             <label>Estado Civil:</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.estadoCivil" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.estadoCivil }}
             </div>
           </div>
 
           <div class="campo-container">
             <label>Etnia:</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.etnia" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.etnia }}
             </div>
           </div>
 
@@ -73,7 +103,9 @@
             <div class="campo-editavel">
               <select
                 v-model="dados.tipoSanguineo"
-                :disabled="!editando.tipoSanguineo"
+                :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('tipoSanguineo') }"
+                :disabled="campoBloqueado('tipoSanguineo')"
+                @change="campoAlterado('tipoSanguineo')"
               >
                 <option value="">Selecione</option>
                 <option>A</option>
@@ -83,14 +115,7 @@
                 <option>Não Informado</option>
               </select>
               <button
-                type="button"
-                class="btn-editar"
-                @click="toggleEdicao('tipoSanguineo')"
-              >
-                {{ editando.tipoSanguineo ? "Cancelar" : "Editar" }}
-              </button>
-              <button
-                v-if="editando.tipoSanguineo"
+                v-if="campoModificado('tipoSanguineo') && !campoBloqueado('tipoSanguineo')"
                 type="button"
                 class="btn-salvar"
                 @click="salvarCampo('tipoSanguineo')"
@@ -103,21 +128,19 @@
           <div class="campo-container">
             <label>Fator RH:</label>
             <div class="campo-editavel">
-              <select v-model="dados.fatorRH" :disabled="!editando.fatorRH">
+              <select
+                v-model="dados.fatorRH"
+                :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('fatorRH') }"
+                :disabled="campoBloqueado('fatorRH')"
+                @change="campoAlterado('fatorRH')"
+              >
                 <option value="">Selecione</option>
                 <option>+</option>
                 <option>-</option>
                 <option>Não Informado</option>
               </select>
               <button
-                type="button"
-                class="btn-editar"
-                @click="toggleEdicao('fatorRH')"
-              >
-                {{ editando.fatorRH ? "Cancelar" : "Editar" }}
-              </button>
-              <button
-                v-if="editando.fatorRH"
+                v-if="campoModificado('fatorRH') && !campoBloqueado('fatorRH')"
                 type="button"
                 class="btn-salvar"
                 @click="salvarCampo('fatorRH')"
@@ -129,15 +152,15 @@
 
           <div class="campo-container">
             <label>Ano de conclusão do Ensino Médio:</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.anoConclusaoEM" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.anoConclusaoEM }}
             </div>
           </div>
 
           <div class="campo-container">
             <label>Deficiência(s):</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.deficiencia" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.deficiencia }}
               <button
                 type="button"
                 class="btn-solicitar"
@@ -151,20 +174,22 @@
           <div class="campo-container">
             <label>Identidade de Gênero:</label>
             <div class="campo-editavel">
-              <input
-                type="text"
+              <select
                 v-model="dados.identidadeGenero"
-                :disabled="!editando.identidadeGenero"
-              />
-              <button
-                type="button"
-                class="btn-editar"
-                @click="toggleEdicao('identidadeGenero')"
+                :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('identidadeGenero') }"
+                :disabled="campoBloqueado('identidadeGenero')"
+                @change="campoAlterado('identidadeGenero')"
               >
-                {{ editando.identidadeGenero ? "Cancelar" : "Editar" }}
-              </button>
+                <option value="Não declarado">Não declarado</option>
+                <option value="Mulher cisgênero">Mulher cisgênero</option>
+                <option value="Homem cisgênero">Homem cisgênero</option>
+                <option value="Mulher transgênero">Mulher transgênero</option>
+                <option value="Homem transgênero">Homem transgênero</option>
+                <option value="Não-binário">Não-binário</option>
+                <option value="Outro">Outro</option>
+              </select>
               <button
-                v-if="editando.identidadeGenero"
+                v-if="campoModificado('identidadeGenero') && !campoBloqueado('identidadeGenero')"
                 type="button"
                 class="btn-salvar"
                 @click="salvarCampo('identidadeGenero')"
@@ -190,17 +215,12 @@
               <input
                 type="text"
                 v-model="dados.nomeSocial"
-                :disabled="!editando.nomeSocial"
+                :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('nomeSocial') }"
+                :disabled="campoBloqueado('nomeSocial')"
+                @input="campoAlterado('nomeSocial')"
               />
               <button
-                type="button"
-                class="btn-editar"
-                @click="toggleEdicao('nomeSocial')"
-              >
-                {{ editando.nomeSocial ? "Cancelar" : "Editar" }}
-              </button>
-              <button
-                v-if="editando.nomeSocial"
+                v-if="campoModificado('nomeSocial') && !campoBloqueado('nomeSocial')"
                 type="button"
                 class="btn-salvar"
                 @click="salvarCampo('nomeSocial')"
@@ -222,17 +242,12 @@
               <input
                 type="text"
                 v-model="dados.contatoNome"
-                :disabled="!editando.contatoNome"
+                :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('contatoNome') }"
+                :disabled="campoBloqueado('contatoNome')"
+                @input="campoAlterado('contatoNome')"
               />
               <button
-                type="button"
-                class="btn-editar"
-                @click="toggleEdicao('contatoNome')"
-              >
-                {{ editando.contatoNome ? "Cancelar" : "Editar" }}
-              </button>
-              <button
-                v-if="editando.contatoNome"
+                v-if="campoModificado('contatoNome') && !campoBloqueado('contatoNome')"
                 type="button"
                 class="btn-salvar"
                 @click="salvarCampo('contatoNome')"
@@ -248,17 +263,14 @@
               <input
                 type="text"
                 v-model="dados.contatoTelefone"
-                :disabled="!editando.contatoTelefone"
+                v-maska="'(##) #####-####'"
+                :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('contatoTelefone') }"
+                :disabled="campoBloqueado('contatoTelefone')"
+                @input="campoAlterado('contatoTelefone')"
+                placeholder="(00) 00000-0000"
               />
               <button
-                type="button"
-                class="btn-editar"
-                @click="toggleEdicao('contatoTelefone')"
-              >
-                {{ editando.contatoTelefone ? "Cancelar" : "Editar" }}
-              </button>
-              <button
-                v-if="editando.contatoTelefone"
+                v-if="campoModificado('contatoTelefone') && !campoBloqueado('contatoTelefone')"
                 type="button"
                 class="btn-salvar"
                 @click="salvarCampo('contatoTelefone')"
@@ -276,29 +288,29 @@
         <div class="grid-naturalidade">
           <div class="campo-container">
             <label>País:</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.pais" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.pais }}
             </div>
           </div>
 
           <div class="campo-container">
             <label>Estado:</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.estado" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.estado }}
             </div>
           </div>
 
           <div class="campo-container">
             <label>Naturalidade (Município):</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.naturalidade" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.naturalidade }}
             </div>
           </div>
 
           <div class="campo-container">
             <label>Nacionalidade:</label>
-            <div class="campo-editavel">
-              <input type="text" v-model="dados.nacionalidade" disabled />
+            <div class="campo-bloqueado">
+              {{ dados.nacionalidade }}
             </div>
           </div>
         </div>
@@ -323,7 +335,7 @@
 </template>
 
 <script setup>
-import { reactive, computed } from "vue";
+import { reactive } from "vue";
 
 // Dados iniciais
 const dadosIniciais = {
@@ -350,51 +362,50 @@ const dadosIniciais = {
 
 const dados = reactive({ ...dadosIniciais });
 const dadosOriginais = reactive({ ...dadosIniciais });
+const camposModificados = reactive({});
 
-// Estado de edição para cada campo
-const editando = reactive({
-  nomeCivil: false,
-  nomeMae: false,
-  nomePai: false,
-  tipoSanguineo: false,
-  fatorRH: false,
-  identidadeGenero: false,
-  nomeSocial: false,
-  contatoNome: false,
-  contatoTelefone: false,
-});
+// Verifica se um campo foi modificado
+const campoModificado = (campo) => {
+  return camposModificados[campo] || false;
+};
 
-// Verifica se há alterações pendentes
-const alteracoesPendentes = computed(() => {
-  return Object.keys(dados).some((key) => dados[key] !== dadosOriginais[key]);
-});
+// Verifica se um campo está bloqueado (não editável)
+const campoBloqueado = (campo) => {
+  const camposBloqueados = [
+    'nomeCivil',
+    'nomeMae',
+    'nomePai',
+    'dataNascimento',
+    'sexo',
+    'estadoCivil',
+    'etnia',
+    'anoConclusaoEM',
+    'deficiencia',
+    'pais',
+    'estado',
+    'naturalidade',
+    'nacionalidade'
+  ];
+  return camposBloqueados.includes(campo);
+};
 
-// Alternar modo de edição
-const toggleEdicao = (campo) => {
-  editando[campo] = !editando[campo];
-  if (!editando[campo]) {
-    dados[campo] = dadosOriginais[campo];
-  }
+// Marca um campo como modificado quando alterado
+const campoAlterado = (campo) => {
+  camposModificados[campo] = dados[campo] !== dadosOriginais[campo];
 };
 
 // Salvar um campo individual
 const salvarCampo = (campo) => {
-  editando[campo] = false;
   dadosOriginais[campo] = dados[campo];
+  camposModificados[campo] = false;
   alert(`Campo "${campo}" salvo com sucesso!`);
 };
 
 // Salvar todas as alterações
 const salvarAlteracoes = () => {
   Object.assign(dadosOriginais, dados);
-  Object.keys(editando).forEach((key) => (editando[key] = false));
+  Object.keys(camposModificados).forEach(key => camposModificados[key] = false);
   alert("Todas as alterações foram salvas com sucesso!");
-};
-
-// Resetar formulário
-const resetarFormulario = () => {
-  Object.assign(dados, dadosOriginais);
-  Object.keys(editando).forEach((key) => (editando[key] = false));
 };
 
 // Solicitar alteração de campo bloqueado
@@ -465,6 +476,13 @@ form {
   gap: 16px;
 }
 
+.grid-naturalidade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
 .campo-container {
   display: flex;
   flex-direction: column;
@@ -477,97 +495,101 @@ form {
   align-items: center;
 }
 
+.campo-bloqueado {
+  padding: 8px 0;
+  color: #666;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 label {
   font-size: 14px;
   color: #333;
   font-weight: 500;
 }
 
-input[type="text"],
-select {
+.campo-editavel-input {
   flex: 1;
-  padding: 8px;
+  padding: 8px 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 14px;
+  background-color: #fff;
+  transition: all 0.3s ease;
 }
 
-input[disabled],
-select[disabled] {
+.campo-editavel-input:not([disabled]) {
+  border-color: #4a89dc;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(74, 137, 220, 0.1);
+}
+
+.campo-editavel-input[disabled] {
   background-color: #f5f5f5;
   color: #666;
+  cursor: not-allowed;
+}
+
+
+select.campo-editavel-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 32px;
+}
+
+input[type="text"][v-maska] {
+  letter-spacing: 0.5px;
 }
 
 button {
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+  border: none;
   white-space: nowrap;
 }
 
-.btn-editar {
-  background-color: #144575;
-  border: 1px solid #ffffff;
-  color: #ffffff;
-}
-
-.btn-editar:hover {
-  background-color: #103a60;
-}
-
 .btn-salvar {
-  background-color: #4caf50;
-  border: 1px solid #388e3c;
+  background-color: #37bc9b;
   color: white;
 }
 
 .btn-salvar:hover {
-  background-color: #388e3c;
+  background-color: #2e9c81;
 }
 
 .btn-solicitar {
-  background-color: #ff9800;
-  border: 1px solid #f57c00;
+  background-color: #f6bb42;
   color: white;
 }
 
 .btn-solicitar:hover {
-  background-color: #f57c00;
+  background-color: #e0a72b;
 }
 
-.btn-cancelar {
-  background-color: #f44336;
-  border: 1px solid #d32f2f;
+.btn-solicitar-tudo {
+  background-color: #f6bb42;
   color: white;
+  padding: 10px 20px;
+  font-size: 15px;
 }
 
-.btn-cancelar:hover {
-  background-color: #d32f2f;
+.btn-solicitar-tudo:hover {
+  background-color: #e0a72b;
 }
 
-.btn-salvar-tudo {
-  background-color: #2196f3;
-  border: 1px solid #1976d2;
-  color: white;
-}
-
-.btn-salvar-tudo:hover {
-  background-color: #1976d2;
-}
-
-.btn-salvar-tudo:disabled {
-  background-color: #b0bec5;
-  border-color: #90a4ae;
-  cursor: not-allowed;
-}
-
-.botoes-formulario {
+.botoes-naturalidade {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .aviso,
@@ -586,33 +608,6 @@ button {
   text-align: center;
 }
 
-.grid-naturalidade {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.botoes-naturalidade {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 16px;
-}
-
-.btn-solicitar-tudo {
-  background-color: #ff9800;
-  border: 1px solid #f57c00;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.btn-solicitar-tudo:hover {
-  background-color: #f57c00;
-}
-
 @media (max-width: 600px) {
   .grid,
   .grid-naturalidade {
@@ -621,15 +616,18 @@ button {
 
   .campo-editavel {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
-  .botoes-formulario,
+  button {
+    width: 100%;
+    margin-top: 8px;
+  }
+
   .botoes-naturalidade {
     flex-direction: column;
   }
 
-  button,
   .btn-solicitar-tudo {
     width: 100%;
   }
