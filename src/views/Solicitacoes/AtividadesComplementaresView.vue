@@ -15,7 +15,7 @@
               <strong>inserir sua solicitação de cadastro</strong>.
             </p>
 
-            <h3>Minhas Solicitações de Atividades:</h3>
+            <h2>Minhas Solicitações de Atividades:</h2>
             <ul>
               <li>Aqui você pode acompanhar o processo de validação das solicitações feitas.</li>
               <li>Passe o mouse em um campo da tabela para obter mais informações.</li>
@@ -263,7 +263,7 @@ h2 {
   width: 100%;
 }
 
-h3 {
+h2 {
   color: #103a60;
   font-size: 1.3em;
   margin-top: 20px;
@@ -382,13 +382,13 @@ li {
 }
 
 .edit-button {
-  background-color: #28a745;
+  background-color: #144575;
   color: white;
-  border: 1px solid #218838;
+  border: 1px solid #144575;
 }
 
 .edit-button:hover:not(:disabled) {
-  background-color: #218838;
+  background-color: #144575;
 }
 
 .delete-button {
@@ -672,7 +672,7 @@ li {
     font-size: 1.6em;
   }
 
-  h3 {
+  h2 {
     font-size: 1.2em;
   }
   

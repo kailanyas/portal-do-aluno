@@ -39,7 +39,7 @@
                 <div id="links-content">
                     <a class="link" @click="abrirLink('Biblioteca (SIB)', 'https://biblioteca.ufes.br/')">
                         <div class="link-header">
-                            <h3>Biblioteca (SIB)</h3>
+                            <h2>Biblioteca (SIB)</h2>
                         </div>
                         <div class="link-main">
                             Acesse o portal do Sistema Integrado de Bibliotecas da UFES para fazer buscas no acervo, renovar empréstimos e consultar informações sobre serviços disponíveis.
@@ -48,7 +48,7 @@
 
                     <a class="link" @click="abrirLink('Portal da Assistência Estudantil', 'https://ae.ufes.br/')">
                             <div class="link-header">
-                                <h3>Portal da Assistência Estudantil</h3>
+                                <h2>Portal da Assistência Estudantil</h2>
                             </div>
                             <div class="link-main">
                                 Plataforma onde estudantes podem solicitar auxílios, acompanhar editais e gerenciar seus dados no âmbito da Assistência Estudantil da UFES.
@@ -57,7 +57,7 @@
 
                     <a class="link" @click="abrirLink('Processos Seletivos', 'https://ps.ufes.br/')">
                         <div class="link-header">
-                            <h3>Processos Seletivos (PSVS)</h3>
+                            <h2>Processos Seletivos (PSVS)</h2>
                         </div>
                         <div class="link-main">
                             Página oficial dos processos seletivos da UFES, com editais, resultados, cronogramas e orientações para ingresso em cursos ou programas.
@@ -66,7 +66,7 @@
 
                     <a class="link" @click="abrirLink('Resoluções Acadêmicas', 'https://daocs.ufes.br/resolucoes')">
                         <div class="link-header">
-                            <h3>Resoluções Acadêmicas</h3>
+                            <h2>Resoluções Acadêmicas</h2>
                         </div>
                         <div class="link-main">
                             Consulte as resoluções, normas e regulamentos acadêmicos emitidos pela Direção do Centro ou Conselho Departamental da UFES.
@@ -75,7 +75,7 @@
 
                     <a class="link" @click="abrirLink('Site do Curso', 'https://computacao.alegre.ufes.br/')">
                         <div class="link-header">
-                            <h3>Site do Curso</h3>
+                            <h2>Site do Curso</h2>
                         </div>
                         <div class="link-main">
                             Acesse o site oficial do seu curso, com notícias, calendário, projetos e informações institucionais.
@@ -84,7 +84,7 @@
 
                     <a class="link" @click="abrirLink('Projetos Prograd', 'https://permanecer.ufes.br/')">
                         <div class="link-header">
-                            <h3>Projetos Prograd</h3>
+                            <h2>Projetos Prograd</h2>
                         </div>
                         <div class="link-main">
                             Conheça os projetos vinculados à Pró-Reitoria de Graduação (Prograd), como o Programa Permanecer, voltados à permanência e formação acadêmica dos estudantes.

@@ -344,34 +344,19 @@ li {
 }
 
 .edit-button {
-  background-color: #28a745;
+  background-color: #144575;
   color: white;
-  border: 1px solid #218838;
+  border: 1px solid #144575;
 }
 
 .edit-button:hover:not(:disabled) {
-  background-color: #218838;
+  background-color: #144575;
 }
 
 .delete-button {
   background-color: #dc3545;
   color: white;
   border: 1px solid #c82333;
-}
-
-.edit-button {
-  background-color: #28a745; /* Verde */
-  color: white;
-  border: none;
-}
-
-.edit-button:hover:not(:disabled) {
-  background-color: #218838;
-}
-
-.edit-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
 }
 
 .delete-button:hover:not(:disabled) {

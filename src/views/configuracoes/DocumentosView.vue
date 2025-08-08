@@ -46,31 +46,31 @@ const enviarFormulario = () => {
     <div class="documento">
       <h3>Documento Atual</h3>
       <div class="campo-grupo">
-        <label>Tipo de documento</label>
-        <input type="text" value="Cadastro de Pessoas Físicas" readonly />
+        <label for="tpDocumento">Tipo de documento</label>
+        <input id="tpDocumento" type="text" value="Cadastro de Pessoas Físicas" readonly />
       </div>
       <div class="campo-grupo">
-        <label>Número*</label>
-        <input type="text" value="169.521.107-39" readonly />
+        <label for="numDocumento">Número*</label>
+        <input id="numDocumento" type="text" value="169.521.107-39" readonly />
       </div>
       <div class="linha">
         <div class="campo-grupo">
-          <label>UF</label>
-          <input type="text" value="**" readonly />
+          <label for="UF">UF</label>
+          <input id="UF" type="text" value="**" readonly />
         </div>
         <div class="campo-grupo">
-          <label>Órgão Emissor</label>
-          <input type="text" readonly />
+          <label for="orgaoEmissor">Órgão Emissor</label>
+          <input id="orgaoEmissor" type="text" readonly />
         </div>
       </div>
       <div class="linha">
         <div class="campo-grupo">
-          <label>Data Expedição</label>
-          <input type="date" readonly />
+          <label for="dataExpedicao">Data Expedição</label>
+          <input id="dataExpedicao" type="date" readonly />
         </div>
         <div class="campo-grupo">
-          <label>Data Validade</label>
-          <input type="date" readonly />
+          <label for="dataValidade">Data Validade</label>
+          <input id="dataValidade" type="date" readonly />
         </div>
       </div>
     </div>
@@ -78,31 +78,31 @@ const enviarFormulario = () => {
     <div class="documento">
       <h3>Documento Atual</h3>
       <div class="campo-grupo">
-        <label>Tipo de documento</label>
-        <input type="text" value="Carteira de Identidade" readonly />
+        <label for="tpDocumento">Tipo de documento</label>
+        <input id="tpDocumento" type="text" value="Carteira de Identidade" readonly />
       </div>
       <div class="campo-grupo">
-        <label>Número*</label>
-        <input type="text" value="4225237" readonly />
+        <label for="numDocumento">Número*</label>
+        <input id="numDocumento" type="text" value="4225237" readonly />
       </div>
       <div class="linha">
         <div class="campo-grupo">
-          <label>UF*</label>
-          <input type="text" value="ES" readonly />
+          <label for="UF">UF*</label>
+          <input id="UF" type="text" value="ES" readonly />
         </div>
         <div class="campo-grupo">
-          <label>Órgão Emissor*</label>
-          <input type="text" value="SSP" readonly />
+          <label for="orgaoEmissor">Órgão Emissor*</label>
+          <input id="orgaoEmissor" type="text" value="SSP" readonly />
         </div>
       </div>
       <div class="linha">
         <div class="campo-grupo">
-          <label>Data Expedição*</label>
-          <input type="date" value="2017-06-19" readonly />
+          <label for="dataExpedicao">Data Expedição*</label>
+          <input id="dataExpedicao" type="date" value="2017-06-19" readonly />
         </div>
         <div class="campo-grupo">
-          <label>Data Validade</label>
-          <input type="date" readonly />
+          <label for="dataValidade">Data Validade</label>
+          <input id="dataValidade" type="date" readonly />
         </div>
       </div>
     </div>

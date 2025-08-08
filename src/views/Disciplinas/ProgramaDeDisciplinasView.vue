@@ -131,7 +131,7 @@ function handleSearch() {
             <main class="main-content">
                 <div class="card card-grande">
                     <div class="cardHeader">
-                        <h3>Busca de Programas de Disciplinas</h3>
+                        <h2>Busca de Programas de Disciplinas</h2>
                         <p>Selecione os filtros ou pesquise pelo código da disciplina</p>
                     </div>
                     
@@ -187,7 +187,7 @@ function handleSearch() {
                 <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3>Programa de Disciplina</h3>
+                            <h2>Programa de Disciplina</h2>
                             <button @click="closeModal" class="close-button">&times;</button>
                         </div>
                         
@@ -282,7 +282,7 @@ function handleSearch() {
         border-bottom: 1px solid var(--border-color);
     }
 
-    .cardHeader h3 {
+    .cardHeader h2 {
         font-size: 1.5rem;
         color: #144575;
         margin: 0 0 0.25rem 0;
@@ -419,7 +419,7 @@ function handleSearch() {
         margin-bottom: 1.5rem;
     }
 
-    .modal-header h3 {
+    .modal-header h2 {
         margin: 0;
         font-size: 1.5rem;
         color: #144575;

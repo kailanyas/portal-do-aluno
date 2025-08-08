@@ -3,7 +3,7 @@
     <div class="cards-container">
         <div class="card">
             <div class="card-header">
-                <h3>Atalhos</h3>
+                <h2>Atalhos</h2>
             </div>
             <div class="shortcut-container">
 				<router-link to="/calendario-academico" class="shortcut-link">
@@ -17,7 +17,7 @@
         
         <div class="card">
             <div class="card-header">
-                <h3>Avisos Gerais</h3>
+                <h2>Avisos Gerais</h2>
             </div>
             <ul class="alert-items">
                 <li class="alert-item">
@@ -40,7 +40,7 @@
         
         <div class="card">
             <div class="card-header">
-                <h3>Datas Importantes</h3>
+                <h2>Datas Importantes</h2>
             </div>
             <ul class="event-items">
                 <li class="event-item">
@@ -71,7 +71,7 @@
         
         <div class="card">
             <div class="card-header">
-                <h3>Avisos das Disciplinas</h3>
+                <h2>Avisos das Disciplinas</h2>
             </div>
             <ul class="alert-items">
                 <li class="alert-item">
@@ -120,7 +120,7 @@
   margin: 0 auto;
 }
 
-.card-header h3 {
+.card-header h2 {
   margin-bottom: 1rem;
   color: black;
   font-size: 1.5rem;

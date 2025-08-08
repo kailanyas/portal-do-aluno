@@ -264,7 +264,7 @@ function confirmarEnvio() {
     .results-table thead { border-bottom: 2px solid #cbd5e0; }
     .results-table th { background-color: #144575; font-weight: 600; color: white; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; }
     
-    .btn-adicionar { background-color: #38a169; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s ease; white-space: nowrap; }
+    .btn-adicionar { background-color: #144575; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s ease; white-space: nowrap; }
     .btn-adicionar:hover:not(:disabled) { background-color: #2f855a; }
     .btn-adicionar:disabled { background-color: #a0aec0; cursor: not-allowed; opacity: 0.8; }
     

@@ -8,9 +8,10 @@
         <h3 class="secao-titulo">Dados Pessoais</h3>
         <div class="grid">
           <div class="campo-container">
-            <label>Nome Civil:</label>
+            <label for="nomeCivil">Nome Civil:</label>
             <div class="campo-editavel">
               <input
+                id="nomeCivil"
                 type="text"
                 v-model="dados.nomeCivil"
                 :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('nomeCivil') }"
@@ -29,9 +30,10 @@
           </div>
 
           <div class="campo-container">
-            <label>Nome da mãe ou 1º parental:</label>
+            <label for="nomeMae">Nome da mãe ou 1º parental:</label>
             <div class="campo-editavel">
               <input
+                id="nomeMae"
                 type="text"
                 v-model="dados.nomeMae"
                 :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('nomeMae') }"
@@ -50,9 +52,10 @@
           </div>
 
           <div class="campo-container">
-            <label>Nome do pai ou 2º parental:</label>
+            <label for="nomePai">Nome do pai ou 2º parental:</label>
             <div class="campo-editavel">
               <input
+                id="nomePai"
                 type="text"
                 v-model="dados.nomePai"
                 :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('nomePai') }"
@@ -99,7 +102,7 @@
           </div>
 
           <div class="campo-container">
-            <label>Tipo Sanguíneo:</label>
+            <label for="tpSangue">Tipo Sanguíneo:</label>
             <div class="campo-editavel">
               <select
                 v-model="dados.tipoSanguineo"
@@ -108,11 +111,11 @@
                 @change="campoAlterado('tipoSanguineo')"
               >
                 <option value="">Selecione</option>
-                <option>A</option>
-                <option>B</option>
-                <option>AB</option>
-                <option>O</option>
-                <option>Não Informado</option>
+                <option class="tpSangue">A</option>
+                <option class="tpSangue">B</option>
+                <option class="tpSangue">AB</option>
+                <option class="tpSangue">O</option>
+                <option class="tpSangue">Não Informado</option>
               </select>
               <button
                 v-if="campoModificado('tipoSanguineo') && !campoBloqueado('tipoSanguineo')"
@@ -126,7 +129,7 @@
           </div>
 
           <div class="campo-container">
-            <label>Fator RH:</label>
+            <label for="RH">Fator RH:</label>
             <div class="campo-editavel">
               <select
                 v-model="dados.fatorRH"
@@ -135,9 +138,9 @@
                 @change="campoAlterado('fatorRH')"
               >
                 <option value="">Selecione</option>
-                <option>+</option>
-                <option>-</option>
-                <option>Não Informado</option>
+                <option class="RH">">+</option>
+                <option class="RH">-</option>
+                <option class="RH">Não Informado</option>
               </select>
               <button
                 v-if="campoModificado('fatorRH') && !campoBloqueado('fatorRH')"
@@ -172,7 +175,7 @@
           </div>
 
           <div class="campo-container">
-            <label>Identidade de Gênero:</label>
+            <label for="genero">Identidade de Gênero:</label>
             <div class="campo-editavel">
               <select
                 v-model="dados.identidadeGenero"
@@ -180,13 +183,13 @@
                 :disabled="campoBloqueado('identidadeGenero')"
                 @change="campoAlterado('identidadeGenero')"
               >
-                <option value="Não declarado">Não declarado</option>
-                <option value="Mulher cisgênero">Mulher cisgênero</option>
-                <option value="Homem cisgênero">Homem cisgênero</option>
-                <option value="Mulher transgênero">Mulher transgênero</option>
-                <option value="Homem transgênero">Homem transgênero</option>
-                <option value="Não-binário">Não-binário</option>
-                <option value="Outro">Outro</option>
+                <option value="Não declarado"class="genero">Não declarado</option>
+                <option value="Mulher cisgênero"class="genero">Mulher cisgênero</option>
+                <option value="Homem cisgênero"class="genero">Homem cisgênero</option>
+                <option value="Mulher transgênero" class="genero">Mulher transgênero</option>
+                <option value="Homem transgênero" class="genero">Homem transgênero</option>
+                <option value="Não-binário" class="genero">Não-binário</option>
+                <option value="Outro" class="genero">Outro</option>
               </select>
               <button
                 v-if="campoModificado('identidadeGenero') && !campoBloqueado('identidadeGenero')"
@@ -210,9 +213,10 @@
         <h3 class="secao-titulo">Nome Social</h3>
         <div class="grid">
           <div class="campo-container">
-            <label>Nome Social:</label>
+            <label for="nomeSocial">Nome Social:</label>
             <div class="campo-editavel">
               <input
+                id="nomeSocial"
                 type="text"
                 v-model="dados.nomeSocial"
                 :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('nomeSocial') }"
@@ -237,9 +241,10 @@
         <h3 class="secao-titulo">Contato para casos de emergência</h3>
         <div class="grid">
           <div class="campo-container">
-            <label>Nome do Contato:</label>
+            <label for="nomeContato">Nome do Contato:</label>
             <div class="campo-editavel">
               <input
+                id="nomeContato"
                 type="text"
                 v-model="dados.contatoNome"
                 :class="{ 'campo-editavel-input': true, 'campo-modificado': campoModificado('contatoNome') }"
@@ -258,9 +263,10 @@
           </div>
 
           <div class="campo-container">
-            <label>Telefone do Contato:</label>
+            <label for="telContato">Telefone do Contato:</label>
             <div class="campo-editavel">
               <input
+                id="telContato"
                 type="text"
                 v-model="dados.contatoTelefone"
                 v-maska="'(##) #####-####'"
@@ -567,23 +573,23 @@ button {
 }
 
 .btn-solicitar {
-  background-color: #f6bb42;
+  background-color: #144575;
   color: white;
 }
 
 .btn-solicitar:hover {
-  background-color: #e0a72b;
+  background-color: #144575;
 }
 
 .btn-solicitar-tudo {
-  background-color: #f6bb42;
+  background-color: #144575;
   color: white;
   padding: 10px 20px;
   font-size: 15px;
 }
 
 .btn-solicitar-tudo:hover {
-  background-color: #e0a72b;
+  background-color: #144575;
 }
 
 .botoes-naturalidade {

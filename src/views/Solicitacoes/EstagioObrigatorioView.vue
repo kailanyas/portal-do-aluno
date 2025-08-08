@@ -196,7 +196,7 @@ const deleteSolicitacao = (id) => {
 .no-solicitations {
   text-align: center;
   font-style: italic;
-  color: #777; 
+  color: #252525; 
   padding: 20px; 
 }
 .content-area {
@@ -331,7 +331,7 @@ li {
 .solicitacoes-table .no-solicitations {
   text-align: center;
   font-style: italic;
-  color: #777;
+  color: #181818;
   padding: 20px;
 }
 
@@ -346,7 +346,7 @@ li {
 .no-solicitations {
   text-align: center;
   font-style: italic;
-  color: #777;
+  color: #030303;
   padding: 20px;
 }
 
@@ -355,13 +355,13 @@ li {
 }
 
 .edit-button {
-  background-color: #28a745; /* Verde */
+  background-color: #144575; 
   color: white;
   border: none;
 }
 
 .edit-button:hover:not(:disabled) {
-  background-color: #218838;
+  background-color: #144575;
 }
 
 .edit-button:disabled {
@@ -378,16 +378,6 @@ li {
   font-weight: bold;
   transition: background-color 0.2s ease;
   margin: 0 4px;
-}
-
-.edit-button {
-  background-color: #28a745;
-  color: white;
-  border: 1px solid #218838;
-}
-
-.edit-button:hover:not(:disabled) {
-  background-color: #218838;
 }
 
 .delete-button {
