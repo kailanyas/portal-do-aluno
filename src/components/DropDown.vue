@@ -1,7 +1,7 @@
 <template>
   <div class="secao-expansivel">
     <div class="cabecalho-expansivel" @click="alternarSecao">
-      <h3>{{ titulo }}</h3>
+      <h2>{{ titulo }}</h2>
       <span class="seta" :class="{ 'rotacionada': estaAberto }">▼</span>
     </div>
     <div class="conteudo-expansivel" :class="{ 'aberto': estaAberto }">

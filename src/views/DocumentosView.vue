@@ -92,8 +92,8 @@ function handleItemClick(doc) {
       <main class="main-content">
         <div id="links-content">
           <div id="title">
-            <h3>Documento</h3>
-            <h3>Download</h3>
+            <h2>Documento</h2>
+            <h2>Download</h2>
           </div>
 
           <div 
@@ -118,7 +118,7 @@ function handleItemClick(doc) {
         <div v-if="isHorarioModalOpen" class="modal-overlay" @click.self="closeHorarioModal">
           <div class="modal-content modal-grande">
             <div class="modal-header">
-              <h3>Grade de Horário Individual</h3>
+              <h2>Grade de Horário Individual</h2>
               <button @click="closeHorarioModal" class="close-button">&times;</button>
             </div>
             <div class="modal-body">
@@ -170,7 +170,7 @@ function handleItemClick(doc) {
   display: flex; justify-content: space-between; align-items: center;
   color: #144575; padding: 0.5rem; flex-wrap: wrap;
 }
-#title h3 { font-size: 1.3rem; }
+#title h2 { font-size: 1.3rem; }
 .link-card {
   padding: 0.8rem 1rem; margin: 0.5rem 0; border-radius: 10px;
   background-color: #f7f9fb; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -209,7 +209,7 @@ function handleItemClick(doc) {
     display: flex; justify-content: space-between; align-items: center;
     border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;
 }
-.modal-header h3 { margin: 0; font-size: 1.5rem; color: #144575; }
+.modal-header h2 { margin: 0; font-size: 1.5rem; color: #144575; }
 .close-button { background: none; border: none; font-size: 2rem; color: #718096; cursor: pointer; }
 .modal-body { flex-grow: 1; overflow-y: auto; padding: 0 5px; }
 .modal-footer {

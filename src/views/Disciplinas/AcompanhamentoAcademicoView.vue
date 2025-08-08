@@ -24,7 +24,7 @@
 
                         <div class="card">
                             <div class="cardHeader">
-                                <h3>Plano de Acompanhamento de Estudos (PAE)</h3>
+                                <h2>Plano de Acompanhamento de Estudos (PAE)</h2>
                             </div>
                             <div class="cardBody">
                                 <table>
@@ -61,7 +61,7 @@
 
                         <div class="card">
                             <div class="cardHeader">
-                                <h3>Plano de Integralização Curricular (PIC)</h3>
+                                <h2>Plano de Integralização Curricular (PIC)</h2>
                                 <p>Disciplinas do Plano de Estudo</p>
                             </div>
                             <div class="cardBody">
@@ -103,7 +103,7 @@
 
                         <div class="card">
                             <div class="cardHeader">
-                                <h3>Plano de Integralização Curricular (PIC)</h3>
+                                <h2>Plano de Integralização Curricular (PIC)</h2>
                                 <p>Atividades por Carga Horária</p>
                             </div>
                             <div class="cardBody">
@@ -225,7 +225,7 @@
         min-height: 5.2rem; 
     }
 
-    .cardHeader h3 {
+    .cardHeader h2 {
         font-size: 1.2rem;
         color: #144575;
         margin: 0;

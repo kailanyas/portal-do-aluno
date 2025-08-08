@@ -130,7 +130,7 @@ function baixarConteudo() {
         <Dropdown class="dropdown" titulo="Disciplinas 2025/1" :abertoInicialmente="true">
           <div class="cards">
             <div class="card">
-              <div class="cardHeader"><h3>Desenvolvimento Web</h3></div>
+              <div class="cardHeader"><h2>Desenvolvimento Web</h2></div>
               <div class="cardBody">
                 <p><strong>Professor:</strong> Giuliano Prado</p>
                 <p><strong>Departamento:</strong> Computação</p>
@@ -145,7 +145,7 @@ function baixarConteudo() {
             </div>
 
             <div class="card">
-              <div class="cardHeader"><h3>Banco de Dados</h3></div>
+              <div class="cardHeader"><h2>Banco de Dados</h2></div>
               <div class="cardBody">
                 <p><strong>Professor:</strong> Antônio Almeida</p>
                 <p><strong>Departamento:</strong> Computação</p>
@@ -160,7 +160,7 @@ function baixarConteudo() {
             </div>
             
             <div class="card">
-              <div class="cardHeader"><h3>Engenharia de Software</h3></div>
+              <div class="cardHeader"><h2>Engenharia de Software</h2></div>
               <div class="cardBody">
                 <p><strong>Professor:</strong> Clayton Fraga</p>
                 <p><strong>Departamento:</strong> Computação</p>
@@ -175,7 +175,7 @@ function baixarConteudo() {
             </div>
 
             <div class="card">
-              <div class="cardHeader"><h3>Redes de Computadores</h3></div>
+              <div class="cardHeader"><h2>Redes de Computadores</h2></div>
               <div class="cardBody">
                 <p><strong>Professor:</strong> Helder Amorim</p>
                 <p><strong>Departamento:</strong> Computação</p>
@@ -200,7 +200,7 @@ function baixarConteudo() {
         <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
           <div class="modal-content">
             <div class="modal-header">
-              <h3>{{ modalTitle }}</h3>
+              <h2>{{ modalTitle }}</h2>
               <button @click="closeModal" class="close-button">&times;</button>
             </div>
             
@@ -351,7 +351,7 @@ function baixarConteudo() {
         padding: 1rem 1.5rem;
     }
 
-    .cardHeader h3 {
+    .cardHeader h2 {
         font-size: 1.25rem;
         text-align: center;
         margin: 0;
@@ -450,7 +450,7 @@ function baixarConteudo() {
         margin-bottom: 1.5rem;
     }
 
-    .modal-header h3 {
+    .modal-header h2 {
         margin: 0;
         font-size: 1.5rem;
         color: #144575;
