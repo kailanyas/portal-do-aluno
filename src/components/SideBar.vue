@@ -70,7 +70,7 @@
           </router-link>
         </li>
       </ul>
-      <button @click="toggleSideBar" id="open_btn">
+      <button @click="toggleSideBar" id="open_btn"  aria-label="botão de alternar barra lateral">
         <i
           id="open_btn_icon"
           class="fa-solid"
