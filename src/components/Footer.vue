@@ -11,13 +11,13 @@
 .footer {
   padding: 1rem;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: white;
 }
 
 .footer span {
   color: white;
   text-decoration: underline;
-  font-weight: 500;
+  font-weight: 700;
 }
 </style>

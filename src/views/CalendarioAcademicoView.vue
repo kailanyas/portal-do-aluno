@@ -158,7 +158,6 @@ const atributosDatas = ref([
                 is-expanded
                 :attributes="atributosDatas"
                 title-position="left"
-                show-weeknumbers
                 :initial-page="{ month: mesAtual, year: anoAtual }"
                 :first-day-of-week="0"
                 @update:from-page="({ month, year }) => {
@@ -167,6 +166,8 @@ const atributosDatas = ref([
                     dataAtual.value = new Date(year, month - 1, 1)
                 }"
             />
+
+            
 
           </div>
         </div>

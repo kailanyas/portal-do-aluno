@@ -8,23 +8,23 @@
 
       <div class="faq-item">
         <Dropdown titulo="Atualização de Dados Obrigatórios">
-            <iframe src="https://aluno.ufes.br/Tutoriais/Cadastro%20Obrigatorio.pdf" width="100%" height="600px"></iframe>
+            <iframe title="Cadastro Obrigatório" src="https://aluno.ufes.br/Tutoriais/Cadastro%20Obrigatorio.pdf" width="100%" height="600px"></iframe>
         </Dropdown>
 
         <Dropdown titulo="Atividades Complementares">
-            <iframe src="https://aluno.ufes.br/Tutoriais/Atividades%20Complementares%20Tutorial%20Aluno.pdf" width="100%" height="600px"></iframe>
+            <iframe title="Atividades Complementares" src="https://aluno.ufes.br/Tutoriais/Atividades%20Complementares%20Tutorial%20Aluno.pdf" width="100%" height="600px"></iframe>
         </Dropdown>
 
         <Dropdown titulo="Acesso ao Portal">
-            <iframe src="https://aluno.ufes.br/Tutoriais/Manual%20de%20acesso%20ao%20portal%20do%20aluno_new.pdf" width="100%" height="600px"></iframe>
+            <iframe title="Manual de acesso ao Portal do Aluno" src="https://aluno.ufes.br/Tutoriais/Manual%20de%20acesso%20ao%20portal%20do%20aluno_new.pdf" width="100%" height="600px"></iframe>
         </Dropdown>
 
         <Dropdown titulo="Avaliação dos Docentes">
-            <iframe src="https://aluno.ufes.br/Tutoriais/Avaliacao%20-%20Portal%20do%20Aluno.pdf" width="100%" height="600px"></iframe>
+            <iframe title="Avaliação dos Docentes" src="https://aluno.ufes.br/Tutoriais/Avaliacao%20-%20Portal%20do%20Aluno.pdf" width="100%" height="600px"></iframe>
         </Dropdown>
 
         <Dropdown titulo="Solicitação de Matrícula">
-            <iframe src="https://aluno.ufes.br/Tutoriais/Avaliacao%20-%20Portal%20do%20Aluno.pdf" width="100%" height="600px"></iframe>
+            <iframe title="Solicitação de Matrícula" src="https://aluno.ufes.br/Tutoriais/Avaliacao%20-%20Portal%20do%20Aluno.pdf" width="100%" height="600px"></iframe>
         </Dropdown>
         
       </div>
